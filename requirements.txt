@@ -6,3 +6,4 @@ pyspark==3.5.5
 pytz==2025.2
 sqlparse==0.2.4
 gunicorn
+setuptools
