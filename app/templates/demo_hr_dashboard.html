@@ -1,0 +1,524 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>HR Dashboard Demo</title>
+    <link rel="stylesheet" href="{% static 'css/stylehruser.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 56px;
+        }
+        
+        .hr-banner {
+            background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+            color: white;
+            padding: 85px 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .banner-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" d="M50,0 v100 M0,50 h100"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .banner-title {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            font-size: 24px;
+            margin-bottom: 2px;
+        }
+        
+        .banner-subtitle {
+            opacity: 0.85;
+            font-size: 15px;
+        }
+        
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+            margin-left: -12px;
+            transition: transform 0.3s;
+        }
+        
+        .user-avatar:hover {
+            transform: translateY(-5px);
+            z-index: 2;
+        }
+        
+        .user-avatar:first-child {
+            margin-left: 0;
+        }
+        
+        .user-more {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: -12px;
+            border: 3px solid white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .stat-box {
+            background-color: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 10px 15px;
+            backdrop-filter: blur(5px);
+            display: inline-flex;
+            align-items: center;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        
+        .stat-icon {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            background-color: #4cd964;
+            margin-left: 15px;
+        }
+        
+        .user-card {
+            transition: box-shadow 0.3s ease;
+            border: 1px solid #dee2e6;
+        }
+        
+        .user-card:hover {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        
+        .skill-badge {
+            font-size: 0.75rem;
+        }
+        
+        .blur-content {
+            filter: blur(5px);
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        .login-prompt {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+        }
+        
+        @media (max-width: 768px) {
+            .hr-banner {
+                padding: 20px 0;
+            }
+            
+            .banner-title {
+                font-size: 20px;
+            }
+            
+            .user-section {
+                margin-top: 20px;
+            }
+            
+            .stat-box {
+                margin-top: 15px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<!-- Navigation Bar -->
+
+<!-- Banner Section -->
+<div class="container mt-4 mb-4">
+    <div class="hr-banner">
+        <div class="banner-pattern"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h1 class="banner-title">HR Management Dashboard</h1>
+                            <p class="banner-subtitle">View and manage right candidates.</p>
+                            
+                            <div class="mt-3">
+                                <div class="stat-box">
+                                    <i class="fas fa-users stat-icon"></i>
+                                    <span>25+ Total Users</span>
+                                </div>
+                                <div class="stat-box">
+                                    <i class="fas fa-graduation-cap stat-icon"></i>
+                                    <span>15+ Active Candidates</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 text-lg-end user-section">
+                    <div class="d-flex flex-column align-items-lg-end">
+                        <div class="mt-3">
+                            <div class="d-flex justify-content-end">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" class="user-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/44.jpg" class="user-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="user-avatar">
+                                <div class="user-more">+5</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+    <!-- Page Header -->
+    <div class="mb-4">
+        <h1 class="h2">User Management</h1>
+        <p class="text-muted">Manage and filter candidates</p>
+    </div>
+    
+    <!-- Filters Section -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="h5 mb-0">
+                    <i class="fas fa-filter text-primary me-2"></i>
+                    Filter Candidates
+                </h2>
+                <span class="text-muted d-none d-md-block">Refine your search results</span>
+            </div>
+            
+            <form id="filterForm">
+                <!-- First Row - Skills, Year, Location -->
+                <div class="row mb-3">
+                    <!-- Skills Filter -->
+                    <div class="col-md-4 mb-3">
+                        <label for="skillsInput" class="form-label">
+                            <i class="fas fa-code text-primary me-2"></i>
+                            Skills
+                        </label>
+                        <div class="position-relative">
+                            <input type="text" id="skillsInput" class="form-control" placeholder="Type to search skills...">
+                        </div>
+                        <div class="d-flex flex-wrap gap-2 mt-2">
+                            <span class="badge bg-primary bg-opacity-10 text-primary">Python</span>
+                            <span class="badge bg-primary bg-opacity-10 text-primary">Django</span>
+                        </div>
+                    </div>
+
+                    <!-- Graduation Year -->
+                    <div class="col-md-4 mb-3">
+                        <label for="graduation_year" class="form-label">
+                            <i class="fas fa-graduation-cap text-primary me-2"></i>
+                            Graduation Year
+                        </label>
+                        <select id="graduation_year" name="graduation_year" class="form-select">
+                            <option value="">All Years</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                        </select>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="col-md-4 mb-3">
+                        <label for="locationInput" class="form-label">
+                            <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                            Location
+                        </label>
+                        <input type="text" id="locationInput" class="form-control" placeholder="Enter location...">
+                        <div class="d-flex flex-wrap gap-2 mt-2">
+                            <span class="badge bg-primary bg-opacity-10 text-primary">New York</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second Row - Percentage, Search -->
+                <div class="row mb-3">
+                    <!-- Graduation Percentage -->
+                    <div class="col-md-6 mb-3">
+                        <label for="graduation_percentage" class="form-label">
+                            <i class="fas fa-percentage text-primary me-2"></i>
+                            Min Graduation %
+                        </label>
+                        <div class="input-group">
+                            <input type="number" id="graduation_percentage" name="min_percentage" class="form-control" placeholder="Enter minimum percentage" min="0" max="100">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+
+                    <!-- Search -->
+                    <div class="col-md-6 mb-3">
+                        <label for="search" class="form-label">
+                            <i class="fas fa-search text-primary me-2"></i>
+                            Search Candidates
+                        </label>
+                        <input type="text" id="search" name="search" class="form-control" placeholder="Search by name, email, etc.">
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex flex-column flex-sm-row justify-content-end gap-2 pt-2">
+                    <button type="button" class="btn btn-outline-secondary">
+                        <i class="fas fa-undo me-2"></i>
+                        Reset Filters
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        <i class="fas fa-filter me-2"></i>
+                        Apply Filters
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- User List -->
+    <div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="h4">User List <span class="text-muted">(Showing 3 of 25+ users)</span></h2>
+            <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-outline-secondary" title="Refresh List">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-secondary" title="Export Data">
+                    <i class="fas fa-download"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="row position-relative">
+            <!-- Demo users (visible to all) -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="bg-primary" style="height: 10px;"></div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <p class="text-muted small mb-1">ID: <span class="fw-medium">DEMO001</span></p>
+                            <h5 class="card-title mb-1">John Smith</h5>
+                            <p class="text-primary small"><i class="fas fa-envelope me-1"></i> john.smith@example.com</p>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <p class="text-muted small mb-1">
+                                <span class="fw-medium">Father's Name:</span> Robert Smith
+                            </p>
+                            <p class="text-muted small mb-1">
+                                <span class="fw-medium">Graduation:</span> 
+                                <span class="fw-semibold text-success">85%</span>
+                            </p>
+                            <div class="text-muted small mb-1">
+                                <span class="fw-medium">Skills:</span>
+                                <div class="d-flex flex-wrap gap-1 mt-1">
+                                    <span class="badge bg-primary bg-opacity-10 text-primary skill-badge">Python</span>
+                                    <span class="badge bg-primary bg-opacity-10 text-primary skill-badge">Django</span>
+                                    <span class="badge bg-primary bg-opacity-10 text-primary skill-badge">JavaScript</span>
+                                </div>
+                            </div>
+                            <p class="text-muted small">
+                                <span class="fw-medium">Location:</span> 
+                                <i class="fas fa-map-marker-alt text-muted me-1"></i>New York
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top">
+                        <button class="btn btn-primary btn-sm float-end" onclick="showLoginPrompt()">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="bg-primary" style="height: 10px;"></div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <p class="text-muted small mb-1">ID: <span class="fw-medium">DEMO002</span></p>
+                            <h5 class="card-title mb-1">Sarah Johnson</h5>
+                            <p class="text-primary small"><i class="fas fa-envelope me-1"></i> sarah.j@example.com</p>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <p class="text-muted small mb-1">
+                                <span class="fw-medium">Father's Name:</span> Michael Johnson
+                            </p>
+                            <p class="text-muted small mb-1">
+                                <span class="fw-medium">Graduation:</span> 
+                                <span class="fw-semibold text-primary">78%</span>
+                            </p>
+                            <div class="text-muted small mb-1">
+                                <span class="fw-medium">Skills:</span>
+                                <div class="d-flex flex-wrap gap-1 mt-1">
+                                    <span class="badge bg-primary bg-opacity-10 text-primary skill-badge">Java</span>
+                                    <span class="badge bg-primary bg-opacity-10 text-primary skill-badge">Spring</span>
+                                    <span class="badge bg-primary bg-opacity-10 text-primary skill-badge">SQL</span>
+                                </div>
+                            </div>
+                            <p class="text-muted small">
+                                <span class="fw-medium">Location:</span> 
+                                <i class="fas fa-map-marker-alt text-muted me-1"></i>San Francisco
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top">
+                        <button class="btn btn-primary btn-sm float-end" onclick="showLoginPrompt()">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="bg-primary" style="height: 10px;"></div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <p class="text-muted small mb-1">ID: <span class="fw-medium">DEMO003</span></p>
+                            <h5 class="card-title mb-1">David Wilson</h5>
+                            <p class="text-primary small"><i class="fas fa-envelope me-1"></i> d.wilson@example.com</p>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <p class="text-muted small mb-1">
+                                <span class="fw-medium">Father's Name:</span> James Wilson
+                            </p>
+                            <p class="text-muted small mb-1">
+                                <span class="fw-medium">Graduation:</span> 
+                                <span class="fw-semibold text-warning">65%</span>
+                            </p>
+                            <div class="text-muted small mb-1">
+                                <span class="fw-medium">Skills:</span>
+                                <div class="d-flex flex-wrap gap-1 mt-1">
+                                    <span class="badge bg-primary bg-opacity-10 text-primary skill-badge">C++</span>
+                                    <span class="badge bg-primary bg-opacity-10 text-primary skill-badge">Linux</span>
+                                </div>
+                            </div>
+                            <p class="text-muted small">
+                                <span class="fw-medium">Location:</span> 
+                                <i class="fas fa-map-marker-alt text-muted me-1"></i>Chicago
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top">
+                        <button class="btn btn-primary btn-sm float-end" onclick="showLoginPrompt()">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Blurred content for non-logged-in users -->
+            <div class="position-relative">
+                <div class="blur-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+                <div class="login-prompt" style="display: none;">
+                    <h4>Want to see more candidates?</h4>
+                    <p>Login or register to access the full HR dashboard with all candidate profiles.</p>
+                    <div class="d-flex justify-content-center gap-3 mt-4">
+                        <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+                        <a href="{% url 'login' %}" class="btn btn-outline-primary">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="d-flex justify-content-center align-items-center gap-2 my-4">
+            <button class="btn btn-sm btn-outline-primary disabled">Previous</button>
+            <button class="btn btn-sm btn-primary">1</button>
+            <button class="btn btn-sm btn-outline-primary" onclick="showLoginPrompt()">2</button>
+            <span>...</span>
+            <button class="btn btn-sm btn-outline-primary" onclick="showLoginPrompt()">5</button>
+            <button class="btn btn-sm btn-outline-primary" onclick="showLoginPrompt()">Next</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for user details -->
+<div id="userDetailsModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">User Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center py-5">
+                <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <i class="fas fa-lock text-primary fs-3"></i>
+                </div>
+                <h3 class="h5">Login Required</h3>
+                <p class="text-muted">Please login to view full candidate details</p>
+                <div class="d-flex justify-content-center gap-3 mt-4">
+                    <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary">Register</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function showLoginPrompt() {
+        // Show modal login prompt
+        const modal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
+        modal.show();
+        
+        // Alternatively, show the inline login prompt
+        // document.querySelector('.login-prompt').style.display = 'block';
+    }
+    
+    // Detect scroll and show login prompt when user tries to see more
+    window.addEventListener('scroll', function() {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 500) {
+            // User is near bottom of page
+            document.querySelector('.login-prompt').style.display = 'block';
+        }
+    });
+    
+    // Initialize tooltips
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+{% endblock %}

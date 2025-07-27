@@ -1,0 +1,271 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>HR Panel Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="{% static 'css/stylehr.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .card-header {
+            color: white;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+            font-weight: bold;
+        }
+        .custom-bordered-card {
+            border-top: 9px solid currentColor;
+            border-left: 1px solid #e0e0e0;
+            border-right: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .blur-content {
+            filter: blur(5px);
+            pointer-events: none;
+            user-select: none;
+        }
+        .premium-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        .premium-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <!-- Full-width HR Banner -->
+    <section class="banner-section text-white py-5">
+        <div class="container-fluid px-4 px-md-5 py-5 position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1 class="display-4 fw-bold">Human Resources Portal</h1>
+                    <p class="lead my-4">Streamline workforce management, boost employee engagement, and optimize your recruitment process</p>
+                    
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <div class="bg-white bg-opacity-25 p-3 rounded-3">
+                            <h4 class="mb-0"><i class="bi bi-people-fill me-2"></i> 150+</h4>
+                            <small>Employees</small>
+                        </div>
+                        <div class="bg-white bg-opacity-25 p-3 rounded-3">
+                            <h4 class="mb-0"><i class="bi bi-briefcase-fill me-2"></i> 12</h4>
+                            <small>Open Positions</small>
+                        </div>
+                        <div class="bg-white bg-opacity-25 p-3 rounded-3">
+                            <h4 class="mb-0"><i class="bi bi-check-circle-fill me-2"></i> 86%</h4>
+                            <small>Retention Rate</small>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-light btn-lg mt-5 fw-bold" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="bi bi-speedometer2 me-2"></i>Enter Dashboard
+                    </button>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1570/1570887.png" alt="HR Management" class="img-fluid" style="max-height: 300px;">
+                </div>
+            </div>
+        </div>
+        <div class="wave"></div>
+    </section>
+
+    <div class="container py-4">
+        <!-- Jobs Section (Limited Demo Content) -->
+        <section id="jobs-section" class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold">
+                    <i class="bi bi-briefcase me-2"></i>Job Listings 
+                </h2>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <i class="bi bi-plus-circle me-2"></i>Create New Job
+                </button>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="jobs-container">
+                <!-- First 3 jobs visible, rest blurred -->
+                {% for job in hr_jobs|slice:":3" %}
+                    <div class="col job-item">
+                        <div class="card job-card shadow-sm h-100 custom-bordered-card color-{{ forloop.counter0|add:1 }}">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="card-title mb-0">{{ job.Job }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="company-logo">
+                                        <i class="bi bi-building"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0">{{ job.Org }}</h6>
+                                        <small class="text-muted">{{ job.Location }}</small>
+                                        <span class="badge bg-primary job-type-badge">{{ job.job_type }}</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div>
+                                        <i class="bi bi-currency-dollar me-1"></i>
+                                        <span class="salary-highlight">{{ job.Salary }} LPA</span>
+                                    </div>
+                                    <div>
+                                        <i class="bi bi-clock me-1"></i>
+                                        <span>{{ job.posted_date|date:"M d, Y" }}</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <i class="bi bi-calendar-x me-1"></i>
+                                    <span class="text-danger deadline-text">Deadline: {{ job.deadline }}</span>
+                                </div>
+                                
+                                <div class="position-relative">
+                                    <!-- Blurred content overlay -->
+                                    <div class="premium-overlay">
+                                        <div class="premium-content">
+                                            <h5>Want to see more?</h5>
+                                            <p>Register or login to view full job details and apply</p>
+                                            <div class="d-flex gap-2 justify-content-center">
+                                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                                    Login
+                                                </button>
+                                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal">
+                                                    Register
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <h6>Skills Required:</h6>
+                                    <div class="mb-3">
+                                        {% for skill in job.Skills|slice:":3" %}
+                                            <span class="skills-badge">{{ skill }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h6>Description:</h6>
+                                        <p class="card-text text-muted">{{ job.FullDescription|truncatechars:100 }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                    <i class="bi bi-people me-2"></i>View Applicants
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                
+                <!-- Additional blurred jobs -->
+                {% for job in hr_jobs|slice:"3:6" %}
+                    <div class="col job-item">
+                        <div class="card job-card shadow-sm h-100 blur-content">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Premium Content</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="premium-overlay">
+                                    <div class="premium-content">
+                                        <h5>Want to see more jobs?</h5>
+                                        <p>Register or login to view all available positions</p>
+                                        <div class="d-flex gap-2 justify-content-center">
+                                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                                Login
+                                            </button>
+                                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal">
+                                                Register
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Login Required</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>You need to login to access this feature.</p>
+                    <a href="{% url 'login' %}" class="btn btn-primary w-100">Go to Login Page</a>
+                </div>
+                <div class="modal-footer">
+                    <p class="text-muted small mb-0">Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Register here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Create an Account</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Register for a free account to access all features.</p>
+                    <a href="{% url 'login' %}" class="btn btn-success w-100">Go to Registration Page</a>
+                </div>
+                <div class="modal-footer">
+                    <p class="text-muted small mb-0">Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Login here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Show login modal when user scrolls down
+        let scrollTriggered = false;
+        
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            // Trigger when user scrolls 60% down the page
+            if (!scrollTriggered && scrollPosition > (documentHeight - windowHeight) * 0.6) {
+                scrollTriggered = true;
+                const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                loginModal.show();
+            }
+        });
+
+        // Handle all restricted buttons
+        document.querySelectorAll('[data-bs-target="#loginModal"], [data-bs-target="#registerModal"]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (!this.hasAttribute('data-bs-toggle')) {
+                    e.preventDefault();
+                    const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                    loginModal.show();
+                }
+            });
+        });
+    </script>
+{% endblock %}

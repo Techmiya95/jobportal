@@ -1,0 +1,3804 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Profile | Job Portal</title>
+    <link rel="stylesheet" href="{% static 'css/styleprofile.css' %}">
+    <!-- Bootstrap CSS -->
+   
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <style>/* Navbar Styles */
+        .navbar .dropdown-toggle::after {
+            display: none !important;
+        }
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0.8rem 1rem;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-brand .logo-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: #3498db;
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+        }
+        
+        .navbar-toggler:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: none;
+            width: 1.5em;
+            height: 1.5em;
+            position: relative;
+        }
+        
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #2c3e50;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-toggler-icon::before {
+            top: 6px;
+        }
+        
+        .navbar-toggler-icon::after {
+            bottom: 6px;
+        }
+        
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+            transform: rotate(45deg);
+            top: 10px;
+        }
+        
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+            transform: rotate(-45deg);
+            bottom: 10px;
+        }
+        
+        .nav-link {
+            color: #2c3e50;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover,
+        .nav-link:focus {
+            color: #3498db;
+        }
+        
+        .profile-icon {
+            font-size: 1.1rem;
+        }
+        
+        .btn-outline-light {
+            border-color: #3498db;
+            color: #3498db;
+        }
+        
+        .btn-outline-light:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .btn-light {
+            background-color: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        
+        .btn-light:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+        
+        .btn-danger {
+            background-color: #e74c3c;
+            border-color: #e74c3c;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+        }
+        
+        /* Mobile menu styles */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                padding: 1rem;
+                background-color: #fff;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                margin-top: 0.5rem;
+                border-radius: 0.25rem;
+            }
+            
+            .nav-item {
+                margin-bottom: 0.5rem;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 0;
+            }
+            
+            .navbar-nav .btn {
+                width: 100%;
+                margin-top: 0.5rem;
+            }
+            
+            .d-flex.flex-column.flex-lg-row {
+                width: 100%;
+            }
+        }
+        
+        /* Desktop menu styles */
+        @media (min-width: 992px) {
+            .navbar-nav {
+                align-items: center;
+            }
+            
+            .nav-item {
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+            
+            .navbar-nav .btn {
+                margin-right: 0.5rem;
+            }
+          
+        }/* Footer */
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 3rem 0;
+            margin-top: auto;
+            width: 100%;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.25rem;
+            margin-right: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+    {% endblock %}
+
+    {% block content %}
+    <!-- Work Experience Template (hidden by default) -->
+    <div id="experience-template" class="d-none">
+        <div class="card-custom experience-item mb-3" data-id="">
+            <div class="card-header-custom d-flex justify-content-between align-items-center">
+                <div>
+                    <i class="fas fa-briefcase mr-2"></i>
+                    <span class="company-name"></span>
+                </div>
+                <div>
+                    <button class="btn btn-sm btn-outline-primary edit-experience">
+                        <i class="fas fa-pen"></i> Edit
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger delete-experience">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+            <div class="card-body-custom">
+                <h6 class="job-title"></h6>
+                <p class="text-muted experience-dates"></p>
+                <p class="job-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Alert for notifications -->
+        <div id="alert-container"></div>
+        
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="profile-nav">
+                    <div class="sidebar-box">
+                        <h5 class="mb-3">Profile Sections</h5>
+                        <nav class="nav flex-column">
+                            <a class="nav-link active" href="#personal-info-section">
+                                <i class="fas fa-user"></i> Personal Info
+                            </a>
+                            <a class="nav-link" href="#education-section">
+                                <i class="fas fa-graduation-cap"></i> Education
+                            </a>
+                            <a class="nav-link" href="#experience-section">
+                                <i class="fas fa-briefcase"></i> Experience
+                            </a>
+                            <a class="nav-link" href="#skills-section">
+                                <i class="fas fa-code"></i> Skills
+                            </a>
+                            <a class="nav-link" href="#projects-section">
+                                <i class="fas fa-project-diagram"></i> Projects
+                            </a>
+                        </nav>
+                    </div>
+
+                    <!-- Resume Section -->
+                    <div class="sidebar-box">
+                        <h5 class="mb-3">Resume</h5>
+                        <div class="resume-actions">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <i class="fas fa-file-alt fa-2x text-primary"></i>
+                                </div>
+                                <div>
+                                    {% comment %} <a href="#" class="btn btn-sm btn-outline-primary" id="download-resume">
+                                        <i class="fas fa-download mr-1"></i> Download
+                                    </a> {% endcomment %}
+                                </div>
+                            </div>
+                            <p class="mb-2 small" id="resume-filename">No resume uploaded</p>
+                            <p class="mb-0 small text-muted" id="resume-updated">Upload your resume to increase profile visibility</p>
+                        </div>
+                        <div class="mt-3">
+                            <label for="resume-upload" class="btn btn-outline-primary btn-block">
+                                <i class="fas fa-upload mr-1"></i> Upload New Resume
+                            </label>
+                            <input type="file" id="resume-upload" class="file-input-hidden" accept=".pdf,.doc,.docx">
+                        </div>
+                    </div>
+                    <!-- Add this to your HTML where you want the resume generation options -->
+<div class="sidebar-box">
+    <h5 class="mb-3">Generate Resume</h5>
+    <div class="resume-templates">
+        <div class="row">
+            <div class="col-6 mb-3">
+                {% load static%}
+                <div class="template-preview" data-template="1">
+                    <img src="{% static 'images/download1.jpeg' %}" class="img-fluid">
+                    <button class="btn btn-primary btn-sm btn-block mt-2 generate-resume-btn">Use Template 1</button>
+                </div>
+            </div>
+            <div class="col-6 mb-3">
+                {% load static%}
+                <div class="template-preview" data-template="2">
+                    <img src="{% static 'images/download2.jpeg' %}" class="img-fluid">
+                    <button class="btn btn-primary btn-sm btn-block mt-2 generate-resume-btn">Use Template 2</button>
+                </div>
+            </div>
+            <div class="col-6 mb-3">
+                {% load static%}
+                <div class="template-preview" data-template="3">
+                    <img src="{% static 'images/download3.jpeg' %}" class="img-fluid">
+                    <button class="btn btn-primary btn-sm btn-block mt-2 generate-resume-btn">Use Template 3</button>
+                </div>
+            </div>
+            <div class="col-6 mb-3">
+                {% load static%}
+                <div class="template-preview" data-template="4">
+                    <img src="{% static 'images/download4.jpeg' %}" class="img-fluid">
+                    <button class="btn btn-primary btn-sm btn-block mt-2 generate-resume-btn">Use Template 4</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                    <!-- Profile Visibility -->
+                    <div class="sidebar-box">
+                        <h5 class="mb-3">Profile Visibility</h5>
+                        <div class="custom-control custom-switch mb-3">
+                            <input type="checkbox" class="custom-control-input" id="visibility-switch" checked>
+                            <label class="custom-control-label" for="visibility-switch">
+                                Visible to Recruiters
+                            </label>
+                        </div>
+                        <p class="small text-muted mb-0">
+                            When turned on, recruiters can find your profile and contact you with relevant job opportunities.
+                        </p>
+                    </div>
+
+                    <!-- Activity Summary -->
+                    <div class="sidebar-box">
+                        <h5 class="mb-3">Activity Summary</h5>
+                        <div class="mb-2">
+                            <i class="fas fa-eye mr-2 text-primary"></i>
+                            <span>Profile viewed by <strong>15</strong> recruiters</span>
+                        </div>
+                        <div class="mb-2">
+                            <i class="fas fa-paper-plane mr-2 text-primary"></i>
+                            <span><strong>8</strong> job applications submitted</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-star mr-2 text-primary"></i>
+                            <span><strong>5</strong> jobs saved</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Profile Completion -->
+                <div class="profile-container">
+                    <div class="profile-content">
+                        <div class="profile-completion">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="mb-0">Profile Completion</h5>
+                                <span id="completion-percentage">70%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 70%"></div>
+                            </div>
+                            <div class="mt-2 text-muted small">
+                                Complete your profile to attract more recruiters
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Information -->
+                <div class="profile-container" id="personal-info-section">
+                    <span class="section-anchor" id="personal-info-anchor"></span>
+                    <div class="profile-header">
+                        <h5 class="mb-0">Personal Information</h5>
+                    </div>
+                    <div class="profile-content">
+                        <form id="personal-info-form">
+                            <div class="row">
+                                <div class="col-md-4 text-center">
+                                    <div class="profile-picture-container">
+                                        <img id="profile-picture" src="/api/placeholder/150/150" alt="Profile Picture" class="profile-picture">
+                                        <label for="profile-picture-input" class="edit-picture">
+                                            <i class="fas fa-camera"></i>
+                                        </label>
+                                        <input type="file" id="profile-picture-input" class="file-input-hidden" accept="image/*" name="profile_picture">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="username">Full Name</label>
+                                        <input type="text" class="form-control" id="username" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="father_name">Father's Name</label>
+                                        <input type="text" class="form-control" id="father_name" name="father_name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mobile">Mobile Number</label>
+                                        <input type="text" class="form-control" id="mobile" name="mobile">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="location">Current Location</label>
+                                        <input type="text" class="form-control" id="location" name="location">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Education Details -->
+                <div class="profile-container" id="education-section">
+                    <span class="section-anchor" id="education-anchor"></span>
+                    <div class="profile-header">
+                        <h5 class="mb-0">Education Details</h5>
+                    </div>
+                    <div class="profile-content">
+                        <form id="education-form">
+                            <div class="card-custom">
+                                <div class="card-header-custom">
+                                    <i class="fas fa-graduation-cap mr-2"></i> Graduation / Post Graduation
+                                </div>
+                                <div class="card-body-custom">
+                                    <div class="form-group">
+                                        <label for="ug_college">University/College</label>
+                                        <input type="text" class="form-control" id="ug_college" name="ug_college">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="branch">Course/Branch</label>
+                                            <input type="text" class="form-control" id="branch" name="branch">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="passout_year">Passout Year</label>
+                                            <input type="text" class="form-control" id="passout_year" name="passout_year">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="graduation_percentage">Graduation Percentage/CGPA</label>
+                                        <input type="text" class="form-control" id="graduation_percentage" name="graduation_percentage">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card-custom">
+                                <div class="card-header-custom">
+                                    <i class="fas fa-school mr-2"></i> 12th Standard
+                                </div>
+                                <div class="card-body-custom">
+                                    <div class="form-group">
+                                        <label for="twelfth_school">School Name</label>
+                                        <input type="text" class="form-control" id="twelfth_school" name="twelfth_school">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="twelfth_board">Board</label>
+                                            <input type="text" class="form-control" id="twelfth_board" name="twelfth_board">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="twelfth_year">Passout Year</label>
+                                            <input type="text" class="form-control" id="twelfth_year" name="twelfth_year">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="twelfth_percentage">Percentage</label>
+                                        <input type="text" class="form-control" id="twelfth_percentage" name="twelfth_percentage">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card-custom">
+                                <div class="card-header-custom">
+                                    <i class="fas fa-school mr-2"></i> 10th Standard
+                                </div>
+                                <div class="card-body-custom">
+                                    <div class="form-group">
+                                        <label for="tenth_school">School Name</label>
+                                        <input type="text" class="form-control" id="tenth_school" name="tenth_school">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="tenth_board">Board</label>
+                                            <input type="text" class="form-control" id="tenth_board" name="tenth_board">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="tenth_year">Passout Year</label>
+                                            <input type="text" class="form-control" id="tenth_year" name="tenth_year">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tenth_percentage">Percentage</label>
+                                        <input type="text" class="form-control" id="tenth_percentage" name="tenth_percentage">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary mt-3">Save Education Details</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Work Experience -->
+                <div class="profile-container" id="experience-section">
+                    <span class="section-anchor" id="experience-anchor"></span>
+                    <div class="profile-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Work Experience</h5>
+                        <button type="button" class="btn btn-sm btn-light" id="add-experience">
+                            <i class="fas fa-plus"></i> Add Experience
+                        </button>
+                    </div>
+                    <div class="profile-content">
+                        <div id="experience-container">
+                            <!-- Experience entries will be added here -->
+                            <div class="text-center text-muted py-4" id="no-experience-message">
+                                <i class="fas fa-briefcase fa-2x mb-2"></i>
+                                <p>No work experience added yet</p>
+                                <button class="btn btn-outline-primary btn-sm" id="add-first-experience">
+                                    <i class="fas fa-plus"></i> Add Work Experience
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="profile-container" id="skills-section">
+                    <span class="section-anchor" id="skills-anchor"></span>
+                    <div class="profile-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Skills</h5>
+                        <button type="button" class="btn btn-sm btn-light" id="add-skill-btn">
+                            <i class="fas fa-plus"></i> Add Skill
+                        </button>
+                    </div>
+                    <div class="profile-content">
+                        <div id="skills-container" class="mb-3">
+                            <!-- Skills will be dynamically added here -->
+                        </div>
+                        <div id="add-skill-form" class="d-none">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="skill-input" placeholder="Add a skill (e.g., Java, Project Management)">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="save-skill-btn">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects -->
+                <div class="profile-container" id="projects-section">
+                    <span class="section-anchor" id="projects-anchor"></span>
+                    <div class="profile-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Projects</h5>
+                        <button type="button" class="btn btn-sm btn-light" id="add-project">
+                            <i class="fas fa-plus"></i> Add Project
+                        </button>
+                    </div>
+                    <div class="profile-content">
+                        <div id="projects-container">
+                            <!-- Projects will be added here -->
+                            <div class="text-center text-muted py-4" id="no-projects-message">
+                                <i class="fas fa-project-diagram fa-2x mb-2"></i>
+                                <p>No projects added yet</p>
+                                <button class="btn btn-outline-primary btn-sm" id="add-first-project">
+                                    <i class="fas fa-plus"></i> Add Project
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience Modal -->
+    <div class="modal fade" id="experience-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Work Experience</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="experience-form">
+                        <input type="hidden" id="experience-id">
+                        <div class="form-group">
+                            <label for="company-name">Company Name</label>
+                            <input type="text" class="form-control" id="company-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="job-title">Job Title</label>
+                            <input type="text" class="form-control" id="job-title" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="start-date">Start Date</label>
+                                <input type="month" class="form-control" id="start-date" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="end-date">End Date</label>
+                                <input type="month" class="form-control" id="end-date">
+                                <div class="custom-control custom-checkbox mt-2">
+                                    <input type="checkbox" class="custom-control-input" id="current-job">
+                                    <label class="custom-control-label" for="current-job">I currently work here</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="job-description">Job Description</label>
+                            <textarea class="form-control" id="job-description" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="save-experience">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="modal fade" id="project-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Project</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="project-form">
+                        {% csrf_token %} 
+                        <input type="hidden" id="project-id">
+                        <div class="form-group">
+                            <label for="project-title">Project Title</label>
+                            <input type="text" class="form-control" id="project-title" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="project-start-date">Start Date</label>
+                                <input type="month" class="form-control" id="project-start-date">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="project-end-date">End Date</label>
+                                <input type="month" class="form-control" id="project-end-date">
+                                <div class="custom-control custom-checkbox mt-2">
+                                    <input type="checkbox" class="custom-control-input" id="current-project">
+                                    <label class="custom-control-label" for="current-project">Ongoing project</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-description">Project Description</label>
+                            <textarea class="form-control" id="project-description" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-link">Project Link/URL (Optional)</label>
+                            <input type="text" class="form-control" id="project-link">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="save-project" >Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block scripts %}
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Fetch user profile data on page load
+            $.ajax({
+                url: '/get_user_profile/',
+                method: 'GET',
+                success: function(response) {
+                    if (response.success) {
+                        const userData = response.data[0];
+                        $('#username').val(userData.user_name);
+                        $('#email').val(userData.email);
+                        $('#father_name').val(userData.father_name);
+                        $('#ug_college').val(userData.ug_college);
+                        $('#branch').val(userData.branch);
+
+                        $('#passout_year').val(userData.Passout_Year);
+                        $('#graduation_percentage').val(userData.Graduation_Percentage);
+                        $('#tenth_percentage').val(userData.Percentage_10);
+                        $('#twelfth_percentage').val(userData.twelfth_percentage);
+                        $('#mobile').val(userData.mobile);
+                        $('#location').val(userData.location);
+                        $('#tenth_school').val(userData.tenth_school);
+                        $('#tenth_board').val(userData.tenth_board);  
+                        $('#tenth_year').val(userData.tenth_year);
+                        $('#twelfth_school').val(userData.twelfth_school);
+                        $('#twelfth_board').val(userData.twelfth_board);
+                        $('#twelfth_year').val(userData.twelfth_year);
+                        
+                        if (userData.profile_picture) {
+                            $('#profile-picture').attr('src', 'data:image/jpeg;base64,' + userData.profile_picture);
+                        }
+
+                        calculateCompletionPercentage();
+                    }
+                }
+            });
+
+            // Handle form submission for personal information
+            $('#personal-info-form').on('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                $.ajax({
+                    url: '/update_profile/',
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            alert('Profile updated successfully!');
+                            location.reload(); // Reload the page to reflect changes
+                        } else {
+                            alert('Error updating profile: ' + response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error updating profile: ' + error);
+                    }
+                });
+            });
+
+            // Handle form submission for education details
+            $('#education-form').on('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                $.ajax({
+                    url: '/update_profile/',
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            alert('Education details updated successfully!');
+                            location.reload(); // Reload the page to reflect changes
+                        } else {
+                            alert('Error updating education details: ' + response.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error updating education details: ' + error);
+                    }
+                });
+            });
+        });
+        $(document).ready(function() {
+          // Function to calculate profile completion percentage
+          function calculateCompletionPercentage() {
+              let filledFields = 0;
+              // List all the fields you want to include in the calculation
+              const fields = [
+                  '#username', '#email', '#father_name', '#ug_college', '#branch',
+                  '#passout_year', '#graduation_percentage', '#tenth_percentage',
+                  '#twelfth_percentage', '#mobile', '#location', '#tenth_school',
+                  '#tenth_board', '#tenth_year', '#twelfth_school', '#twelfth_board',
+                  '#twelfth_year'
+              ];
+              const totalFields = fields.length;
+      
+              // Check each field to see if it's filled (excluding "N/A" and empty strings)
+              fields.forEach(function(field) {
+                  const value = $(field).val().trim();
+                  if (value !== '' && value !== 'N/A') {
+                      filledFields++;
+                  }
+              });
+      
+              // Calculate percentage and ensure it does not exceed 100%
+              let completionPercentage = Math.round((filledFields / totalFields) * 100);
+              completionPercentage = Math.min(completionPercentage, 100); // Cap at 100%
+      
+              // Update the percentage text and progress bar width
+              $('#completion-percentage').text(completionPercentage + "%");
+              $('.progress-bar').css('width', completionPercentage + '%');
+      
+              console.log("Filled Fields:", filledFields);
+              console.log("Total Fields:", totalFields);
+              console.log("Completion Percentage:", completionPercentage);
+          }
+      
+          // Fetch user profile data on page load
+          $.ajax({
+              url: '/get_user_profile/',
+              method: 'GET',
+              success: function(response) {
+                  if (response.success) {
+                      const userData = response.data[0];
+                      $('#username').val(userData.user_name);
+                      $('#email').val(userData.email);
+                      $('#father_name').val(userData.father_name);
+                      $('#ug_college').val(userData.ug_college);
+                      $('#branch').val(userData.branch);
+                      $('#passout_year').val(userData.Passout_Year);
+                      $('#graduation_percentage').val(userData.Graduation_Percentage);
+                      $('#tenth_percentage').val(userData.Percentage_10);
+                      $('#twelfth_percentage').val(userData.twelfth_percentage);
+                      $('#mobile').val(userData.mobile);
+                      $('#location').val(userData.location);
+                      $('#tenth_school').val(userData.tenth_school);
+                      $('#tenth_board').val(userData.tenth_board);
+                      $('#tenth_year').val(userData.tenth_year);
+                      $('#twelfth_school').val(userData.twelfth_school);
+                      $('#twelfth_board').val(userData.twelfth_board);
+                      $('#twelfth_year').val(userData.twelfth_year);
+      
+                      if (userData.profile_picture) {
+                          $('#profile-picture').attr('src', 'data:image/jpeg;base64,' + userData.profile_picture);
+                      }
+      
+                      // Calculate and display the profile completion percentage
+                      calculateCompletionPercentage();
+                  }
+              }
+          });
+      
+          // Recalculate the completion percentage whenever an input field changes
+          $('input[type="text"], input[type="email"], input[type="number"]').on('input', calculateCompletionPercentage);
+      });
+      $(document).ready(function() {
+        // Fetch user profile data on page load
+        $.ajax({
+            url: '/get_user_profile/',
+            method: 'GET',
+            success: function(response) {
+                if (response.success) {
+                    const userData = response.data[0];
+                    // Populate other fields as before...
+    
+                    // Populate skills
+                    const skillsContainer = $('#skills-container');
+                    skillsContainer.empty();
+                    userData.skills.forEach(skill => {
+                        skillsContainer.append(`
+                            <div class="skill-badge">${skill} <i class="fas fa-times-circle ml-1 text-muted remove-skill"></i></div>
+                        `);
+                    });
+                }
+            }
+        });
+    
+        // Show add skill form
+        $('#add-skill-btn').click(function() {
+            $('#add-skill-form').removeClass('d-none');
+        });
+    
+        // Add skill
+        $('#save-skill-btn').click(function() {
+            const skill = $('#skill-input').val().trim();
+            if (skill) {
+                $.ajax({
+                    url: '/add_skill/',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ skill: skill }),
+                    success: function(response) {
+                        if (response.success) {
+                            $('#skills-container').append(`
+                                <div class="skill-badge">${skill} <i class="fas fa-times-circle ml-1 text-muted remove-skill"></i></div>
+                            `);
+                            $('#skill-input').val('');
+                            $('#add-skill-form').addClass('d-none');
+                        }
+                    }
+                });
+            }
+        });
+    
+        // Remove skill
+        $(document).on('click', '.remove-skill', function() {
+            const skillBadge = $(this).closest('.skill-badge');
+            const skill = skillBadge.text().trim();
+            $.ajax({
+                url: '/remove_skill/',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ skill: skill }),
+                success: function(response) {
+                    if (response.success) {
+                        skillBadge.remove();
+                    }
+                }
+            });
+        });
+    });
+{% comment %} projects {% endcomment %}
+$(document).ready(function () {
+    const userId = "{{ request.user.id }}"; // Replace with your user ID retrieval logic
+
+    // Fetch and display projects
+    function fetchProjects() {
+        $.ajax({
+            url: '/get_projects/',
+            method: 'GET',
+            data: { user_id: userId },
+            success: function (response) {
+                if (response.success) {
+                    const projects = response.data;
+                    $('#projects-container').empty();
+                    if (projects.length > 0) {
+                        projects.forEach(project => {
+                            const projectItem = `
+                                <div class="project-item mb-3 p-3 border rounded" data-id="${project._id}">
+                                    <h6>${project.title}</h6>
+                                    <p class="text-muted">${project.description}</p>
+                                    <small class="d-block mb-2">${formatProjectDate(project.start_date)} - ${project.end_date ? formatProjectDate(project.end_date) : 'Present'}</small>
+                                    ${project.link ? `<a href="${project.link}" target="_blank" class="d-block mb-2">View Project</a>` : ''}
+                                    <div class="btn-group">
+                                        <button class="btn btn-sm btn-outline-primary edit-project" data-project-id="${project.title}" value="${project._id}">Edit</button>
+                                        <button class="btn btn-sm btn-outline-danger delete-project" data-project-id="${project.title}">Delete</button>
+                                    </div>
+                                </div>
+                            `;
+                            $('#projects-container').append(projectItem);
+                        });
+                        $('#no-projects-message').hide();
+                    } else {
+                        $('#no-projects-message').show();
+                    }
+                }
+            }
+        });
+    }
+
+    // Format date for display
+    function formatProjectDate(dateString) {
+        if (!dateString) return '';
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'short' 
+        });
+    }
+
+   
+    
+   
+   
+    
+
+// Helper function to get CSRF token
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+    // Helper function to show alerts
+    function showAlert(type, message) {
+        const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+        const alertHtml = `
+            <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                ${message}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        `;
+        $('#alert-container').html(alertHtml);
+        setTimeout(() => {
+            $('.alert').alert('close');
+        }, 5000);
+    }
+
+    // Initial fetch of projects
+    fetchProjects();
+});
+$(document).ready(function() {
+    // Fetch and display resume info on page load
+    function fetchResumeInfo() {
+        $.ajax({
+            url: '/get_resume/',
+            method: 'GET',
+            success: function(response) {
+                if (response.success && response.resume) {
+                    $('#resume-filename').text(response.resume.filename);
+                    $('#resume-updated').text('Last updated: ' + formatDate(response.resume.updated_at));
+                    $('#download-resume').attr('href', '/download_resume/');
+                } else {
+                    $('#resume-filename').text('No resume uploaded');
+                    $('#resume-updated').text('Upload your resume to increase profile visibility');
+                    $('#download-resume').attr('href', '#');
+                }
+            }
+        });
+    }
+
+    // Format date for display
+    function formatDate(timestamp) {
+        if (!timestamp) return '';
+        const date = new Date(timestamp);
+        return date.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'short', 
+            day: 'numeric' 
+        });
+    }
+
+    // Handle resume upload
+    $('#resume-upload').on('change', function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        // Validate file type
+        const allowedTypes = ['application/pdf', 'application/msword', 
+                             'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+        if (!allowedTypes.includes(file.type)) {
+            showAlert('error', 'Only PDF and Word documents are allowed.');
+            return;
+        }
+
+        // Validate file size (5MB max)
+        if (file.size > 5 * 1024 * 1024) {
+            showAlert('error', 'File size should be less than 5MB.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('resume', file);
+        formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+
+        $.ajax({
+            url: '/upload_resume/',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.success) {
+                    showAlert('success', 'Resume uploaded successfully!');
+                    fetchResumeInfo();
+                    // Recalculate profile completion
+                    calculateCompletionPercentage();
+                } else {
+                    showAlert('error', response.message || 'Error uploading resume');
+                }
+            },
+            error: function(xhr) {
+                showAlert('error', 'Error uploading resume: ' + xhr.responseText);
+            }
+        });
+    });
+
+    // Helper function to show alerts
+    function showAlert(type, message) {
+        const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+        const alertHtml = `
+            <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                ${message}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        `;
+        $('#alert-container').html(alertHtml);
+        setTimeout(() => {
+            $('.alert').alert('close');
+        }, 5000);
+    }
+
+    // Initial fetch of resume info
+    fetchResumeInfo();
+});
+$(document).ready(function() {
+    // Fetch and display experiences on page load
+    function fetchExperiences() {
+        $.ajax({
+            url: '/get_experiences/',
+            method: 'GET',
+            success: function(response) {
+                if (response.success) {
+                    const experiences = response.data;
+                    const container = $('#experience-container');
+                    container.empty();
+                    
+                    if (experiences.length > 0) {
+                        $('#no-experience-message').hide();
+                        experiences.forEach(exp => {
+                            addExperienceToDOM(exp);
+                        });
+                    } else {
+                        $('#no-experience-message').show();
+                    }
+                }
+            },
+            error: function(xhr, status, error) {
+                showAlert('error', 'Failed to load experiences: ' + error);
+            }
+        });
+    }
+
+    // Add experience to DOM
+    function addExperienceToDOM(experience) {
+        const template = $('#experience-template').clone();
+        const experienceItem = template.removeClass('d-none');
+        
+        experienceItem.attr('data-id', experience._id);
+        experienceItem.find('.company-name').text(experience.company_name);
+        experienceItem.find('.job-title').text(experience.job_title);
+        
+        // Format dates
+        const startDate = formatDate(experience.start_date);
+        let endDate = experience.currently_working ? 'Present' : 
+                     (experience.end_date ? formatDate(experience.end_date) : 'Not specified');
+        
+        experienceItem.find('.experience-dates').text(`${startDate} - ${endDate}`);
+        experienceItem.find('.job-description').text(experience.description || 'No description provided');
+        
+        // Add edit and delete handlers
+        experienceItem.find('.edit-experience').data('experience-id', experience._id);
+        experienceItem.find('.delete-experience').data('experience-id', experience._id);
+        
+        $('#experience-container').append(experienceItem);
+    }
+
+    // Format date for display
+    function formatDate(dateString) {
+        if (!dateString) return 'Not specified';
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'short' 
+        });
+    }
+
+    // Open modal to add/edit experience
+    function openExperienceModal(experience = null) {
+        const modal = $('#experience-modal');
+        
+        if (experience) {
+            // Edit mode
+            modal.find('.modal-title').text('Edit Work Experience');
+            $('#experience-id').val(experience._id);
+            $('#company-name').val(experience.company_name);
+            $('#job-title').val(experience.job_title);
+            $('#start-date').val(experience.start_date.substring(0, 7)); // Format as YYYY-MM
+            $('#end-date').val(experience.end_date ? experience.end_date.substring(0, 7) : '');
+            $('#current-job').prop('checked', experience.currently_working);
+            $('#job-description').val(experience.description || '');
+            
+            // Disable end date if currently working
+            if (experience.currently_working) {
+                $('#end-date').prop('disabled', true);
+            }
+        } else {
+            // Add mode
+            modal.find('.modal-title').text('Add Work Experience');
+            $('#experience-form')[0].reset();
+            $('#experience-id').val('');
+            $('#current-job').prop('checked', false);
+            $('#end-date').prop('disabled', false);
+        }
+        
+        modal.modal('show');
+    }
+
+    // Handle "I currently work here" checkbox
+    $('#current-job').change(function() {
+        if ($(this).is(':checked')) {
+            $('#end-date').val('').prop('disabled', true);
+        } else {
+            $('#end-date').prop('disabled', false);
+        }
+    });
+
+    // Handle add experience buttons
+    $('#add-experience, #add-first-experience').click(function() {
+        openExperienceModal();
+    });
+
+    // Handle edit experience
+    $(document).on('click', '.edit-experience', function() {
+        const experienceId = $(this).data('experience-id');
+        
+        $.ajax({
+            url: '/get_experiences/',
+            method: 'GET',
+            success: function(response) {
+                if (response.success) {
+                    const experience = response.data.find(exp => exp._id === experienceId);
+                    if (experience) {
+                        openExperienceModal(experience);
+                    }
+                }
+            },
+            error: function(xhr, status, error) {
+                showAlert('error', 'Failed to load experience: ' + error);
+            }
+        });
+    });
+
+    // Handle save experience
+    $('#save-experience').click(function() {
+        const experienceId = $('#experience-id').val();
+        const isEdit = !!experienceId;
+        
+        const experienceData = {
+            company_name: $('#company-name').val().trim(),
+            job_title: $('#job-title').val().trim(),
+            start_date: $('#start-date').val() + '-01', // Add day to make it valid date
+            end_date: $('#current-job').is(':checked') ? null : ($('#end-date').val() ? $('#end-date').val() + '-01' : null),
+            currently_working: $('#current-job').is(':checked'),
+            description: $('#job-description').val().trim()
+        };
+
+        // Validate required fields
+        if (!experienceData.company_name || !experienceData.job_title || !experienceData.start_date) {
+            showAlert('error', 'Please fill in all required fields');
+            return;
+        }
+
+        const url = isEdit ? '/update_experience/' : '/add_experience/';
+        const method = isEdit ? 'PUT' : 'POST';
+        
+        if (isEdit) {
+            experienceData.experience_id = experienceId;
+        }
+
+        $.ajax({
+            url: url,
+            method: method,
+            contentType: 'application/json',
+            data: JSON.stringify(experienceData),
+            success: function(response) {
+                if (response.success) {
+                    $('#experience-modal').modal('hide');
+                    fetchExperiences();
+                    showAlert('success', isEdit ? 'Experience updated successfully!' : 'Experience added successfully!');
+                } else {
+                    showAlert('error', response.error || 'An error occurred');
+                }
+            },
+            error: function(xhr, status, error) {
+                showAlert('error', 'Error: ' + error);
+            }
+        });
+    });
+
+    // Handle delete experience
+    $(document).on('click', '.delete-experience', function() {
+        const experienceId = $(this).data('experience-id');
+        
+        if (confirm('Are you sure you want to delete this experience?')) {
+            $.ajax({
+                url: '/delete_experience/',
+                method: 'DELETE',
+                contentType: 'application/json',
+                data: JSON.stringify({ experience_id: experienceId }),
+                success: function(response) {
+                    if (response.success) {
+                        fetchExperiences();
+                        showAlert('success', 'Experience deleted successfully!');
+                    } else {
+                        showAlert('error', response.error || 'Failed to delete experience');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    showAlert('error', 'Error: ' + error);
+                }
+            });
+        }
+    });
+
+    // Helper function to show alerts
+    function showAlert(type, message) {
+        const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+        const alertHtml = `
+            <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                ${message}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        `;
+        $('#alert-container').html(alertHtml);
+        setTimeout(() => {
+            $('.alert').alert('close');
+        }, 5000);
+    }
+
+    // Initial fetch of experiences
+    fetchExperiences();
+});
+
+$(document).ready(function() {
+    // Fetch and display projects on page load
+    function fetchProjects() {
+        $.ajax({
+            url: '/get_projects/',
+            method: 'GET',
+            success: function(response) {
+                if (response.success) {
+                    const projects = response.data;
+                    const container = $('#projects-container');
+                    container.empty();
+                    
+                    if (projects.length > 0) {
+                        $('#no-projects-message').hide();
+                        projects.forEach(project => {
+                            addProjectToDOM(project);
+                        });
+                    } else {
+                        $('#no-projects-message').show();
+                    }
+                }
+            },
+            error: function(xhr, status, error) {
+                showAlert('error', 'Failed to load projects: ' + error);
+            }
+        });
+    }
+
+    // Add project to DOM
+    function addProjectToDOM(project) {
+        const projectItem = $('<div class="card-custom project-item mb-3" data-id="' + project._id + '"></div>');
+        
+        const cardHeader = $(`
+            <div class="card-header-custom d-flex justify-content-between align-items-center">
+                <div>
+                    <i class="fas fa-project-diagram mr-2"></i>
+                    <span class="project-title">${project.title}</span>
+                </div>
+                <div>
+                    <button class="btn btn-sm btn-outline-primary edit-project" data-project-id="${project._id}">
+                        <i class="fas fa-pen"></i> Edit
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger delete-project" data-project-id="${project._id}">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+        `);
+        
+        const cardBody = $(`<div class="card-body-custom"></div>`);
+        cardBody.append(`<p class="project-description">${project.description || 'No description provided'}</p>`);
+        
+        // Format dates
+        const startDate = formatDate(project.start_date);
+        let endDate = project.currently_ongoing ? 'Present' : 
+                     (project.end_date ? formatDate(project.end_date) : 'Not specified');
+        
+        cardBody.append(`<small class="d-block text-muted mb-2">${startDate} - ${endDate}</small>`);
+        
+        if (project.link) {
+            cardBody.append(`<a href="${project.link}" target="_blank" class="d-block">View Project</a>`);
+        }
+        
+        projectItem.append(cardHeader);
+        projectItem.append(cardBody);
+        $('#projects-container').append(projectItem);
+    }
+
+    // Format date for display
+    function formatDate(dateString) {
+        if (!dateString) return 'Not specified';
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'short' 
+        });
+    }
+
+    // Open modal to add/edit project
+    function openProjectModal(project = null) {
+        const modal = $('#project-modal');
+        
+        if (project) {
+            // Edit mode
+            modal.find('.modal-title').text('Edit Project');
+            $('#project-id').val(project._id);
+            $('#project-title').val(project.title);
+            $('#project-description').val(project.description || '');
+            $('#project-start-date').val(project.start_date.substring(0, 7)); // Format as YYYY-MM
+            $('#project-end-date').val(project.end_date ? project.end_date.substring(0, 7) : '');
+            $('#current-project').prop('checked', project.currently_ongoing);
+            $('#project-link').val(project.link || '');
+            
+            // Disable end date if currently ongoing
+            if (project.currently_ongoing) {
+                $('#project-end-date').prop('disabled', true);
+            }
+        } else {
+            // Add mode
+            modal.find('.modal-title').text('Add Project');
+            $('#project-form')[0].reset();
+            $('#project-id').val('');
+            $('#current-project').prop('checked', false);
+            $('#project-end-date').prop('disabled', false);
+        }
+        
+        modal.modal('show');
+    }
+
+    // Handle "Ongoing project" checkbox
+    $('#current-project').change(function() {
+        if ($(this).is(':checked')) {
+            $('#project-end-date').val('').prop('disabled', true);
+        } else {
+            $('#project-end-date').prop('disabled', false);
+        }
+    });
+
+    // Handle add project buttons
+    $('#add-project, #add-first-project').click(function() {
+        openProjectModal();
+    });
+
+    // Handle edit project
+    $(document).on('click', '.edit-project', function() {
+        const projectId = $(this).data('project-id');
+        
+        $.ajax({
+            url: '/get_projects/',
+            method: 'GET',
+            success: function(response) {
+                if (response.success) {
+                    const project = response.data.find(proj => proj._id === projectId);
+                    if (project) {
+                        openProjectModal(project);
+                    }
+                }
+            },
+            error: function(xhr, status, error) {
+                showAlert('error', 'Failed to load project: ' + error);
+            }
+        });
+    });
+
+    // Handle save project
+    $('#save-project').click(function() {
+        const projectId = $('#project-id').val();
+        const isEdit = !!projectId;
+        
+        const projectData = {
+            title: $('#project-title').val().trim(),
+            description: $('#project-description').val().trim(),
+            start_date: $('#project-start-date').val() + '-01', // Add day to make it valid date
+            end_date: $('#current-project').is(':checked') ? null : ($('#project-end-date').val() ? $('#project-end-date').val() + '-01' : null),
+            currently_ongoing: $('#current-project').is(':checked'),
+            link: $('#project-link').val().trim()
+        };
+
+        // Validate required fields
+        if (!projectData.title || !projectData.start_date) {
+            showAlert('error', 'Please fill in all required fields');
+            return;
+        }
+
+        const url = isEdit ? '/update_project/' : '/add_project/';
+        const method = isEdit ? 'PUT' : 'POST';
+        
+        if (isEdit) {
+            projectData.project_id = projectId;
+        }
+
+        $.ajax({
+            url: url,
+            method: method,
+            contentType: 'application/json',
+            data: JSON.stringify(projectData),
+            success: function(response) {
+                if (response.success) {
+                    $('#project-modal').modal('hide');
+                    fetchProjects();
+                    showAlert('success', isEdit ? 'Project updated successfully!' : 'Project added successfully!');
+                } else {
+                    showAlert('error', response.error || 'An error occurred');
+                }
+            },
+            error: function(xhr, status, error) {
+                showAlert('error', 'Error: ' + error);
+            }
+        });
+    });
+
+    // Handle delete project
+    $(document).on('click', '.delete-project', function() {
+        const projectId = $(this).data('project-id');
+        
+        if (confirm('Are you sure you want to delete this project?')) {
+            $.ajax({
+                url: '/delete_project/',
+                method: 'DELETE',
+                contentType: 'application/json',
+                data: JSON.stringify({ project_id: projectId }),
+                success: function(response) {
+                    if (response.success) {
+                        fetchProjects();
+                        showAlert('success', 'Project deleted successfully!');
+                    } else {
+                        showAlert('error', response.error || 'Failed to delete project');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    showAlert('error', 'Error: ' + error);
+                }
+            });
+        }
+    });
+
+    // Initial fetch of projects
+    fetchProjects();
+});
+// Resume Generation with jsPDF
+function generateResumeWithJsPDF(templateId, userData) {
+    // Initialize jsPDF
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Set document properties
+    doc.setProperties({
+        title: `${userData.user_name}'s Resume`,
+        subject: 'Professional Resume',
+        author: userData.user_name,
+        creator: 'Job Portal'
+    });
+     console.log(templateId);
+    // Add content based on template
+    switch(templateId.toString()) {
+        case '1':
+            generateTemplate1(doc, userData);
+            break;
+        case '2':
+            generateTemplate2(doc, userData);
+            break;
+        case '3':
+            generateTemplate3(doc, userData);
+            break;
+        case '4':
+            generateTemplate4(doc, userData);
+            break;
+        default:
+            console.error('Invalid template ID:', templateId);
+            alert('Invalid template selected. Please try again.');
+            return;
+    }
+    
+    // Save the PDF
+    doc.save(`${userData.user_name}_Resume_Template_${templateId}.pdf`);
+}
+
+// Helper function to format dates
+function formatDate(dateString) {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'short' 
+    });
+}
+
+
+function generateTemplate1(doc, userData) {
+    // Document setup - A4 size
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const margin = 20;
+    const contentWidth = pageWidth - (margin * 2);
+    
+    // Color scheme - professional but distinctive
+    const primaryColor = [0, 62, 126]; // Deep blue
+    const accentColor = [70, 130, 180]; // Steel blue
+    const darkGray = [50, 50, 50];
+    
+    // Set document properties with optimized keywords for ATS
+    doc.setProperties({
+        title: `${userData.user_name} - Professional Resume`,
+        subject: `Resume - ${userData.job_title || 'Accounting Professional'} - ${userData.skills?.slice(0, 5).join(', ')}`,
+        author: userData.user_name,
+        keywords: `${userData.job_title || 'Accountant'}, ${userData.skills?.join(', ')}, ${userData.certifications?.join(', ') || 'CPA'}` // Enhanced keywords for ATS
+    });
+
+    // ===== HEADER SECTION =====
+    // Name header with accent background
+    doc.setFillColor(...primaryColor);
+    doc.rect(margin, margin, contentWidth, 20, 'F');
+    
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(18);
+    doc.setTextColor(255, 255, 255); // White text on colored background
+    doc.text(userData.user_name || "YOUR NAME", pageWidth/2, margin + 14, {align: 'center'});
+    
+    // Professional title under name
+    doc.setFillColor(...accentColor);
+    doc.rect(margin, margin + 20, contentWidth, 12, 'F');
+    
+    doc.setFontSize(12);
+    doc.text(userData.job_title || "Accounting Professional", pageWidth/2, margin + 28, {align: 'center'});
+    
+    // Contact info section - aligned for better readability
+    let currentY = margin + 45;
+    
+    doc.setTextColor(...darkGray);
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "normal");
+    
+    // Contact info in a balanced layout
+    const contactLeft = [
+        `${userData.location || 'Detroit, MI 48127'}`,
+        `${userData.mobile || '(313) 555-0100'}`
+    ];
+    
+    const contactRight = [
+        `${userData.email || 'email@example.com'}`,
+        `${userData.linkedin || 'linkedin.com/in/yourprofile'}`
+    ];
+    
+    // Left side contact info
+    doc.text(contactLeft, margin + contentWidth/4, currentY, {align: 'center'});
+    
+    // Right side contact info
+    doc.text(contactRight, margin + (contentWidth*3)/4, currentY, {align: 'center'});
+    
+    currentY += 20;
+    
+    // ===== PROFESSIONAL SUMMARY =====
+    doc.setFillColor(240, 240, 240); // Light gray background
+    doc.rect(margin, currentY, contentWidth, 8, 'F');
+    
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(...primaryColor);
+    doc.text("PROFESSIONAL SUMMARY", margin + 5, currentY + 6);
+    
+    currentY += 15;
+    
+    // Summary content
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.setTextColor(...darkGray);
+    
+    const summary = userData.summary || 
+        "Results-driven accounting professional with expertise in GAAP compliance, financial reporting, and tax preparation. Combines analytical precision with strategic problem-solving to optimize financial operations and drive business growth. Adept at leveraging accounting software to streamline processes and deliver actionable financial insights to stakeholders.";
+    
+    const summaryLines = doc.splitTextToSize(summary, contentWidth - 10);
+    doc.text(summaryLines, margin, currentY);
+    
+    currentY += summaryLines.length * 6 + 15;
+    
+    // ===== EXPERIENCE SECTION =====
+    doc.setFillColor(240, 240, 240);
+    doc.rect(margin, currentY, contentWidth, 8, 'F');
+    
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(...primaryColor);
+    doc.text("PROFESSIONAL EXPERIENCE", margin + 5, currentY + 6);
+    
+    currentY += 15;
+    
+    // Create space for experiences
+    if (userData.experiences && userData.experiences.length > 0) {
+        userData.experiences.forEach((exp, index) => {
+            // Check if we need a new page
+            if (currentY > pageHeight - 50) {
+                doc.addPage();
+                currentY = margin + 20;
+            }
+            
+            // Company and job title in bold with the primary color
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(11);
+            doc.setTextColor(...primaryColor);
+            doc.text(exp.company_name || 'Company Name', margin, currentY);
+            
+            // Right-aligned date range
+            doc.setFont("helvetica", "italic");
+            doc.setFontSize(10);
+            doc.setTextColor(...darkGray);
+            const dateText = exp.currently_working ? 
+                `${formatDate(exp.start_date)} - Present` : 
+                `${formatDate(exp.start_date)} - ${formatDate(exp.end_date)}`;
+            doc.text(dateText, pageWidth - margin, currentY, {align: 'right'});
+            
+            currentY += 6;
+            
+            // Job title and location
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(10);
+            doc.setTextColor(...accentColor);
+            doc.text(`${exp.job_title || 'Accountant'} | ${exp.location || 'Location'}`, margin, currentY);
+            
+            currentY += 8;
+            
+            // Key responsibilities and achievements with bullet points
+            doc.setFont("helvetica", "normal");
+            doc.setTextColor(...darkGray);
+            
+            // Split description into bullet points for better readability
+            const description = exp.description || "Managed financial reporting and analysis. Prepared tax returns and financial statements. Reconciled accounts and maintained accurate records. Collaborated with cross-functional teams to improve financial processes.";
+            
+            // Either use provided bullet points or create them
+            let bullets;
+            if (description.includes('•') || description.includes('- ')) {
+                bullets = description.split(/•|\- /).filter(item => item.trim().length > 0);
+            } else {
+                // Create bullets from sentences
+                bullets = description.split('.').filter(item => item.trim().length > 0).map(item => item.trim() + '.');
+            }
+            
+            bullets.forEach(bullet => {
+                if (bullet.trim()) {
+                    const bulletText = doc.splitTextToSize(`• ${bullet.trim()}`, contentWidth - 10);
+                    doc.text(bulletText, margin, currentY);
+                    currentY += bulletText.length * 6;
+                }
+            });
+            
+            currentY += 10; // Space after each experience
+        });
+    } else {
+        // Sample experience data if none provided
+        addSampleExperience(doc);
+    }
+    
+    // ===== EDUCATION SECTION =====
+    // Check if we need a new page
+    if (currentY > pageHeight - 100) {
+        doc.addPage();
+        currentY = margin + 20;
+    }
+    
+    doc.setFillColor(240, 240, 240);
+    doc.rect(margin, currentY, contentWidth, 8, 'F');
+    
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(...primaryColor);
+    doc.text("EDUCATION", margin + 5, currentY + 6);
+    
+    currentY += 15;
+    
+    // Education entries
+    if (userData.education && userData.education.length > 0) {
+        userData.education.forEach(edu => {
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(11);
+            doc.setTextColor(...primaryColor);
+            doc.text(edu.university || "Bellows College", margin, currentY);
+            
+            // Right-aligned graduation date
+            doc.setFont("helvetica", "italic");
+            doc.setFontSize(10);
+            doc.setTextColor(...darkGray);
+            doc.text(formatDate(edu.graduation_date) || "June 20XX", pageWidth - margin, currentY, {align: 'right'});
+            
+            currentY += 6;
+            
+            // Degree information
+            doc.setFont("helvetica", "normal");
+            doc.setTextColor(...darkGray);
+            doc.text(edu.degree || "Bachelor of Science in Accounting", margin, currentY);
+            
+            currentY += 6;
+            
+            // GPA and honors if available
+            if (edu.gpa || edu.honors) {
+                doc.setFont("helvetica", "italic");
+                doc.text(`${edu.honors ? edu.honors + ' | ' : ''}GPA: ${edu.gpa || '3.8'}`, margin, currentY);
+                currentY += 6;
+            }
+            
+            currentY += 6;
+        });
+    } else {
+        // Default education entry
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(...primaryColor);
+        doc.text("Bellows College", margin, currentY);
+        
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(10);
+        doc.setTextColor(...darkGray);
+        doc.text("June 20XX", pageWidth - margin, currentY, {align: 'right'});
+        
+        currentY += 6;
+        
+        doc.setFont("helvetica", "normal");
+        doc.text("Bachelor of Science in Accounting, Minor in Business Administration", margin, currentY);
+        
+        currentY += 6;
+        
+        doc.setFont("helvetica", "italic");
+        doc.text("Distinguished member of university's Accounting Society | GPA: 3.8", margin, currentY);
+        
+        currentY += 15;
+    }
+    
+    // ===== SKILLS SECTION =====
+    // Check if we need a new page
+    if (currentY > pageHeight - 100) {
+        doc.addPage();
+        currentY = margin + 20;
+    }
+    
+    doc.setFillColor(240, 240, 240);
+    doc.rect(margin, currentY, contentWidth, 8, 'F');
+    
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(...primaryColor);
+    doc.text("SKILLS & CERTIFICATIONS", margin + 5, currentY + 6);
+    
+    currentY += 15;
+    
+    // Skills displayed in a more modern two-column format
+    const skillsList = userData.skills && userData.skills.length >= 6 ? 
+        userData.skills : 
+        ["Financial Reporting & Analysis", "GAAP Compliance", "Tax Preparation & Planning", 
+         "QuickBooks & Microsoft Excel", "Accounting Software (SAP, Oracle)", "Risk Assessment"];
+         
+    // Calculate how to split the skills into two columns
+    const halfPoint = Math.ceil(skillsList.length / 2);
+    const leftSkills = skillsList.slice(0, halfPoint);
+    const rightSkills = skillsList.slice(halfPoint);
+    
+    // Format the skills with bullet points
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.setTextColor(...darkGray);
+    
+    // Left column skills
+    let skillY = currentY;
+    leftSkills.forEach(skill => {
+        doc.text(`• ${skill}`, margin, skillY);
+        skillY += 6;
+    });
+    
+    // Right column skills
+    skillY = currentY;
+    rightSkills.forEach(skill => {
+        doc.text(`• ${skill}`, margin + contentWidth/2, skillY);
+        skillY += 6;
+    });
+    
+    currentY = Math.max(skillY, currentY + leftSkills.length * 6) + 10;
+    
+    // ===== CERTIFICATIONS SECTION (if available) =====
+    if (userData.certifications && userData.certifications.length > 0) {
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(...primaryColor);
+        doc.text("Certifications:", margin, currentY);
+        
+        currentY += 6;
+        
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(...darkGray);
+        
+        const certText = userData.certifications.join(" | ");
+        const certLines = doc.splitTextToSize(certText, contentWidth - 10);
+        doc.text(certLines, margin, currentY);
+        
+        currentY += certLines.length * 6 + 10;
+    } else {
+        // Sample certifications
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(...primaryColor);
+        doc.text("Certifications:", margin, currentY);
+        
+        currentY += 6;
+        
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(...darkGray);
+        doc.text("Certified Public Accountant (CPA) | Certified Management Accountant (CMA)", margin, currentY);
+        
+        currentY += 15;
+    }
+    
+    // ===== PROFESSIONAL AFFILIATIONS (if available) =====
+    if (userData.affiliations && userData.affiliations.length > 0) {
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(...primaryColor);
+        doc.text("Professional Affiliations:", margin, currentY);
+        
+        currentY += 6;
+        
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(...darkGray);
+        
+        const affText = userData.affiliations.join(" | ");
+        const affLines = doc.splitTextToSize(affText, contentWidth - 10);
+        doc.text(affLines, margin, currentY);
+        
+        currentY += affLines.length * 6 + 10;
+    }
+    
+    // Footer with subtle divider and page numbers
+    const totalPages = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= totalPages; i++) {
+        doc.setPage(i);
+        
+        // Footer divider line
+        doc.setDrawColor(...accentColor);
+        doc.setLineWidth(0.5);
+        doc.line(margin, pageHeight - 20, pageWidth - margin, pageHeight - 20);
+        
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(8);
+        doc.setTextColor(...accentColor);
+        doc.text(`${userData.user_name || 'Resume'} | Page ${i} of ${totalPages}`, pageWidth/2, pageHeight - 10, {align: 'center'});
+    }
+    
+    // Helper functions
+    function formatDate(dateString) {
+        if (!dateString) return 'MM/YYYY';
+        
+        try {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) return dateString;
+            
+            // Format as MM/YYYY
+            return `${date.getMonth() + 1}/${date.getFullYear()}`;
+        } catch (e) {
+            return 'MM/YYYY';
+        }
+    }
+    
+    function addSampleExperience(doc) {
+        // Sample experience entry 1
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(...primaryColor);
+        doc.text("Trey Research", margin, currentY);
+        
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(10);
+        doc.setTextColor(...darkGray);
+        doc.text("05/20XX - Present", pageWidth - margin, currentY, {align: 'right'});
+        
+        currentY += 6;
+        
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.setTextColor(...accentColor);
+        doc.text("Senior Accountant | San Francisco, CA", margin, currentY);
+        
+        currentY += 8;
+        
+        // Bullet points for experience
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(...darkGray);
+        
+        const bullets1 = [
+            "• Managed full accounting cycle for 25+ business clients, ensuring timely and accurate financial reporting.",
+            "• Prepared and reviewed tax returns for businesses and high-net-worth individuals, identifying over $200K in tax savings.",
+            "• Implemented new accounting software that increased department efficiency by 30% and reduced errors by 25%.",
+            "• Provided financial advisory services, helping clients optimize cash flow and improve financial decision-making."
+        ];
+        
+        bullets1.forEach(bullet => {
+            const bulletLines = doc.splitTextToSize(bullet, contentWidth - 10);
+            doc.text(bulletLines, margin, currentY);
+            currentY += bulletLines.length * 6;
+        });
+        
+        currentY += 10;
+        
+        // Sample experience entry 2
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(...primaryColor);
+        doc.text("Bandter Real Estate", margin, currentY);
+        
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(10);
+        doc.setTextColor(...darkGray);
+        doc.text("06/20XX - 04/20XX", pageWidth - margin, currentY, {align: 'right'});
+        
+        currentY += 6;
+        
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.setTextColor(...accentColor);
+        doc.text("Staff Accountant | Berkeley, CA", margin, currentY);
+        
+        currentY += 8;
+        
+        // Bullet points for experience
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(...darkGray);
+        
+        const bullets2 = [
+            "• Maintained financial records for a real estate portfolio valued at $15M, ensuring accuracy and compliance.",
+            "• Processed biweekly payroll for 30+ employees and managed vendor relationships.",
+            "• Reconciled bank statements and identified $45K in unnecessary expenses, contributing to cost reduction initiatives.",
+            "• Generated monthly financial reports for executive team and investors."
+        ];
+        
+        bullets2.forEach(bullet => {
+            const bulletLines = doc.splitTextToSize(bullet, contentWidth - 10);
+            doc.text(bulletLines, margin, currentY);
+            currentY += bulletLines.length * 6;
+        });
+        
+        currentY += 10;
+    }
+}
+// Template 2 - Minimal Modern ATS-Friendly Resume
+function generateTemplate2(doc, userData) {
+    // Document setup - A4 size
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const margin = 25; // Slightly larger margins for more whitespace
+    const contentWidth = pageWidth - (margin * 2);
+    
+    // Modern color scheme
+    const primaryColor = [42, 72, 88]; // Dark teal
+    const secondaryColor = [79, 134, 142]; // Medium teal
+    const accentColor = [191, 215, 234]; // Light blue accent
+    const textColor = [60, 60, 60]; // Dark gray for readability
+    
+    // Enhanced document properties for ATS optimization
+    doc.setProperties({
+        title: `${userData.user_name || 'Professional'} - Resume - ${userData.job_title || 'Accounting Professional'}`,
+        subject: `Resume, ${userData.job_title || 'Accounting'}, ${userData.skills?.slice(0, 3).join(', ')}`,
+        author: userData.user_name || 'Candidate',
+        keywords: `${userData.job_title || 'Accountant'}, ${userData.skills?.join(', ') || 'financial reporting, GAAP, tax preparation'}, ${userData.certifications?.join(', ') || 'CPA'}, accounting, finance` 
+    });
+
+    // ===== DISTINCTIVE HEADER SECTION =====
+    // Left sidebar for contact information
+    const sidebarWidth = contentWidth * 0.3;
+    const mainContentWidth = contentWidth * 0.7;
+    const mainContentStart = margin + sidebarWidth;
+    
+    // Create sidebar background
+    doc.setFillColor(...primaryColor);
+    doc.rect(margin, margin, sidebarWidth, pageHeight - (margin * 2), 'F');
+    
+    // Main header background
+    doc.setFillColor(...accentColor);
+    doc.rect(mainContentStart, margin, mainContentWidth, 50, 'F');
+    
+    // Name and title in main header area
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(22);
+    doc.setTextColor(...primaryColor);
+    doc.text(userData.user_name || "YOUR FULL NAME", mainContentStart + 10, margin + 25);
+    
+    doc.setFontSize(14);
+    doc.setTextColor(...secondaryColor);
+    doc.text(userData.job_title || "ACCOUNTING PROFESSIONAL", mainContentStart + 10, margin + 42);
+    
+    // Contact information in sidebar
+    let sidebarY = margin + 80;
+    
+    // Contact header
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(14);
+    doc.setTextColor(255, 255, 255);
+    doc.text("CONTACT", margin + 10, sidebarY);
+    
+    sidebarY += 15;
+    
+    // Contact details
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    
+    // Location
+    doc.text("LOCATION", margin + 10, sidebarY);
+    sidebarY += 5;
+    doc.setFont("helvetica", "light");
+    doc.text(userData.location || "Detroit, MI 48127", margin + 10, sidebarY);
+    
+    sidebarY += 15;
+    
+    // Phone
+    doc.setFont("helvetica", "normal");
+    doc.text("PHONE", margin + 10, sidebarY);
+    sidebarY += 5;
+    doc.setFont("helvetica", "light");
+    doc.text(userData.mobile || "(313) 555-0100", margin + 10, sidebarY);
+    
+    sidebarY += 15;
+    
+    // Email
+    doc.setFont("helvetica", "normal");
+    doc.text("EMAIL", margin + 10, sidebarY);
+    sidebarY += 5;
+    doc.setFont("helvetica", "light");
+    doc.text(userData.email || "your.email@example.com", margin + 10, sidebarY);
+    
+    sidebarY += 15;
+    
+    // LinkedIn
+    doc.setFont("helvetica", "normal");
+    doc.text("LINKEDIN", margin + 10, sidebarY);
+    sidebarY += 5;
+    doc.setFont("helvetica", "light");
+    doc.text(userData.linkedin || "linkedin.com/in/yourprofile", margin + 10, sidebarY);
+    
+    // Add Skills section to sidebar
+    sidebarY += 25;
+    
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(14);
+    doc.text("SKILLS", margin + 10, sidebarY);
+    
+    sidebarY += 15;
+    
+    // Skills list with custom bullets
+    const skillsList = userData.skills && userData.skills.length > 0 ? 
+        userData.skills : 
+        ["Financial Analysis", "Accounting Principles", "Financial Reporting", 
+         "Tax Preparation", "GAAP Compliance", "Microsoft Excel (Advanced)", 
+         "QuickBooks", "SAP Financial Systems", "Audit Preparation"];
+    
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    
+    skillsList.forEach(skill => {
+        // Draw small circle bullet point
+        doc.setFillColor(255, 255, 255);
+        doc.circle(margin + 5, sidebarY - 2, 1.5, 'F');
+        
+        // Skill text
+        doc.text(skill, margin + 10, sidebarY);
+        sidebarY += 8;
+        
+        // Check if we need more space
+        if (sidebarY > pageHeight - 100) {
+            sidebarY = 30; // Reset for next column if needed
+        }
+    });
+    
+    // Add Certifications section to sidebar if we have space
+    if (sidebarY < pageHeight - 80) {
+        sidebarY += 10;
+        
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(14);
+        doc.text("CERTIFICATIONS", margin + 10, sidebarY);
+        
+        sidebarY += 15;
+        
+        // Certifications list
+        const certifications = userData.certifications || [
+            "Certified Public Accountant (CPA)",
+            "Certified Management Accountant (CMA)"
+        ];
+        
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        
+        certifications.forEach(cert => {
+            // Draw small circle bullet point
+            doc.setFillColor(255, 255, 255);
+            doc.circle(margin + 5, sidebarY - 2, 1.5, 'F');
+            
+            // Split certification text if needed
+            const certLines = doc.splitTextToSize(cert, sidebarWidth - 15);
+            doc.text(certLines, margin + 10, sidebarY);
+            sidebarY += (certLines.length * 5) + 8;
+        });
+    }
+    
+    // ===== MAIN CONTENT AREA =====
+    let mainY = margin + 70; // Start below the header
+    
+    // ===== PROFESSIONAL SUMMARY =====
+    doc.setDrawColor(...secondaryColor);
+    doc.setLineWidth(1);
+    doc.line(mainContentStart, mainY, mainContentStart + mainContentWidth, mainY);
+    
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(14);
+    doc.setTextColor(...primaryColor);
+    doc.text("PROFESSIONAL SUMMARY", mainContentStart, mainY + 15);
+    
+    mainY += 25;
+    
+    // Summary content
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.setTextColor(...textColor);
+    
+    const summary = userData.summary || 
+        "Strategic accounting professional with comprehensive expertise in financial analysis, reporting, and tax preparation. Adept at interpreting complex financial data to drive business decisions and ensure regulatory compliance. Combines technical accounting knowledge with strong communication skills to translate financial concepts for stakeholders at all levels.";
+    
+    const summaryLines = doc.splitTextToSize(summary, mainContentWidth - 10);
+    doc.text(summaryLines, mainContentStart, mainY);
+    
+    mainY += summaryLines.length * 6 + 15;
+    
+    // ===== EXPERIENCE SECTION =====
+    doc.setDrawColor(...secondaryColor);
+    doc.line(mainContentStart, mainY, mainContentStart + mainContentWidth, mainY);
+    
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(14);
+    doc.setTextColor(...primaryColor);
+    doc.text("PROFESSIONAL EXPERIENCE", mainContentStart, mainY + 15);
+    
+    mainY += 25;
+    
+    // Create space for experiences
+    if (userData.experiences && userData.experiences.length > 0) {
+        userData.experiences.forEach((exp, index) => {
+            // Check if we need a new page
+            if (mainY > pageHeight - 70) {
+                doc.addPage();
+                
+                // Continue sidebar on new page
+                doc.setFillColor(...primaryColor);
+                doc.rect(margin, margin, sidebarWidth, pageHeight - (margin * 2), 'F');
+                
+                mainY = margin + 30;
+            }
+            
+            // Job title with accent color
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(12);
+            doc.setTextColor(...secondaryColor);
+            doc.text(exp.job_title || 'Senior Accountant', mainContentStart, mainY);
+            
+            mainY += 6;
+            
+            // Company name and timeframe on same line
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(11);
+            doc.setTextColor(...primaryColor);
+            doc.text(exp.company_name || 'Company Name', mainContentStart, mainY);
+            
+            // Right-aligned date
+            const dateText = exp.currently_working ? 
+                `${formatDate(exp.start_date)} - Present` : 
+                `${formatDate(exp.start_date)} - ${formatDate(exp.end_date)}`;
+            
+            doc.setFont("helvetica", "italic");
+            doc.setFontSize(10);
+            doc.text(dateText, mainContentStart + mainContentWidth, mainY, {align: 'right'});
+            
+            mainY += 6;
+            
+            // Location
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(10);
+            doc.setTextColor(...textColor);
+            doc.text(exp.location || 'Location', mainContentStart, mainY);
+            
+            mainY += 10;
+            
+            // Job description with enhanced bullet points
+            let description = exp.description || 
+                "• Led month-end close process, reducing completion time by 30% through process improvements\n" +
+                "• Prepared and analyzed financial statements for executive team and external stakeholders\n" +
+                "• Ensured compliance with GAAP standards and tax regulations\n" +
+                "• Implemented new financial software that improved reporting accuracy by 25%";
+            
+            // Format bullet points
+            let bullets;
+            if (description.includes('•') || description.includes('-')) {
+                bullets = description.split(/•|-/).filter(item => item.trim().length > 0);
+            } else {
+                bullets = description.split('.').filter(item => item.trim().length > 0);
+            }
+            
+            bullets.forEach(bullet => {
+                if (bullet.trim()) {
+                    // Custom bullet point
+                    doc.setFillColor(...secondaryColor);
+                    doc.circle(mainContentStart + 3, mainY - 3, 1.5, 'F');
+                    
+                    // Bullet text with indent
+                    const bulletText = doc.splitTextToSize(bullet.trim(), mainContentWidth - 15);
+                    doc.text(bulletText, mainContentStart + 10, mainY);
+                    mainY += bulletText.length * 6 + 2;
+                }
+            });
+            
+            mainY += 12; // Space after each experience
+        });
+    } else {
+        // Sample experiences if none provided
+        addSampleExperiences(doc);
+    }
+    
+    // ===== EDUCATION SECTION =====
+    // Check if we need a new page
+    if (mainY > pageHeight - 70) {
+        doc.addPage();
+        
+        // Continue sidebar on new page
+        doc.setFillColor(...primaryColor);
+        doc.rect(margin, margin, sidebarWidth, pageHeight - (margin * 2), 'F');
+        
+        mainY = margin + 30;
+    }
+    
+    doc.setDrawColor(...secondaryColor);
+    doc.line(mainContentStart, mainY, mainContentStart + mainContentWidth, mainY);
+    
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(14);
+    doc.setTextColor(...primaryColor);
+    doc.text("EDUCATION", mainContentStart, mainY + 15);
+    
+    mainY += 25;
+    
+    // Education entries
+    if (userData.education && userData.education.length > 0) {
+        userData.education.forEach(edu => {
+            // Degree
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(11);
+            doc.setTextColor(...secondaryColor);
+            doc.text(edu.degree || "Bachelor of Science in Accounting", mainContentStart, mainY);
+            
+            mainY += 6;
+            
+            // University and graduation date
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(10);
+            doc.setTextColor(...primaryColor);
+            doc.text(edu.university || "Bellows College", mainContentStart, mainY);
+            
+            // Right-aligned graduation date
+            doc.setFont("helvetica", "italic");
+            doc.text(formatDate(edu.graduation_date) || "June 20XX", mainContentStart + mainContentWidth, mainY, {align: 'right'});
+            
+            mainY += 6;
+            
+            // Additional educational details
+            if (edu.gpa || edu.honors || edu.relevant_coursework) {
+                doc.setFont("helvetica", "normal");
+                doc.setTextColor(...textColor);
+                
+                let details = [];
+                if (edu.gpa) details.push(`GPA: ${edu.gpa}`);
+                if (edu.honors) details.push(edu.honors);
+                if (edu.relevant_coursework) details.push(`Relevant coursework: ${edu.relevant_coursework}`);
+                
+                doc.text(details.join(" | "), mainContentStart, mainY);
+                mainY += 6;
+            } else {
+                // Default educational details
+                doc.setFont("helvetica", "normal");
+                doc.setTextColor(...textColor);
+                doc.text("GPA: 3.8 | Distinguished member of university's Accounting Society", mainContentStart, mainY);
+                mainY += 6;
+            }
+            
+            mainY += 10;
+        });
+    } else {
+        // Default education entry
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(...secondaryColor);
+        doc.text("Bachelor of Science in Accounting, Minor in Business Administration", mainContentStart, mainY);
+        
+        mainY += 6;
+        
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.setTextColor(...primaryColor);
+        doc.text("Bellows College", mainContentStart, mainY);
+        
+        doc.setFont("helvetica", "italic");
+        doc.text("June 20XX", mainContentStart + mainContentWidth, mainY, {align: 'right'});
+        
+        mainY += 6;
+        
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(...textColor);
+        doc.text("GPA: 3.8 | Distinguished member of university's Accounting Society", mainContentStart, mainY);
+        
+        mainY += 15;
+    }
+    
+    // ===== PROFESSIONAL AFFILIATIONS (if available) =====
+    if ((userData.affiliations && userData.affiliations.length > 0) || !userData.affiliations) {
+        if (mainY > pageHeight - 70) {
+            doc.addPage();
+            
+            // Continue sidebar on new page
+            doc.setFillColor(...primaryColor);
+            doc.rect(margin, margin, sidebarWidth, pageHeight - (margin * 2), 'F');
+            
+            mainY = margin + 30;
+        }
+        
+        doc.setDrawColor(...secondaryColor);
+        doc.line(mainContentStart, mainY, mainContentStart + mainContentWidth, mainY);
+        
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(14);
+        doc.setTextColor(...primaryColor);
+        doc.text("PROFESSIONAL AFFILIATIONS", mainContentStart, mainY + 15);
+        
+        mainY += 25;
+        
+        // Affiliations
+        const affiliations = userData.affiliations || [
+            "American Institute of Certified Public Accountants (AICPA)",
+            "Association of Certified Fraud Examiners (ACFE)"
+        ];
+        
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(10);
+        doc.setTextColor(...textColor);
+        
+        affiliations.forEach(affiliation => {
+            // Custom bullet point
+            doc.setFillColor(...secondaryColor);
+            doc.circle(mainContentStart + 3, mainY - 3, 1.5, 'F');
+            
+            // Affiliation text
+            const affText = doc.splitTextToSize(affiliation, mainContentWidth - 15);
+            doc.text(affText, mainContentStart + 10, mainY);
+            mainY += affText.length * 6 + 6;
+        });
+    }
+    
+    // Footer with subtle divider and page numbers
+    const totalPages = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= totalPages; i++) {
+        doc.setPage(i);
+        
+        doc.setDrawColor(...accentColor);
+        doc.setLineWidth(0.5);
+        doc.line(mainContentStart, pageHeight - 15, pageWidth - margin, pageHeight - 15);
+        
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(8);
+        doc.setTextColor(...secondaryColor);
+        doc.text(`Page ${i} of ${totalPages}`, pageWidth - margin, pageHeight - 8, {align: 'right'});
+    }
+    
+    // Helper function for date formatting
+    function formatDate(dateString) {
+        if (!dateString) return 'MM/YYYY';
+        
+        try {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) return dateString;
+            
+            // Format as MM/YYYY
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+            return `${month < 10 ? '0' + month : month}/${year}`;
+        } catch (e) {
+            return dateString || 'MM/YYYY';
+        }
+    }
+    
+    // Helper function to add sample experiences
+    function addSampleExperiences(doc) {
+        // Experience 1
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(12);
+        doc.setTextColor(...secondaryColor);
+        doc.text("Senior Accountant", mainContentStart, mainY);
+        
+        mainY += 6;
+        
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(...primaryColor);
+        doc.text("ABC Financial Services", mainContentStart, mainY);
+        
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(10);
+        doc.text("01/20XX - Present", mainContentStart + mainContentWidth, mainY, {align: 'right'});
+        
+        mainY += 6;
+        
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(10);
+        doc.setTextColor(...textColor);
+        doc.text("San Francisco, CA", mainContentStart, mainY);
+        
+        mainY += 10;
+        
+        // Bullet points
+        const bullets1 = [
+            "Managed financial reporting for clients with combined annual revenues of $25M+, ensuring 100% compliance with federal and state regulations",
+            "Implemented new tax planning strategies resulting in average client tax savings of 12%",
+            "Streamlined month-end close process, reducing completion time from 10 days to 5 days",
+            "Led team of 3 junior accountants, providing mentorship and technical guidance"
+        ];
+        
+        bullets1.forEach(bullet => {
+            // Custom bullet point
+            doc.setFillColor(...secondaryColor);
+            doc.circle(mainContentStart + 3, mainY - 3, 1.5, 'F');
+            
+            // Bullet text with indent
+            const bulletText = doc.splitTextToSize(bullet, mainContentWidth - 15);
+            doc.text(bulletText, mainContentStart + 10, mainY);
+            mainY += bulletText.length * 6 + 2;
+        });
+        
+        mainY += 12;
+        
+        // Experience 2
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(12);
+        doc.setTextColor(...secondaryColor);
+        doc.text("Staff Accountant", mainContentStart, mainY);
+        
+        mainY += 6;
+        
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(...primaryColor);
+        doc.text("XYZ Corporation", mainContentStart, mainY);
+        
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(10);
+        doc.text("03/20XX - 12/20XX", mainContentStart + mainContentWidth, mainY, {align: 'right'});
+        
+        mainY += 6;
+        
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(10);
+        doc.setTextColor(...textColor);
+        doc.text("Oakland, CA", mainContentStart, mainY);
+        
+        mainY += 10;
+        
+        // Bullet points
+        const bullets2 = [
+            "Conducted monthly reconciliations for accounts with combined values exceeding $5M",
+            "Prepared quarterly and annual financial statements with 99.8% accuracy",
+            "Assisted in annual audit preparation, reducing preparation time by 20%",
+            "Created automated expense tracking system that improved reporting efficiency by 35%"
+        ];
+        
+        bullets2.forEach(bullet => {
+            // Custom bullet point
+            doc.setFillColor(...secondaryColor);
+            doc.circle(mainContentStart + 3, mainY - 3, 1.5, 'F');
+            
+            // Bullet text with indent
+            const bulletText = doc.splitTextToSize(bullet, mainContentWidth - 15);
+            doc.text(bulletText, mainContentStart + 10, mainY);
+            mainY += bulletText.length * 6 + 2;
+        });
+        
+        mainY += 12;
+    }
+}
+// Template 3 - Executive Minimalist Resume with Horizontal Sections
+function generateTemplate3(doc, userData) {
+    // Document setup - A4 size
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const margin = 20;
+    const contentWidth = pageWidth - (margin * 2);
+    
+    // Modern color scheme with accent header
+    const headerColor = [75, 0, 130]; // Deep purple
+    const accentColor = [147, 112, 219]; // Medium purple
+    const highlightColor = [230, 230, 250]; // Lavender (very light purple)
+    const bodyTextColor = [50, 50, 50]; // Dark gray for body text
+    
+    // Enhanced document properties for ATS optimization
+    doc.setProperties({
+        title: `${userData.user_name || 'Professional'} Resume - ${userData.job_title || 'Accounting'}`,
+        subject: `${userData.job_title || 'Accounting Professional'} with expertise in ${userData.skills?.slice(0, 3).join(', ') || 'financial reporting, tax preparation, GAAP'}`,
+        author: userData.user_name || 'Accounting Professional',
+        keywords: `${userData.job_title || 'Accountant'}, ${userData.skills?.join(', ') || 'financial analysis, tax preparation, GAAP'}, ${userData.certifications?.join(', ') || 'CPA'}, accounting professional, finance specialist`
+    });
+
+    // ===== HEADER WITH NAME BANNER =====
+    // Create striking header banner
+    doc.setFillColor(...headerColor);
+    doc.rect(margin, margin, contentWidth, 25, 'F');
+    
+    // Name in header
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(18);
+    doc.setTextColor(255, 255, 255); // White text
+    doc.text(userData.user_name || "YOUR NAME", margin + 5, margin + 17);
+    
+    // Job title with right alignment
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(14);
+    doc.text(userData.job_title || "ACCOUNTING PROFESSIONAL", pageWidth - margin - 5, margin + 17, {align: 'right'});
+    
+    // ===== CONTACT BAR =====
+    // Contact info bar with subtle background
+    doc.setFillColor(...highlightColor);
+    doc.rect(margin, margin + 25, contentWidth, 20, 'F');
+    
+    // Contact information in a single line with separators
+    const email = userData.email || "your.email@example.com";
+    const phone = userData.mobile || "(555) 123-4567";
+    const location = userData.location || "City, State";
+    const linkedin = userData.linkedin || "linkedin.com/in/yourprofile";
+    
+    const contactText = `${email} | ${phone} | ${location} | ${linkedin}`;
+    
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(...bodyTextColor);
+    doc.text(contactText, pageWidth/2, margin + 38, {align: 'center'});
+    
+    let currentY = margin + 55;
+    
+    // ===== PROFESSIONAL SUMMARY WITH ACCENT BOX =====
+    // Summary header with accent
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(...headerColor);
+    doc.text("PROFESSIONAL SUMMARY", margin, currentY);
+    
+    // Accent line under header
+    doc.setDrawColor(...accentColor);
+    doc.setLineWidth(1.5);
+    doc.line(margin, currentY + 5, margin + 60, currentY + 5);
+    
+    currentY += 12;
+    
+    // Summary content with left border accent
+    doc.setDrawColor(...accentColor);
+    doc.setLineWidth(2);
+    doc.line(margin, currentY, margin, currentY + 30); // Height will adjust based on content
+    
+    // Summary text
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.setTextColor(...bodyTextColor);
+    
+    const summary = userData.summary || 
+        "Detail-oriented accounting professional with extensive experience in financial reporting, tax preparation, and regulatory compliance. Skilled in analyzing complex financial data to improve business operations and support strategic decision-making. Known for precision, integrity, and the ability to communicate financial concepts clearly to stakeholders at all levels.";
+    
+    const summaryLines = doc.splitTextToSize(summary, contentWidth - 10);
+    doc.text(summaryLines, margin + 7, currentY);
+    
+    // Adjust line height based on content
+    const summaryHeight = summaryLines.length * 6;
+    if (summaryHeight > 30) {
+        doc.line(margin, currentY + 30, margin, currentY + summaryHeight); // Extend line if needed
+    }
+    
+    currentY += summaryHeight + 15;
+    
+    // ===== SKILLS SECTION - HORIZONTAL BOXES =====
+    // Skills header
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(...headerColor);
+    doc.text("CORE COMPETENCIES", margin, currentY);
+    
+    // Accent line under header
+    doc.setDrawColor(...accentColor);
+    doc.setLineWidth(1.5);
+    doc.line(margin, currentY + 5, margin + 60, currentY + 5);
+    
+    currentY += 15;
+    
+    // Create skill boxes in a grid format
+    const skillsList = userData.skills && userData.skills.length > 0 ? 
+        userData.skills.slice(0, 9) : // Limit to 9 skills for layout
+        ["Financial Analysis", "Tax Preparation", "GAAP Compliance", 
+         "Financial Reporting", "Audit Support", "QuickBooks", 
+         "Microsoft Excel", "Strategic Planning", "Process Improvement"];
+    
+    const boxWidth = contentWidth / 3 - 4;
+    const boxHeight = 16;
+    const boxMargin = 2;
+    
+    // Draw skill boxes in a 3x3 grid
+    for (let i = 0; i < Math.min(skillsList.length, 9); i++) {
+        const row = Math.floor(i / 3);
+        const col = i % 3;
+        
+        const boxX = margin + (col * (boxWidth + boxMargin * 2));
+        const boxY = currentY + (row * (boxHeight + boxMargin * 2));
+        
+        // Box background
+        doc.setFillColor(...highlightColor);
+        doc.roundedRect(boxX, boxY, boxWidth, boxHeight, 2, 2, 'F');
+        
+        // Box border
+        doc.setDrawColor(...accentColor);
+        doc.setLineWidth(0.5);
+        doc.roundedRect(boxX, boxY, boxWidth, boxHeight, 2, 2, 'S');
+        
+        // Skill text
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.setTextColor(...bodyTextColor);
+        doc.text(skillsList[i], boxX + boxWidth/2, boxY + boxHeight/2 + 3, {align: 'center'});
+    }
+    
+    currentY += 3 * (boxHeight + boxMargin * 2) + 15;
+    
+    // ===== EXPERIENCE SECTION =====
+    // Experience header
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(...headerColor);
+    doc.text("PROFESSIONAL EXPERIENCE", margin, currentY);
+    
+    // Accent line under header
+    doc.setDrawColor(...accentColor);
+    doc.setLineWidth(1.5);
+    doc.line(margin, currentY + 5, margin + 60, currentY + 5);
+    
+    currentY += 15;
+    
+    // Create space for experiences
+    if (userData.experiences && userData.experiences.length > 0) {
+        userData.experiences.forEach((exp, index) => {
+            // Check if we need a new page
+            if (currentY > pageHeight - 70) {
+                doc.addPage();
+                currentY = margin + 20;
+            }
+            
+            // Experience header with job title and company
+            const jobTitle = exp.job_title || 'Senior Accountant';
+            const companyName = exp.company_name || 'ABC Financial Services';
+            
+            // Job title and company with different styling
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(11);
+            doc.setTextColor(...accentColor);
+            doc.text(jobTitle, margin, currentY);
+            
+            // Company name
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(10);
+            doc.setTextColor(...headerColor);
+            doc.text(companyName, margin + 75, currentY, {align: 'left'});
+            
+            // Location and date with right alignment
+            const location = exp.location || 'City, State';
+            const dateText = exp.currently_working ? 
+                `${formatDate(exp.start_date)} - Present` : 
+                `${formatDate(exp.start_date)} - ${formatDate(exp.end_date)}`;
+            
+            doc.setFont("helvetica", "italic");
+            doc.setFontSize(9);
+            doc.setTextColor(...bodyTextColor);
+            doc.text(`${location} | ${dateText}`, pageWidth - margin, currentY, {align: 'right'});
+            
+            currentY += 8;
+            
+            // Experience description with enhanced bullet points
+            let description = exp.description || 
+                "• Managed monthly financial close process, ensuring accurate and timely reporting\n" +
+                "• Prepared tax returns for businesses with revenues of $5M-$50M\n" +
+                "• Conducted financial analysis to identify cost-saving opportunities\n" +
+                "• Collaborated with cross-functional teams to implement financial controls";
+            
+            // Format bullet points
+            let bullets;
+            if (description.includes('•') || description.includes('-')) {
+                bullets = description.split(/•|-/).filter(item => item.trim().length > 0);
+            } else {
+                bullets = description.split('.').filter(item => item.trim().length > 0);
+            }
+            
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(9);
+            
+            bullets.forEach(bullet => {
+                if (bullet.trim()) {
+                    // Custom bullet point with accent color
+                    doc.setFillColor(...accentColor);
+                    doc.circle(margin + 3, currentY - 3, 1.5, 'F');
+                    
+                    // Bullet text with indent
+                    const bulletText = doc.splitTextToSize(bullet.trim(), contentWidth - 15);
+                    doc.text(bulletText, margin + 8, currentY);
+                    currentY += bulletText.length * 5 + 2;
+                }
+            });
+            
+            currentY += 10; // Space between experiences
+        });
+    } else {
+        // Sample experiences if none provided
+        addSampleExperiences(doc);
+    }
+    
+    // ===== EDUCATION SECTION =====
+    // Check if we need a new page
+    if (currentY > pageHeight - 80) {
+        doc.addPage();
+        currentY = margin + 20;
+    }
+    
+    // Education header
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(...headerColor);
+    doc.text("EDUCATION", margin, currentY);
+    
+    // Accent line under header
+    doc.setDrawColor(...accentColor);
+    doc.setLineWidth(1.5);
+    doc.line(margin, currentY + 5, margin + 60, currentY + 5);
+    
+    currentY += 15;
+    
+    // Education entries with enhanced formatting
+    if (userData.education && userData.education.length > 0) {
+        userData.education.forEach(edu => {
+            // Create education box with subtle background
+            doc.setFillColor(...highlightColor);
+            doc.roundedRect(margin, currentY, contentWidth, 30, 2, 2, 'F');
+            
+            // Degree name
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(10);
+            doc.setTextColor(...accentColor);
+            doc.text(edu.degree || "Bachelor of Science in Accounting", margin + 5, currentY + 10);
+            
+            // University name
+            doc.setFont("helvetica", "normal");
+            doc.setTextColor(...headerColor);
+            doc.text(edu.university || "Bellows University", margin + 5, currentY + 18);
+            
+            // Graduation date with right alignment
+            doc.setFont("helvetica", "italic");
+            doc.setFontSize(9);
+            doc.setTextColor(...bodyTextColor);
+            doc.text(formatDate(edu.graduation_date) || "June 20XX", pageWidth - margin - 5, currentY + 10, {align: 'right'});
+            
+            // GPA and honors
+            if (edu.gpa || edu.honors) {
+                doc.setFont("helvetica", "normal");
+                doc.setFontSize(9);
+                doc.text(`${edu.honors ? edu.honors + ' | ' : ''}GPA: ${edu.gpa || '3.8'}`, pageWidth - margin - 5, currentY + 18, {align: 'right'});
+            }
+            
+            currentY += 40; // Space after each education entry
+        });
+    } else {
+        // Default education entry
+        doc.setFillColor(...highlightColor);
+        doc.roundedRect(margin, currentY, contentWidth, 30, 2, 2, 'F');
+        
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.setTextColor(...accentColor);
+        doc.text("Bachelor of Science in Accounting, Minor in Business Administration", margin + 5, currentY + 10);
+        
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(...headerColor);
+        doc.text("Bellows University", margin + 5, currentY + 18);
+        
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(9);
+        doc.setTextColor(...bodyTextColor);
+        doc.text("June 20XX", pageWidth - margin - 5, currentY + 10, {align: 'right'});
+        
+        doc.setFont("helvetica", "normal");
+        doc.text("GPA: 3.8 | Cum Laude | Dean's List", pageWidth - margin - 5, currentY + 18, {align: 'right'});
+        
+        currentY += 40;
+    }
+    
+    // ===== CERTIFICATIONS SECTION =====
+    // Check if we need a new page
+    if (currentY > pageHeight - 60) {
+        doc.addPage();
+        currentY = margin + 20;
+    }
+    
+    // Certifications header
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(...headerColor);
+    doc.text("CERTIFICATIONS & PROFESSIONAL DEVELOPMENT", margin, currentY);
+    
+    // Accent line under header
+    doc.setDrawColor(...accentColor);
+    doc.setLineWidth(1.5);
+    doc.line(margin, currentY + 5, margin + 60, currentY + 5);
+    
+    currentY += 15;
+    
+    // Certifications in horizontal layout
+    const certifications = userData.certifications || [
+        "Certified Public Accountant (CPA) - 20XX",
+        "Certified Management Accountant (CMA) - 20XX",
+        "QuickBooks ProAdvisor - 20XX"
+    ];
+    
+    // Create boxes for certifications
+    const certBoxWidth = contentWidth;
+    const certBoxHeight = 10;
+    
+    certifications.forEach((cert, i) => {
+        // Alternate background colors for easier reading
+        if (i % 2 === 0) {
+            doc.setFillColor(...highlightColor);
+            doc.rect(margin, currentY, certBoxWidth, certBoxHeight, 'F');
+        }
+        
+        // Certification text with bullet point
+        doc.setFillColor(...accentColor);
+        doc.circle(margin + 3, currentY + 5, 1.5, 'F');
+        
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.setTextColor(...bodyTextColor);
+        doc.text(cert, margin + 8, currentY + 7);
+        
+        currentY += certBoxHeight;
+    });
+    
+    currentY += 15;
+    
+    // ===== REFERENCES SECTION (OPTIONAL) =====
+    // Add this section if you want to include it
+    if (userData.include_references) {
+        // Check if we need a new page
+        if (currentY > pageHeight - 60) {
+            doc.addPage();
+            currentY = margin + 20;
+        }
+        
+        // References header
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(12);
+        doc.setTextColor(...headerColor);
+        doc.text("REFERENCES", margin, currentY);
+        
+        // Accent line under header
+        doc.setDrawColor(...accentColor);
+        doc.setLineWidth(1.5);
+        doc.line(margin, currentY + 5, margin + 60, currentY + 5);
+        
+        currentY += 15;
+        
+        // References statement
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(9);
+        doc.setTextColor(...bodyTextColor);
+        doc.text("Professional references available upon request.", margin, currentY);
+        
+        currentY += 15;
+    }
+    
+    // Footer with subtle page numbering
+    const totalPages = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= totalPages; i++) {
+        doc.setPage(i);
+        
+        // Footer with full-width accent color bar
+        doc.setFillColor(...headerColor);
+        doc.rect(margin, pageHeight - 15, contentWidth, 8, 'F');
+        
+        // Page number
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(8);
+        doc.setTextColor(255, 255, 255);
+        doc.text(`Page ${i} of ${totalPages}`, pageWidth/2, pageHeight - 10, {align: 'center'});
+    }
+    
+    // Helper function for date formatting
+    function formatDate(dateString) {
+        if (!dateString) return 'MM/YYYY';
+        
+        try {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) return dateString;
+            
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            return `${months[date.getMonth()]} ${date.getFullYear()}`;
+        } catch (e) {
+            return dateString || 'MM/YYYY';
+        }
+    }
+    
+    // Helper function to add sample experiences
+    function addSampleExperiences(doc) {
+        // Sample experience 1
+        // Job title with accent color
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(...accentColor);
+        doc.text("Senior Accountant", margin, currentY);
+        
+        // Company name
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.setTextColor(...headerColor);
+        doc.text("PQR Financial Group", margin + 75, currentY, {align: 'left'});
+        
+        // Location and date
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(9);
+        doc.setTextColor(...bodyTextColor);
+        doc.text("San Francisco, CA | Jan 20XX - Present", pageWidth - margin, currentY, {align: 'right'});
+        
+        currentY += 8;
+        
+        // Bullet points
+        const bullets1 = [
+            "Led year-end close process for 12 clients, reducing timeline by 30% through process improvements and automation",
+            "Generated comprehensive financial reports, identifying $350K in potential tax savings",
+            "Implemented new accounting software, increasing team productivity by 25% and reducing errors by 40%",
+            "Mentored 3 junior accountants, developing technical skills and best practices"
+        ];
+        
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        
+        bullets1.forEach(bullet => {
+            doc.setFillColor(...accentColor);
+            doc.circle(margin + 3, currentY - 3, 1.5, 'F');
+            
+            const bulletText = doc.splitTextToSize(bullet, contentWidth - 15);
+            doc.text(bulletText, margin + 8, currentY);
+            currentY += bulletText.length * 5 + 2;
+        });
+        
+        currentY += 10;
+        
+        // Sample experience 2
+        // Job title with accent color
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(...accentColor);
+        doc.text("Staff Accountant", margin, currentY);
+        
+        // Company name
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.setTextColor(...headerColor);
+        doc.text("XYZ Corporation", margin + 75, currentY, {align: 'left'});
+        
+        // Location and date
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(9);
+        doc.setTextColor(...bodyTextColor);
+        doc.text("Oakland, CA | Mar 20XX - Dec 20XX", pageWidth - margin, currentY, {align: 'right'});
+        
+        currentY += 8;
+        
+        // Bullet points
+        const bullets2 = [
+            "Conducted monthly account reconciliations with 99.8% accuracy, identifying and resolving discrepancies",
+            "Prepared quarterly and annual tax filings for businesses with revenues from $2M to $15M",
+            "Assisted with audit preparation, reducing outside accounting services costs by 20%",
+            "Developed Excel macros and templates that streamlined reporting processes by 35%"
+        ];
+        
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        
+        bullets2.forEach(bullet => {
+            doc.setFillColor(...accentColor);
+            doc.circle(margin + 3, currentY - 3, 1.5, 'F');
+            
+            const bulletText = doc.splitTextToSize(bullet, contentWidth - 15);
+            doc.text(bulletText, margin + 8, currentY);
+            currentY += bulletText.length * 5 + 2;
+        });
+        
+        currentY += 10;
+    }
+}
+// Template 4 - Modern Two-Column ATS-Friendly Resume
+function generateTemplate4(doc, userData) {
+    // Document setup - A4 size
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const margin = 20; // Balanced margins
+    const contentWidth = pageWidth - (margin * 2);
+    
+    // Modern color scheme
+    const primaryColor = [40, 50, 78]; // Deep navy blue
+    const accentColor = [82, 171, 152]; // Teal green
+    const lightAccent = [232, 245, 243]; // Very light teal
+    const bodyTextColor = [60, 60, 60]; // Dark gray
+    const secondaryTextColor = [100, 100, 100]; // Medium gray
+    
+    // Enhanced document properties for ATS optimization
+    doc.setProperties({
+        title: `${userData.user_name || 'Professional'} Resume - ${userData.job_title || 'Specialist'}`,
+        subject: `${userData.job_title || 'Professional'} with expertise in ${userData.skills?.slice(0, 3).join(', ') || 'specialized areas'}`,
+        author: userData.user_name || 'Professional',
+        keywords: `${userData.job_title || 'Professional'}, ${userData.skills?.join(', ') || 'key skills'}, ${userData.certifications?.join(', ') || 'certifications'}, professional resume`
+    });
+
+    // ===== MODERN HEADER WITH VISUAL IMPACT =====
+    // Header background
+    doc.setFillColor(...lightAccent);
+    doc.rect(0, 0, pageWidth, margin + 60, 'F');
+    
+    // Name
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(26);
+    doc.setTextColor(...primaryColor);
+    doc.text(userData.user_name || "JANE DOE", margin, margin + 20);
+    
+    // Job title with accent color
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(14);
+    doc.setTextColor(...accentColor);
+    doc.text(userData.job_title || "SENIOR PROFESSIONAL", margin, margin + 35);
+    
+    // Contact info with modern icons
+    const contactX1 = margin;
+    const contactX2 = margin + contentWidth/2;
+    const contactY = margin + 50;
+    
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(...bodyTextColor);
+    
+    // Left column contact info
+    doc.text(`✉ ${userData.email || "jane.doe@example.com"}`, contactX1, contactY);
+    doc.text(`☏ ${userData.mobile || "(555) 123-4567"}`, contactX1, contactY + 12);
+    
+    // Right column contact info
+    doc.text(`⌖ ${userData.location || "San Francisco, CA"}`, contactX2, contactY);
+    doc.text(`in ${userData.linkedin || "linkedin.com/in/janedoe"}`, contactX2, contactY + 12);
+    
+    // Professional profile photo area
+    doc.setFillColor(255, 255, 255, 0.8); // White with transparency
+    doc.roundedRect(pageWidth - margin - 50, margin, 40, 40, 3, 3, 'F');
+    
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(18);
+    doc.setTextColor(...accentColor);
+    doc.text("✓", pageWidth - margin - 30, margin + 25);
+    
+    let currentY = margin + 75;
+    
+    // ===== PROFILE SECTION WITH VISUAL SEPARATION =====
+    // Section header
+    drawSectionHeader(doc, "PROFESSIONAL PROFILE", margin, currentY, accentColor, primaryColor);
+    
+    currentY += 15;
+    
+    // Profile text with improved readability
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.setTextColor(...bodyTextColor);
+    
+    const summary = userData.summary || 
+        "Results-driven professional with a proven track record of delivering exceptional outcomes through strategic thinking and creative problem-solving. Adept at synthesizing complex information into clear, actionable insights while maintaining the highest standards of quality. Recognized for strong leadership abilities and collaborative approach that drives team success and organizational growth.";
+    
+    const summaryLines = doc.splitTextToSize(summary, contentWidth);
+    doc.text(summaryLines, margin, currentY);
+    
+    currentY += summaryLines.length * 6 + 20;
+    
+    // ===== SKILLS SECTION WITH VISUAL INDICATORS =====
+    drawSectionHeader(doc, "CORE COMPETENCIES", margin, currentY, accentColor, primaryColor);
+    
+    currentY += 15;
+    
+    // Create skills display with visual indicators
+    const skillsList = userData.skills && userData.skills.length > 0 ? 
+        userData.skills.slice(0, 10) : 
+        ["Critical Thinking", "Strategic Planning", "Team Leadership", "Project Management", 
+         "Communication", "Process Improvement", "Problem Solving", "Data Analysis", 
+         "Research & Analysis", "Technical Writing"];
+    
+    // Calculate columns and distribution
+    const skillColumns = 2;
+    const skillsPerColumn = Math.ceil(skillsList.length / skillColumns);
+    const columnWidth = contentWidth / skillColumns;
+    
+    // Draw skills with style
+    for (let i = 0; i < skillsList.length; i++) {
+        const columnIndex = Math.floor(i / skillsPerColumn);
+        const rowIndex = i % skillsPerColumn;
+        
+        const xPos = margin + (columnIndex * columnWidth);
+        const yPos = currentY + (rowIndex * 16);
+        
+        // Skill bubble background
+        doc.setFillColor(...lightAccent);
+        doc.roundedRect(xPos, yPos - 8, 8, 8, 2, 2, 'F');
+        
+        // Checkmark in bubble
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(6);
+        doc.setTextColor(...accentColor);
+        doc.text("✓", xPos + 2.5, yPos - 2.5);
+        
+        // Skill text
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(10);
+        doc.setTextColor(...bodyTextColor);
+        doc.text(skillsList[i], xPos + 12, yPos);
+    }
+    
+    // Update Y position based on skills
+    currentY += (Math.ceil(skillsList.length / skillColumns) * 16) + 20;
+    
+    // ===== EXPERIENCE SECTION WITH ENHANCED TIMELINE =====
+    drawSectionHeader(doc, "PROFESSIONAL EXPERIENCE", margin, currentY, accentColor, primaryColor);
+    
+    currentY += 15;
+    
+    // Timeline style variables
+    const timelineX = margin + 10;
+    const contentX = margin + 25;
+    const contentIndent = 10;
+    const entrySpacing = 25;
+    
+    // Create experiences with modern timeline
+    if (userData.experiences && userData.experiences.length > 0) {
+        userData.experiences.forEach((exp, index) => {
+            // Check if we need a new page
+            if (currentY > pageHeight - 70) {
+                doc.addPage();
+                currentY = margin + 20;
+                // Header for new page
+                doc.setFillColor(...lightAccent);
+                doc.rect(0, 0, pageWidth, margin + 10, 'F');
+                doc.setFont("helvetica", "italic");
+                doc.setFontSize(8);
+                doc.setTextColor(...primaryColor);
+                doc.text(userData.user_name || "Professional Resume", margin, margin + 5);
+            }
+            
+            // Timeline dot
+            doc.setFillColor(...accentColor);
+            doc.circle(timelineX, currentY, 4, 'F');
+            
+            // Timeline line connecting dots
+            if (index < (userData.experiences.length - 1)) {
+                doc.setDrawColor(...accentColor);
+                doc.setLineWidth(1);
+                doc.line(timelineX, currentY + 4, timelineX, currentY + 65);
+            }
+            
+            // Job title with company
+            const jobTitle = exp.job_title || 'Senior Position';
+            const companyName = exp.company_name || 'Innovative Company';
+            
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(12);
+            doc.setTextColor(...primaryColor);
+            doc.text(jobTitle, contentX, currentY);
+            
+            currentY += 8;
+            
+            // Company name with location
+            doc.setFont("helvetica", "semibold");
+            doc.setFontSize(10);
+            doc.setTextColor(...accentColor);
+            
+            const location = exp.location || 'Location';
+            doc.text(`${companyName} | ${location}`, contentX, currentY);
+            
+            // Date range with clean styling
+            const dateText = exp.currently_working ? 
+                `${formatDate(exp.start_date)} - Present` : 
+                `${formatDate(exp.start_date)} - ${formatDate(exp.end_date)}`;
+            
+            const dateWidth = doc.getStringUnitWidth(dateText) * 8 * 0.352778;
+            
+            doc.setFillColor(...lightAccent);
+            doc.roundedRect(pageWidth - margin - dateWidth - 6, currentY - 7, dateWidth + 6, 12, 2, 2, 'F');
+            
+            doc.setFont("helvetica", "italic");
+            doc.setFontSize(8);
+            doc.setTextColor(...accentColor);
+            doc.text(dateText, pageWidth - margin - 3, currentY, {align: 'right'});
+            
+            currentY += 12;
+            
+            // Experience description with modern bullet points
+            let description = exp.description || 
+                "• Led strategic initiatives resulting in significant operational improvements\n" +
+                "• Developed innovative solutions to complex challenges in the field\n" +
+                "• Collaborated with cross-functional teams to achieve organizational goals";
+            
+            // Format bullet points
+            let bullets;
+            if (description.includes('•') || description.includes('-')) {
+                bullets = description.split(/•|-/).filter(item => item.trim().length > 0);
+            } else {
+                bullets = description.split('.').filter(item => item.trim().length > 0);
+            }
+            
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(9);
+            doc.setTextColor(...bodyTextColor);
+            
+            bullets.forEach(bullet => {
+                if (bullet.trim()) {
+                    // Modern bullet point
+                    doc.setFillColor(...accentColor);
+                    doc.circle(contentX + 3, currentY - 3, 1.5, 'F');
+                    
+                    // Bullet text with indent
+                    const bulletText = doc.splitTextToSize(bullet.trim(), contentWidth - contentX - contentIndent);
+                    doc.text(bulletText, contentX + contentIndent, currentY);
+                    currentY += bulletText.length * 5 + 4;
+                }
+            });
+            
+            currentY += entrySpacing; // Space between experiences
+        });
+    } else {
+        // Add sample experience if none provided
+        addSampleExperience(doc);
+    }
+    
+    // ===== EDUCATION SECTION WITH VISUAL ELEMENTS =====
+    // Check if we need a new page
+    if (currentY > pageHeight - 100) {
+        doc.addPage();
+        currentY = margin + 20;
+        // Header for new page
+        doc.setFillColor(...lightAccent);
+        doc.rect(0, 0, pageWidth, margin + 10, 'F');
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(8);
+        doc.setTextColor(...primaryColor);
+        doc.text(userData.user_name || "Professional Resume", margin, margin + 5);
+    }
+    
+    // Draw education section header
+    drawSectionHeader(doc, "EDUCATION", margin, currentY, accentColor, primaryColor);
+    
+    currentY += 15;
+    
+    // Education entries with enhanced styling
+    if (userData.education && userData.education.length > 0) {
+        userData.education.forEach((edu, index) => {
+            // Check if we need a new page
+            if (currentY > pageHeight - 50) {
+                doc.addPage();
+                currentY = margin + 20;
+                // Header for new page
+                doc.setFillColor(...lightAccent);
+                doc.rect(0, 0, pageWidth, margin + 10, 'F');
+                doc.setFont("helvetica", "italic");
+                doc.setFontSize(8);
+                doc.setTextColor(...primaryColor);
+                doc.text(userData.user_name || "Professional Resume", margin, margin + 5);
+            }
+            
+            // Timeline dot
+            doc.setFillColor(...accentColor);
+            doc.circle(timelineX, currentY, 4, 'F');
+            
+            // Timeline line connecting dots
+            if (index < (userData.education.length - 1)) {
+                doc.setDrawColor(...accentColor);
+                doc.setLineWidth(1);
+                doc.line(timelineX, currentY + 4, timelineX, currentY + 25);
+            }
+            
+            // Degree with visual styling
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(11);
+            doc.setTextColor(...primaryColor);
+            doc.text(edu.degree || "Bachelor of Science", contentX, currentY);
+            
+            currentY += 8;
+            
+            // University name
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(10);
+            doc.setTextColor(...accentColor);
+            doc.text(edu.university || "University of Excellence", contentX, currentY);
+            
+            // Graduation date
+            const gradDate = formatDate(edu.graduation_date) || "20XX";
+            const dateWidth = doc.getStringUnitWidth(gradDate) * 8 * 0.352778;
+            
+            doc.setFillColor(...lightAccent);
+            doc.roundedRect(pageWidth - margin - dateWidth - 6, currentY - 7, dateWidth + 6, 12, 2, 2, 'F');
+            
+            doc.setFont("helvetica", "italic");
+            doc.setFontSize(8);
+            doc.setTextColor(...accentColor);
+            doc.text(gradDate, pageWidth - margin - 3, currentY, {align: 'right'});
+            
+            currentY += 20;
+        });
+    } else {
+        // Default education entry
+        doc.setFillColor(...accentColor);
+        doc.circle(timelineX, currentY, 4, 'F');
+        
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(...primaryColor);
+        doc.text("Bachelor of Science", contentX, currentY);
+        
+        currentY += 8;
+        
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(10);
+        doc.setTextColor(...accentColor);
+        doc.text("University of Excellence", contentX, currentY);
+        
+        const gradDate = "20XX";
+        const dateWidth = doc.getStringUnitWidth(gradDate) * 8 * 0.352778;
+        
+        doc.setFillColor(...lightAccent);
+        doc.roundedRect(pageWidth - margin - dateWidth - 6, currentY - 7, dateWidth + 6, 12, 2, 2, 'F');
+        
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(8);
+        doc.setTextColor(...accentColor);
+        doc.text(gradDate, pageWidth - margin - 3, currentY, {align: 'right'});
+        
+        currentY += 20;
+    }
+    
+    currentY += 5;
+    
+    // ===== CERTIFICATIONS WITH VISUAL ELEMENTS =====
+    // Check if we need a new page
+    if (currentY > pageHeight - 80) {
+        doc.addPage();
+        currentY = margin + 20;
+        // Header for new page
+        doc.setFillColor(...lightAccent);
+        doc.rect(0, 0, pageWidth, margin + 10, 'F');
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(8);
+        doc.setTextColor(...primaryColor);
+        doc.text(userData.user_name || "Professional Resume", margin, margin + 5);
+    }
+    
+    // Draw certifications section header
+    drawSectionHeader(doc, "CERTIFICATIONS & LICENSES", margin, currentY, accentColor, primaryColor);
+    
+    currentY += 15;
+    
+    // Certifications in styled list
+    const certifications = userData.certifications || [
+        "Professional Certification in Field of Expertise (20XX)",
+        "Advanced Practitioner Certificate (20XX)",
+        "Specialized Knowledge Credential (20XX)"
+    ];
+    
+    // Create modern badge-style certifications
+    const certColumns = certifications.length > 3 ? 2 : 1;
+    const certsPerColumn = Math.ceil(certifications.length / certColumns);
+    const certColumnWidth = contentWidth / certColumns;
+    
+    for (let i = 0; i < certifications.length; i++) {
+        const columnIndex = Math.floor(i / certsPerColumn);
+        const rowIndex = i % certsPerColumn;
+        
+        const xPos = margin + (columnIndex * certColumnWidth);
+        const yPos = currentY + (rowIndex * 14);
+        
+        // Certificate badge
+        doc.setFillColor(...lightAccent);
+        doc.roundedRect(xPos, yPos - 9, 8, 8, 2, 2, 'F');
+        
+        // Certificate icon
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(6);
+        doc.setTextColor(...accentColor);
+        doc.text("✓", xPos + 2.5, yPos - 3.5);
+        
+        // Certificate text
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.setTextColor(...bodyTextColor);
+        doc.text(certifications[i], xPos + 12, yPos);
+    }
+    
+    // Update Y position based on certifications
+    currentY += (Math.ceil(certifications.length / certColumns) * 14) + 5;
+    
+    // ===== MODERN FOOTER WITH BRANDING =====
+    // Add footer to all pages
+    const totalPages = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= totalPages; i++) {
+        doc.setPage(i);
+        
+        // Footer background
+        doc.setFillColor(...lightAccent);
+        doc.rect(0, pageHeight - margin - 15, pageWidth, margin + 15, 'F');
+        
+        // Page number
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(8);
+        doc.setTextColor(...primaryColor);
+        doc.text(`Page ${i} of ${totalPages}`, pageWidth - margin, pageHeight - margin - 5, {align: 'right'});
+        
+        // Personal tagline
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(8);
+        doc.setTextColor(...accentColor);
+        doc.text("Excellence in Every Endeavor", margin, pageHeight - margin - 5);
+    }
+    
+    // ===== HELPER FUNCTIONS =====
+    // Draw section header with consistent styling
+    function drawSectionHeader(doc, title, x, y, accentColor, textColor) {
+        // Section title
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(12);
+        doc.setTextColor(...textColor);
+        doc.text(title, x, y);
+        
+        // Section underline with accent color
+        doc.setDrawColor(...accentColor);
+        doc.setLineWidth(1.5);
+        doc.line(x, y + 5, x + doc.getStringUnitWidth(title) * 12 * 0.352778, y + 5);
+    }
+    
+    // Helper function for date formatting
+    function formatDate(dateString) {
+        if (!dateString) return 'YYYY';
+        
+        try {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) return dateString;
+            
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            return `${months[date.getMonth()]} ${date.getFullYear()}`;
+        } catch (e) {
+            return dateString || 'YYYY';
+        }
+    }
+    
+    // Helper function for sample experience
+    function addSampleExperience(doc) {
+        // Sample Experience 1
+        // Timeline dot
+        doc.setFillColor(...accentColor);
+        doc.circle(timelineX, currentY, 4, 'F');
+        
+        // Timeline line connecting dots
+        doc.setDrawColor(...accentColor);
+        doc.setLineWidth(1);
+        doc.line(timelineX, currentY + 4, timelineX, currentY + 65);
+        
+        // Job title
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(12);
+        doc.setTextColor(...primaryColor);
+        doc.text("Senior Project Manager", contentX, currentY);
+        
+        currentY += 8;
+        
+        // Company and location
+        doc.setFont("helvetica", "semibold");
+        doc.setFontSize(10);
+        doc.setTextColor(...accentColor);
+        doc.text("Innovative Solutions Group | San Francisco, CA", contentX, currentY);
+        
+        // Date range
+        const dateText = "Jan 2020 - Present";
+        const dateWidth = doc.getStringUnitWidth(dateText) * 8 * 0.352778;
+        
+        doc.setFillColor(...lightAccent);
+        doc.roundedRect(pageWidth - margin - dateWidth - 6, currentY - 7, dateWidth + 6, 12, 2, 2, 'F');
+        
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(8);
+        doc.setTextColor(...accentColor);
+        doc.text(dateText, pageWidth - margin - 3, currentY, {align: 'right'});
+        
+        currentY += 12;
+        
+        // Bullet points
+        const bullets = [
+            "Led cross-functional teams in the successful delivery of 15+ projects, consistently meeting deadlines and exceeding quality standards",
+            "Developed and implemented streamlined processes that improved operational efficiency by 35%",
+            "Managed client relationships and expectations through clear communication and strategic problem-solving"
+        ];
+        
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.setTextColor(...bodyTextColor);
+        
+        bullets.forEach(bullet => {
+            // Modern bullet point
+            doc.setFillColor(...accentColor);
+            doc.circle(contentX + 3, currentY - 3, 1.5, 'F');
+            
+            // Bullet text with indent
+            const bulletText = doc.splitTextToSize(bullet, contentWidth - contentX - contentIndent);
+            doc.text(bulletText, contentX + contentIndent, currentY);
+            currentY += bulletText.length * 5 + 4;
+        });
+        
+        currentY += entrySpacing;
+        
+        // Sample Experience 2
+        // Timeline dot
+        doc.setFillColor(...accentColor);
+        doc.circle(timelineX, currentY, 4, 'F');
+        
+        // Job title
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(12);
+        doc.setTextColor(...primaryColor);
+        doc.text("Project Coordinator", contentX, currentY);
+        
+        currentY += 8;
+        
+        // Company and location
+        doc.setFont("helvetica", "semibold");
+        doc.setFontSize(10);
+        doc.setTextColor(...accentColor);
+        doc.text("Strategic Ventures | Boston, MA", contentX, currentY);
+        
+        // Date range
+        const dateText2 = "May 2017 - Dec 2019";
+        const dateWidth2 = doc.getStringUnitWidth(dateText2) * 8 * 0.352778;
+        
+        doc.setFillColor(...lightAccent);
+        doc.roundedRect(pageWidth - margin - dateWidth2 - 6, currentY - 7, dateWidth2 + 6, 12, 2, 2, 'F');
+        
+        doc.setFont("helvetica", "italic");
+        doc.setFontSize(8);
+        doc.setTextColor(...accentColor);
+        doc.text(dateText2, pageWidth - margin - 3, currentY, {align: 'right'});
+        
+        currentY += 12;
+        
+        // Bullet points
+        const bullets2 = [
+            "Coordinated project activities and resources, ensuring alignment with organizational goals and objectives",
+            "Created detailed reports and presentations for senior management, providing key insights for strategic decision-making",
+            "Collaborated with internal and external stakeholders to optimize project outcomes and enhance customer satisfaction"
+        ];
+        
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.setTextColor(...bodyTextColor);
+        
+        bullets2.forEach(bullet => {
+            // Modern bullet point
+            doc.setFillColor(...accentColor);
+            doc.circle(contentX + 3, currentY - 3, 1.5, 'F');
+            
+            // Bullet text with indent
+            const bulletText = doc.splitTextToSize(bullet, contentWidth - contentX - contentIndent);
+            doc.text(bulletText, contentX + contentIndent, currentY);
+            currentY += bulletText.length * 5 + 4;
+        });
+        
+        currentY += entrySpacing;
+    }
+}
+// Handle resume generation button click
+$(document).on('click', '.generate-resume-btn', function() {
+    const templateId = $(this).closest('.template-preview').data('template');
+    const btn = $(this);
+    
+    // Show loading state
+    btn.html('<i class="fas fa-spinner fa-spin"></i> Preparing...');
+    btn.prop('disabled', true);
+    
+    // Fetch user data including experiences and projects
+    $.ajax({
+        url: '/generate_resume/' + templateId + '/',
+        method: 'GET',
+        success: function(response) {
+            if (response.success) {
+                // Get the full user data including experiences and projects
+                const userId = "{{ request.user.id }}";
+                
+                // First get experiences
+                $.ajax({
+                    url: '/get_experiences/',
+                    method: 'GET',
+                    data: { user_id: userId },
+                    success: function(expResponse) {
+                        if (expResponse.success) {
+                            // Then get projects
+                            $.ajax({
+                                url: '/get_projects/',
+                                method: 'GET',
+                                data: { user_id: userId },
+                                success: function(projResponse) {
+                                    if (projResponse.success) {
+                                        // Combine all data
+                                        const fullUserData = {
+                                            ...response.data[0],
+                                            experiences: expResponse.data,
+                                            projects: projResponse.data
+                                        };
+                                        
+                                        // Generate PDF with the complete user data
+                                        generateResumeWithJsPDF(templateId, fullUserData);
+                                    } else {
+                                        alert('Error: Could not fetch projects');
+                                    }
+                                },
+                                error: function() {
+                                    alert('Error fetching projects');
+                                },
+                                complete: function() {
+                                    // Reset button state
+                                    btn.html('Use Template ' + templateId);
+                                    btn.prop('disabled', false);
+                                }
+                            });
+                        } else {
+                            alert('Error: Could not fetch experiences');
+                        }
+                    },
+                    error: function() {
+                        alert('Error fetching experiences');
+                    }
+                });
+            } else {
+                alert('Error: Could not fetch user data');
+            }
+        },
+        error: function(xhr, status, error) {
+            alert('Error: ' + error);
+            // Reset button state
+            btn.html('Use Template ' + templateId);
+            btn.prop('disabled', false);
+        }
+    });
+});// Add smooth scrolling to all links
+$(document).ready(function(){
+    $("a").on('click', function(event) {
+        if (this.hash !== "") {
+            event.preventDefault();
+            var hash = this.hash;
+            
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top - 70
+            }, 800, function(){
+                window.location.hash = hash;
+            });
+        }
+    });
+    
+    // Close mobile menu when clicking on a nav link
+    $('.navbar-nav>li>a').on('click', function(){
+        $('.navbar-collapse').collapse('hide');
+    });
+});
+    </script>
+    <script src="{% static 'js/scripthome.js' %}"></script>
+    <!-- jsPDF for PDF generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+{% endblock %}

@@ -1,0 +1,1273 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>HR Professional Profile | Job Portal</title>
+    <link rel="stylesheet" href="{% static 'css/styleprofile.css' %}">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <style>
+        /* Custom styles for HR profile */
+        .company-info-card {
+            border-left: 4px solid #0d6efd;
+            background-color: #f8f9fa;
+        }
+        .hr-section {
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        /* Add to your CSS */
+#subscription-toggle {
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+#subscription-toggle.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+#subscription-toggle.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.subscription-features {
+    font-size: 0.85rem;
+}
+
+.subscription-features li {
+    margin-bottom: 5px;
+}
+        /* Add to your style.css */
+.document-preview {
+    min-height: 100px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.document-preview img {
+    max-width: 100%;
+    max-height: 200px;
+}
+
+.badge {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 5px 10px;
+}
+
+.badge.bg-success {
+    background-color: #28a745;
+}
+
+.badge.bg-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.badge.bg-danger {
+    background-color: #dc3545;
+}
+
+#company-logo-preview {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#company-logo-preview img {
+    max-width: 100%;
+    max-height: 100%;
+}
+/* Custom Popup Styles */
+.notification-popup {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    transform: translateX(150%);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 9999;
+    border-left: 5px solid #4BB543;
+}
+
+.notification-popup.show {
+    transform: translateX(0);
+}
+
+.popup-icon {
+    font-size: 28px;
+    color: #4BB543;
+    margin-right: 15px;
+}
+
+.popup-content {
+    flex: 1;
+}
+
+.popup-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.popup-message {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+.popup-close {
+    color: #999;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: all 0.3s;
+}
+
+.popup-close:hover {
+    color: #555;
+}
+
+
+.progress-bar::before {
+    display: none;
+}
+
+@keyframes progress {
+    100% {
+        width: 0;
+    }
+}
+body {
+    padding-top: 70px; /* Adjust this value based on your navbar height */
+}
+    </style>
+    {% endblock %}
+    {% block content %}
+   
+    <div class="modal fade" id="premiumModal" tabindex="-1" aria-labelledby="premiumModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content rounded-4 shadow">
+            <div class="modal-header bg-warning bg-gradient text-dark">
+              <h5 class="modal-title" id="premiumModalLabel">Premium Access Required</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>To view the user list, please upgrade to a <strong>Premium Membership</strong>.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <a href="{% url 'payment'%}" class="btn btn-primary">Active Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="container">
+        <!-- Alert for notifications -->
+        <div id="alert-container"></div>
+        
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="profile-nav">
+                    <div class="sidebar-box">
+                        <h5 class="mb-3">Profile Sections</h5>
+                        <nav class="nav flex-column">
+                            <a class="nav-link active" href="#personal-info-section">
+                                <i class="fas fa-user"></i> Personal Info
+                            </a>
+                            <a class="nav-link" href="#company-info-section">
+                                <i class="fas fa-building"></i> Company Info
+                            </a>
+                            <a class="nav-link" href="#hr-details-section">
+                                <i class="fas fa-id-card"></i> HR Details
+                            </a>
+                        </nav>
+                        <!-- Add this in the sidebar section, after the Verification Status card -->
+                        <!-- Replace your existing subscription card with this -->
+                        <div class="card mt-4">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0">Subscription Status</h5>
+                            </div>
+                            <div class="card-body text-center">
+                                <div id="subscription-status-container">
+                                    {% if hr_profile.is_active %}
+                                        <h3 class="text-success">Active</h3>
+                                        <button id="subscription-toggle" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-times"></i> Unsubscribe
+                                        </button>
+                                    {% else %}
+                                        <h3 class="text-danger">Inactive</h3>
+                                        <button id="subscription-toggle" class="btn btn-success btn-sm">
+                                            <i class="fas fa-crown"></i> Subscribe
+                                        </button>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>  </div>
+
+                    <!-- Verification Status Section -->
+                    <div class="card">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0">Verification Status</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Email Verification
+                                    <span id="email-verification-status" class="badge bg-success">Verified</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Company Verification
+                                    <span id="company-verification-status" class="badge bg-warning">Pending</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    HR Identity Verification
+                                    <span id="hr-verification-status" class="badge bg-warning">Pending</span>
+                                </li>
+                            </ul>
+                            <div class="alert alert-info mt-3">
+                                <i class="fas fa-info-circle"></i> Verification typically takes 1-2 business days after document submission.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Activity Summary -->
+                    <div class="sidebar-box">
+                        <h5 class="mb-3">Activity Summary</h5>
+                        <div class="mb-2">
+                            <i class="fas fa-briefcase mr-2 text-primary"></i>
+                            <span><strong id="jobs-posted-count">0</strong> jobs posted</span>
+                        </div>
+                        <div class="mb-2">
+                            <i class="fas fa-users mr-2 text-primary"></i>
+                            <span><strong id="candidates-reviewed">0</strong> candidates reviewed</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-calendar-check mr-2 text-primary"></i>
+                            <span><strong id="interviews-scheduled">0</strong> interviews scheduled</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Profile Completion -->
+<div class="profile-container">
+    <div class="profile-content">
+        <div class="profile-completion">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="mb-0">Profile Completion</h5>
+                <span id="completion-percentage">0%</span>
+            </div>
+            <div class="progress" style="height: 10px;">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: 0%;" id="myProgressBar"></div>
+            </div>
+            
+            <div class="mt-2 text-muted small">
+                <span id="completion-message">Complete your profile to access all HR features</span>
+                <div id="completion-tips" class="mt-1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                <!-- Personal Information -->
+                <div class="profile-container" id="personal-info-section">
+                    <div class="profile-header">
+                        <h5 class="mb-0">Personal Information</h5>
+                    </div>
+                    <div class="profile-content">
+                        <form id="personal-info-form">
+                            <div class="row">
+                                <div class="col-md-4 text-center">
+                                    <div class="profile-picture-container">
+                                        <img id="profile-picture" src="/api/placeholder/150/150" alt="Profile Picture" class="profile-picture">
+                                        <label for="profile-picture-input" class="edit-picture">
+                                            <i class="fas fa-camera"></i>
+                                        </label>
+                                        <input type="file" id="profile-picture-input" class="file-input-hidden" accept="image/*" name="profile_picture">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="username">Full Name</label>
+                                        <input type="text" class="form-control" id="username" name="username" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mobile">Mobile Number</label>
+                                        <input type="text" class="form-control" id="mobile" name="mobile">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="linkedin">LinkedIn Profile</label>
+                                        <input type="url" class="form-control" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Company Information -->
+                <div class="profile-container" id="company-info-section">
+                    <div class="profile-header">
+                        <h5 class="mb-0">Company Information</h5>
+                    </div>
+                    <div class="profile-content">
+                        <form id="company-info-form">
+                            <div class="card company-info-card mb-4">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="company-name">Company Name</label>
+                                        <input type="text" class="form-control" id="company-name" name="company_name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company-email">Company Email</label>
+                                        <input type="email" class="form-control" id="company-email" name="company_email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company-website">Company Website</label>
+                                        <input type="url" class="form-control" id="company-website" name="company_website" placeholder="https://">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company-industry">Industry</label>
+                                        <select class="form-control" id="company-industry" name="company_industry">
+                                            <option value="">Select Industry</option>
+                                            <option value="IT">Information Technology</option>
+                                            <option value="Finance">Finance</option>
+                                            <option value="Healthcare">Healthcare</option>
+                                            <option value="Education">Education</option>
+                                            <option value="Manufacturing">Manufacturing</option>
+                                            <option value="Retail">Retail</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company-size">Company Size</label>
+                                        <select class="form-control" id="company-size" name="company_size">
+                                            <option value="">Select Size</option>
+                                            <option value="1-10">1-10 employees</option>
+                                            <option value="11-50">11-50 employees</option>
+                                            <option value="51-200">51-200 employees</option>
+                                            <option value="201-500">201-500 employees</option>
+                                            <option value="501-1000">501-1000 employees</option>
+                                            <option value="1001+">1001+ employees</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company-description">Company Description</label>
+                                        <textarea class="form-control" id="company-description" name="company_description" rows="3"></textarea>
+                                    </div>
+                                    <!-- Company Logo Section -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5>Company Logo</h5>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label>Current Logo</label>
+            <div id="company-logo-preview" class="mb-3">
+                <!-- Logo will be displayed here -->
+            </div>
+            <div class="input-group">
+                <input type="file" class="form-control" id="company-logo" accept="image/*">
+                <button id="company-logo-upload" class="btn btn-primary">Upload Logo</button>
+            </div>
+            <small class="form-text text-muted">Max 2MB (JPG, PNG, GIF)</small>
+        </div>
+    </div>
+</div>
+
+                                    <button type="submit" class="btn btn-primary">Save Company Info</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+               <!-- HR Details -->
+<div class="profile-container" id="hr-details-section">
+    <div class="profile-header">
+        <h5 class="mb-0">HR Professional Details</h5>
+    </div>
+    <div class="profile-content">
+        <form id="hr-details-form">
+            <div class="hr-section">
+                <h6><i class="fas fa-user-tie mr-2"></i> Professional Information</h6>
+                <div class="form-group">
+                    <label for="hr-position">Your Position *</label>
+                    <input type="text" class="form-control" id="hr-position" name="hr_position" required>
+                </div>
+                <div class="form-group">
+                    <label for="hr-department">Department *</label>
+                    <input type="text" class="form-control" id="hr-department" name="hr_department" required>
+                </div>
+                <div class="form-group">
+                    <label for="hr-specialization">HR Specialization</label>
+                    <select class="form-control" id="hr-specialization" name="hr_specialization" multiple>
+                        <option value="Recruitment">Recruitment</option>
+                        <option value="Training">Training & Development</option>
+                        <option value="Compensation">Compensation & Benefits</option>
+                        <option value="Employee Relations">Employee Relations</option>
+                        <option value="Talent Management">Talent Management</option>
+                        <option value="HR Analytics">HR Analytics</option>
+                    </select>
+                    <small class="form-text text-muted">Hold Ctrl/Cmd to select multiple</small>
+                </div>
+            </div>
+
+            <div class="hr-section">
+                <h6><i class="fas fa-certificate mr-2"></i> HR Certification</h6>
+                <div class="form-group">
+                    <label for="hr-certification">Certification</label>
+                    <input type="text" class="form-control" id="hr-certification" name="hr_certification" placeholder="e.g., PHR, SHRM-CP">
+                </div>
+                <div class="form-group">
+                    <label for="certification-year">Year Obtained</label>
+                    <input type="number" class="form-control" id="certification-year" name="certification_year" min="1900" max="2099">
+                </div>
+            </div>
+
+            <!-- Verification Documents Section -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>Verification Documents</h5>
+                    <small class="text-muted">These are optional but required for verification</small>
+                </div>
+                <div class="card-body">
+                    <!-- HR ID Proof -->
+                    <div class="form-group mb-4">
+                        <label>HR ID Proof</label>
+                        <div id="hr-id-proof-preview" class="document-preview mb-3">
+                            <p class="text-muted">No document uploaded</p>
+                        </div>
+                        <div class="input-group">
+                            <input type="file" class="form-control" id="hr-id-proof" accept=".pdf,.jpg,.jpeg,.png">
+                            <button type="button" id="hr-id-proof-upload" class="btn btn-outline-primary">Upload Document</button>
+                        </div>
+                        <small class="form-text text-muted">Government-issued ID (Max 5MB, PDF or image)</small>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="save-hr-details-btn">Save HR Details</button>
+        </form>
+    </div>
+</div>
+    <!-- Custom Popup Notification -->
+<div class="notification-popup">
+    <div class="popup-icon">
+        <i class="fas fa-check-circle"></i>
+    </div>
+    <div class="popup-content">
+        <div class="popup-title">Success!</div>
+        <p class="popup-message">Your changes have been saved successfully.</p>
+    </div>
+    <div class="popup-close">
+        <i class="fas fa-times"></i>
+    </div>
+    <div class="progress-bar"></div>
+</div>
+</div>
+        </div>
+    </div>
+
+        <!-- HR Panel Footer -->
+        {% endblock %}
+        {% block scripts %}
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // In your hrprofile.html template
+        $(document).ready(function() {
+            // Fetch HR profile data on page load
+            
+            function fetchHRProfile() {
+                $.ajax({
+                    url: '/hr_profile/',
+                    method: 'GET',
+                    success: function(response) {
+                        if (response.success) {
+                            const hrData = response.data;
+                            console.log('HR Data:', hrData);
+                            console.log(hrData.user_name)
+                            // Personal Info
+                            $('#username').val(hrData.user_name || '');
+                            $('#email').val(hrData.email || '').prop('disabled', true);
+                            $('#mobile').val(hrData.mobile || '');
+                            $('#linkedin').val(hrData.linkedin || '');
+                            
+                            if (hrData.profile_picture) {
+                                $('#profile-picture').attr('src', 'data:image/jpeg;base64,' + hrData.profile_picture);
+                            }
+                            
+                            // Company Info
+                            $('#company-name').val(hrData.company_name || '');
+                            $('#company-email').val(hrData.company_email || '');
+                            $('#company-website').val(hrData.company_website || '');
+                            $('#company-industry').val(hrData.company_industry || '');
+                            $('#company-size').val(hrData.company_size || '');
+                            $('#company-description').val(hrData.company_description || '');
+                            
+                            // HR Details
+                            $('#hr-position').val(hrData.hr_position || '');
+                            $('#hr-department').val(hrData.hr_department || '');
+                            $('#hr-certification').val(hrData.hr_certification || '');
+                            $('#certification-year').val(hrData.certification_year || '');
+                            
+                            // Set multi-select values
+                            if (hrData.hr_specialization) {
+                                const specializations = hrData.hr_specialization.split(',');
+                                $('#hr-specialization').val(specializations);
+                            }
+                            
+                            // Activity counts
+                            $('#jobs-posted-count').text(hrData.jobs_posted || '0');
+                            $('#candidates-reviewed').text(hrData.candidates_reviewed || '0');
+                            $('#interviews-scheduled').text(hrData.interviews_scheduled || '0');
+                            
+                       
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        showAlert('error', 'Failed to load profile data: ' + error);
+                    }
+                });
+            }
+        // Function to show custom popup notification
+        function showCustomPopup(message) {
+            const popup = $('.notification-popup');
+            popup.find('.popup-message').text(message);
+            popup.addClass('show');
+            
+            // Close button functionality
+            popup.find('.popup-close').on('click', function() {
+                popup.removeClass('show');
+            });
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                popup.removeClass('show');
+                // Refresh the page after popup hides
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
+            }, 3000);
+        }
+        $(document).ready(function() {
+            // Fetch HR profile data on page load
+            
+            
+            
+    
+            // Initial data fetch
+            
+        
+            // Handle form submission for personal information
+            $('#personal-info-form').on('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                
+                $.ajax({
+                    url: '/update_hr_profile/',
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response.success) {
+                            showCustomPopup('Personal information updated successfully!');
+                            calculateCompletionPercentage();
+                        } else {
+                            showAlert('error', response.message || 'Error updating profile');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        showAlert('error', 'Error updating profile: ' + error);
+                    }
+                });
+            });
+            
+            // Handle form submission for company information
+            $('#company-info-form').on('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                
+                // Add company logo file if selected
+                const logoFile = $('#company-logo')[0].files[0];
+                if (logoFile) {
+                    formData.append('company_logo', logoFile);
+                }
+                
+                $.ajax({
+                    url: '/update_company_info/',
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response.success) {
+                            showCustomPopup('Company information updated successfully!');
+                            calculateCompletionPercentage();
+                        } else {
+                            showAlert('error', response.message || 'Error updating company info');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        showAlert('error', 'Error updating company info: ' + error);
+                    }
+                });
+            });
+            
+           // Handle form submission for HR details
+$('#hr-details-form').on('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    
+    // Add regular form fields
+    formData.append('hr_position', $('#hr-position').val());
+    formData.append('hr_department', $('#hr-department').val());
+    formData.append('hr_certification', $('#hr-certification').val());
+    formData.append('certification_year', $('#certification-year').val());
+    
+    // Add multiple select values
+    const specializations = $('#hr-specialization').val();
+    if (specializations) {
+        formData.append('hr_specialization', specializations.join(','));
+    }
+    
+    // Add file uploads if selected
+    const idProofFile = $('#hr-id-proof')[0].files[0];
+    if (idProofFile) {
+        formData.append('hr_id_proof', idProofFile);
+    }
+    
+    // Set the update type
+    formData.append('type', 'hr_details');
+    
+    $.ajax({
+        url: '/update_hr_details/',
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        beforeSend: function() {
+            $('#save-hr-details-btn').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Saving...');
+        },
+        success: function(response) {
+            if (response.success) {
+                showCustomPopup('HR details updated successfully!');
+                calculateCompletionPercentage();
+                
+                // Update verification status if documents were uploaded
+                if (idProofFile) {
+                    $('#hr-verification-status').removeClass('bg-warning').addClass('bg-info').text('Pending Review');
+                }
+            } else {
+                showAlert('error', response.message || 'Error updating HR details');
+            }
+        },
+        error: function(xhr, status, error) {
+            showAlert('error', 'Error updating HR details: ' + error);
+        },
+        complete: function() {
+            $('#save-hr-details-btn').prop('disabled', false).text('Save HR Details');
+        }
+    });
+});
+            
+            // Handle profile picture upload
+            $('#profile-picture-input').on('change', function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const formData = new FormData();
+                formData.append('profile_picture', file);
+                
+                $.ajax({
+                    url: '/upload_profile_picture/',
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response.success) {
+                            $('#profile-picture').attr('src', response.image_url);
+                            showCustomPopup('Profile picture updated successfully!');
+                        } else {
+                            showAlert('error', response.message || 'Error updating profile picture');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        showAlert('error', 'Error updating profile picture: ' + error);
+                    }
+                });
+            });
+            
+            // Helper function to show alerts
+            function showAlert(type, message) {
+                const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+                const alertHtml = `
+                    <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                        ${message}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                `;
+                $('#alert-container').html(alertHtml);
+                setTimeout(() => {
+                    $('.alert').alert('close');
+                }, 5000);
+            }
+            
+            // Recalculate completion when fields change
+            $('input, select, textarea').on('change keyup', calculateCompletionPercentage);
+            
+            // Initial data fetch
+            fetchHRProfile();
+        });
+
+        
+            
+    // Handle form submissions
+    $('form').on('submit', function(e) {
+        e.preventDefault();
+        const formId = $(this).attr('id');
+        let formData = {};
+        let updateType = '';
+        
+        if (formId === 'personal-info-form') {
+            updateType = 'personal_info';
+            formData = {
+                username: $('#username').val(),
+                mobile: $('#mobile').val(),
+                linkedin: $('#linkedin').val()
+            };
+        } else if (formId === 'company-info-form') {
+            updateType = 'company_info';
+            formData = {
+                company_name: $('#company-name').val(),
+                company_email: $('#company-email').val(),
+                company_website: $('#company-website').val(),
+                company_industry: $('#company-industry').val(),
+                company_size: $('#company-size').val(),
+                company_description: $('#company-description').val()
+            };
+        } else if (formId === 'hr-details-form') {
+            updateType = 'hr_details';
+            formData = {
+                hr_position: $('#hr-position').val(),
+                hr_department: $('#hr-department').val(),
+                hr_certification: $('#hr-certification').val(),
+                certification_year: $('#certification-year').val(),
+                hr_specialization: $('#hr-specialization').val() ? $('#hr-specialization').val().join(',') : ''
+            };
+        }
+        
+        // Add type to form data
+        formData.type = updateType;
+        
+        $.ajax({
+            url: '/hr_profile/',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            success: function(response) {
+                if (response.success) {
+                    showCustomPopup('Profile updated successfully!');
+                    calculateCompletionPercentage();
+                } else {
+                    showAlert('error', response.message || 'Error updating profile');
+                }
+            },
+            error: function(xhr, status, error) {
+                showAlert('error', 'Error updating profile: ' + error);
+            }
+        });
+    });
+    
+    // Handle profile picture upload
+    $('#profile-picture-input').on('change', function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        
+        const formData = new FormData();
+        formData.append('profile_picture', file);
+        
+        $.ajax({
+            url: '/upload_profile_picture/',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.success) {
+                    if (response.image_url) {
+                        $('#profile-picture').attr('src', response.image_url);
+                    }
+                    showCustomPopup('Profile picture updated successfully!');
+                } else {
+                    showAlert('error', response.message || 'Error updating profile picture');
+                }
+            },
+            error: function(xhr, status, error) {
+                showAlert('error', 'Error updating profile picture: ' + error);
+            }
+        });
+    });
+    
+    // Initial data fetch
+    fetchHRProfile();
+});
+// Handle company logo upload
+$('#company-logo').on('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    // Validate file type and size
+    const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    const maxSize = 2 * 1024 * 1024; // 2MB
+    
+    if (!validTypes.includes(file.type)) {
+        showAlert('error', 'Only JPG, PNG, or GIF images are allowed');
+        return;
+    }
+    
+    if (file.size > maxSize) {
+        showAlert('error', 'Image size must be less than 2MB');
+        return;
+    }
+    
+    const formData = new FormData();
+    formData.append('company_logo', file);
+    
+    $.ajax({
+        url: '/upload_company_logo/',
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        beforeSend: function() {
+            $('#company-logo-upload').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Uploading...');
+        },
+        success: function(response) {
+            if (response.success && response.logo_url) {
+                $('#company-logo-preview').attr('src', response.logo_url);
+                showCustomPopup(response.message);
+            } else {
+                showAlert('error', response.message || 'Error uploading logo');
+            }
+        },
+        error: function(xhr, status, error) {
+            showAlert('error', 'Error uploading logo: ' + error);
+        },
+        complete: function() {
+            $('#company-logo-upload').prop('disabled', false).html('Upload Logo');
+        }
+    });
+});
+
+// Handle verification documents
+function handleDocumentUpload(inputId, docType) {
+    const file = $(`#${inputId}`)[0].files[0];
+    if (!file) return;
+    
+    const validTypes = ['application/pdf', 'image/jpeg', 'image/png'];
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    
+    if (!validTypes.includes(file.type)) {
+        showAlert('error', 'Only PDF, JPG, or PNG files are allowed');
+        return;
+    }
+    
+    if (file.size > maxSize) {
+        showAlert('error', 'File size must be less than 5MB');
+        return;
+    }
+    
+    const formData = new FormData();
+    formData.append(docType, file);
+    
+    $.ajax({
+        url: '/upload_verification_docs/',
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        beforeSend: function() {
+            $(`#${inputId}-upload`).prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Uploading...');
+        },
+        success: function(response) {
+            if (response.success) {
+                showCustomPopup(response.message);
+                // Update document preview
+                fetchDocument(docType, $(`#${inputId}-preview`));
+            } else {
+                showAlert('error', response.message || 'Error uploading document');
+            }
+        },
+        error: function(xhr, status, error) {
+            showAlert('error', 'Error uploading document: ' + error);
+        },
+        complete: function() {
+            $(`#${inputId}-upload`).prop('disabled', false).html('Upload Document');
+        }
+    });
+}
+
+// Fetch and display a document
+function fetchDocument(docType, previewElement) {
+    $.ajax({
+        url: `/get_document/${docType}/`,
+        method: 'GET',
+        success: function(response) {
+            if (response.success && response.data) {
+                const src = `data:${response.content_type};base64,${response.data}`;
+                
+                if (response.content_type === 'application/pdf') {
+                    previewElement.html(`
+                        <embed src="${src}" type="application/pdf" width="100%" height="300px">
+                        <a href="${src}" target="_blank" class="btn btn-sm btn-primary mt-2">View Full Document</a>
+                    `);
+                } else {
+                    previewElement.html(`<img src="${src}" class="img-fluid">`);
+                }
+            }
+        }
+    });
+}
+
+// Initialize document previews when page loads
+$(document).ready(function() {
+    // Load company logo if exists
+    fetchDocument('company_logo', $('#company-logo-preview'));
+    
+    // Load verification documents if they exist
+    fetchDocument('hr_id_proof', $('#hr-id-proof-preview'));
+    fetchDocument('company_authorization', $('#company-auth-preview'));
+    
+    // Set up document upload handlers
+    $('#hr-id-proof').on('change', function() {
+        handleDocumentUpload('hr-id-proof', 'hr_id_proof');
+    });
+    
+    $('#company-authorization').on('change', function() {
+        handleDocumentUpload('company-authorization', 'company_authorization');
+    });
+});
+// Handle HR ID proof upload
+$('#hr-id-proof-upload').on('click', function() {
+    const file = $('#hr-id-proof')[0].files[0];
+    if (!file) {
+        showAlert('error', 'Please select a file first');
+        return;
+    }
+    
+    const formData = new FormData();
+    formData.append('hr_id_proof', file);
+    formData.append('type', 'hr_id_proof');
+    
+    $.ajax({
+        url: '/upload_verification_docs/',
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        beforeSend: function() {
+            $('#hr-id-proof-upload').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Uploading...');
+        },
+        success: function(response) {
+            if (response.success) {
+                showCustomPopup('ID proof uploaded successfully!');
+                updateDocumentPreview('hr-id-proof-preview', file);
+                $('#hr-verification-status').removeClass('bg-warning').addClass('bg-info').text('Pending Review');
+            } else {
+                showAlert('error', response.message || 'Error uploading document');
+            }
+        },
+        error: function(xhr, status, error) {
+            showAlert('error', 'Error uploading document: ' + error);
+        },
+        complete: function() {
+            $('#hr-id-proof-upload').prop('disabled', false).html('Upload Document');
+        }
+    });
+});
+
+// Function to update document preview
+function updateDocumentPreview(previewId, file) {
+    const previewElement = $('#' + previewId);
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+        if (file.type === 'application/pdf') {
+            previewElement.html(`
+                <embed src="${e.target.result}" type="application/pdf" width="100%" height="300px">
+                <a href="${e.target.result}" target="_blank" class="btn btn-sm btn-primary mt-2">View Full Document</a>
+            `);
+        } else {
+            previewElement.html(`<img src="${e.target.result}" class="img-fluid">`);
+        }
+    };
+    
+    reader.readAsDataURL(file);
+}
+
+
+
+// Helper function to get CSRF token
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+// Modify the showCustomPopup function to not refresh the page
+function showCustomPopup(message) {
+    const popup = $('.notification-popup');
+    popup.find('.popup-message').text(message);
+    popup.addClass('show');
+    
+    // Close button functionality
+    popup.find('.popup-close').on('click', function() {
+        popup.removeClass('show');
+    });
+    
+    // Hide after 3 seconds (remove the refresh code)
+    setTimeout(() => {
+        popup.removeClass('show');
+    }, 3000);
+}
+
+$(document).ready(function() {
+    // Handle subscription toggle
+    $(document).on('click', '#subscription-toggle', function(e) {
+        e.preventDefault();
+        const button = $(this);
+        const container = $('#subscription-status-container');
+        
+        // Determine current state from the button text
+        const isSubscribing = button.text().includes('Subscribe');
+        
+        $.ajax({
+            url: '/update_subscription/',
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            beforeSend: function() {
+                button.prop('disabled', true)
+                      .html('<i class="fas fa-spinner fa-spin"></i> Processing...');
+            },
+            success: function(response) {
+                if (response.success) {
+                    // Update the subscription status display based on button action
+                    if (isSubscribing) {
+                        container.html(`
+                            <h3 class="text-success">Active</h3>
+                            <button id="subscription-toggle" class="btn btn-danger btn-sm">
+                                <i class="fas fa-times"></i> Unsubscribe
+                            </button>
+                        `);
+                    } else {
+                        container.html(`
+                            <h3 class="text-danger">Inactive</h3>
+                            <button id="subscription-toggle" class="btn btn-success btn-sm">
+                                <i class="fas fa-crown"></i> Subscribe
+                            </button>
+                        `);
+                    }
+                    
+                    // Update the User List link in the navbar
+                    const userListLink = $('.nav-item a[href*="hr_userlist"]');
+                    if (isSubscribing) {
+                        userListLink.removeClass('text-muted')
+                                   .removeAttr('data-bs-toggle')
+                                   .removeAttr('data-bs-target')
+                                   .attr('href', '{% url "hr_userlist" %}');
+                    } else {
+                        userListLink.addClass('text-muted')
+                                    .removeAttr('href')
+                                    .attr('data-bs-toggle', 'modal')
+                                    .attr('data-bs-target', '#premiumModal');
+                    }
+                    
+                    showCustomPopup(response.message);
+                    
+                    // Refresh the page after a short delay to show the popup
+                    setTimeout(function() {
+                        location.reload();
+                    }, 1500); // 1.5 second delay before refresh
+                } else {
+                    showAlert('error', response.message || 'Failed to update subscription');
+                    button.prop('disabled', false);
+                    // Reset button to original state
+                    if (isSubscribing) {
+                        button.html('<i class="fas fa-crown"></i> Subscribe');
+                    } else {
+                        button.html('<i class="fas fa-times"></i> Unsubscribe');
+                    }
+                }
+            },
+            error: function(xhr, status, error) {
+                showAlert('error', `Error: ${error}`);
+                button.prop('disabled', false);
+                // Reset button to original state
+                if (isSubscribing) {
+                    button.html('<i class="fas fa-crown"></i> Subscribe');
+                } else {
+                    button.html('<i class="fas fa-times"></i> Unsubscribe');
+                }
+            }
+        });
+    });
+});
+
+
+
+    </script>
+    <script>
+        // Function to calculate profile completion percentage
+        function calculateCompletionPercentage() {
+            let completedFields = 0;
+            const totalFields = 18; // Total number of fields we're checking
+            
+            // Personal Info Section (5 fields)
+            if ($('#username').val()) completedFields++;
+            if ($('#email').val()) completedFields++;
+            if ($('#mobile').val()) completedFields++;
+            if ($('#linkedin').val()) completedFields++;
+            if ($('#profile-picture').attr('src') !== '/api/placeholder/150/150') completedFields++;
+            
+            // Company Info Section (7 fields)
+            if ($('#company-name').val()) completedFields++;
+            if ($('#company-email').val()) completedFields++;
+            if ($('#company-website').val()) completedFields++;
+            if ($('#company-industry').val()) completedFields++;
+            if ($('#company-size').val()) completedFields++;
+            if ($('#company-description').val()) completedFields++;
+            if ($('#company-logo-preview').html().indexOf('No document uploaded') === -1) completedFields++;
+            
+            // HR Details Section (6 fields)
+            if ($('#hr-position').val()) completedFields++;
+            if ($('#hr-department').val()) completedFields++;
+            if ($('#hr-certification').val()) completedFields++;
+            if ($('#certification-year').val()) completedFields++;
+            if ($('#hr-specialization').val() && $('#hr-specialization').val().length > 0) completedFields++;
+            if ($('#hr-id-proof-preview').html().indexOf('No document uploaded') === -1) completedFields++;
+            
+            // Calculate percentage
+            const percentage = Math.round((completedFields / totalFields) * 100);
+            
+            // Update progress bar and text
+            $('#myProgressBar').css('width', percentage + '%');
+            $('#completion-percentage').text(percentage + '%');
+            
+            // Change progress bar color based on percentage
+            if (percentage < 30) {
+                $('#myProgressBar').removeClass('bg-warning bg-success').addClass('bg-danger');
+            } else if (percentage < 70) {
+                $('#myProgressBar').removeClass('bg-danger bg-success').addClass('bg-warning');
+            } else {
+                $('#myProgressBar').removeClass('bg-danger bg-warning').addClass('bg-success');
+            }
+            
+            // Update completion message
+            let message = '';
+            let tips = '';
+            
+            if (percentage === 100) {
+                message = 'Your profile is complete!';
+            } else if (percentage >= 70) {
+                message = 'Almost there! Just a few more details needed.';
+            } else if (percentage >= 30) {
+                message = 'Your profile is partially complete.';
+            } else {
+                message = 'Your profile needs more information.';
+            }
+            
+            // Provide specific tips based on missing fields
+            if (!$('#company-name').val()) tips += '<li>Add your company name</li>';
+            if (!$('#hr-position').val()) tips += '<li>Specify your HR position</li>';
+            if (!$('#company-logo-preview').html()) tips += '<li>Upload a company logo</li>';
+            if (!$('#hr-id-proof-preview').html()) tips += '<li>Upload HR ID proof for verification</li>';
+            
+            $('#completion-message').text(message);
+            if (tips) {
+                $('#completion-tips').html('<strong>To complete your profile:</strong><ul>' + tips + '</ul>');
+            } else {
+                $('#completion-tips').empty();
+            }
+            
+            return percentage;
+        }
+        
+        // Call the function when the page loads
+        $(document).ready(function() {
+            // Initial calculation
+            calculateCompletionPercentage();
+            
+            // Recalculate when any form field changes
+            $('input, select, textarea').on('change keyup', function() {
+                calculateCompletionPercentage();
+            });
+            
+            // Also recalculate when file uploads complete
+            $(document).on('ajaxComplete', function() {
+                calculateCompletionPercentage();
+            });
+        });
+        </script>
+    <script>
+
+</script>
+{% endblock %}

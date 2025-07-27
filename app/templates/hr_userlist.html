@@ -1,0 +1,1050 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>HR Dashboard - User Management</title>
+    <link rel="stylesheet" href="{% static 'css/stylehruser.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 56px;
+        }
+        
+        .hr-banner {
+            background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+            color: white;
+            padding: 85px 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .banner-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" d="M50,0 v100 M0,50 h100"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .banner-title {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            font-size: 24px;
+            margin-bottom: 2px;
+        }
+        
+        .banner-subtitle {
+            opacity: 0.85;
+            font-size: 15px;
+        }
+        
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+            margin-left: -12px;
+            transition: transform 0.3s;
+        }
+        
+        .user-avatar:hover {
+            transform: translateY(-5px);
+            z-index: 2;
+        }
+        
+        .user-avatar:first-child {
+            margin-left: 0;
+        }
+        
+        .user-more {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: -12px;
+            border: 3px solid white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .stat-box {
+            background-color: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 10px 15px;
+            backdrop-filter: blur(5px);
+            display: inline-flex;
+            align-items: center;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        
+        .stat-icon {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            background-color: #4cd964;
+            margin-left: 15px;
+        }
+        
+        .user-card {
+            transition: box-shadow 0.3s ease;
+            border: 1px solid #dee2e6;
+        }
+        
+        .user-card:hover {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        
+        .skill-badge {
+            font-size: 0.75rem;
+        }
+        
+        .dropdown-item {
+            cursor: pointer;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .modal-content {
+            border-radius: 15px;
+        }
+        
+        .pagination-button {
+            min-width: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .hr-banner {
+                padding: 20px 0;
+            }
+            
+            .banner-title {
+                font-size: 20px;
+            }
+            
+            .user-section {
+                margin-top: 20px;
+            }
+            
+            .stat-box {
+                margin-top: 15px;
+                padding: 8px 12px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<!-- Navigation Bar -->
+
+<!-- Banner Section -->
+<div class="container mt-4 mb-4">
+    <div class="hr-banner">
+        <div class="banner-pattern"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h1 class="banner-title">HR Management Dashboard</h1>
+                            <p class="banner-subtitle">View and manage right candidates.</p>
+                            
+                            <div class="mt-3">
+                                <div class="stat-box">
+                                    <i class="fas fa-users stat-icon"></i>
+                                    <span>{{ users|length }} Total Users</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 text-lg-end user-section">
+                    <div class="d-flex flex-column align-items-lg-end">
+                        <div class="mt-3">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+    <!-- Page Header -->
+    <div class="mb-4">
+        <h1 class="h2">User Management</h1>
+        <p class="text-muted">Manage and filter candidates</p>
+    </div>
+    
+    <!-- Filters Section -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="h5 mb-0">
+                    <i class="fas fa-filter text-primary me-2"></i>
+                    Filter Candidates
+                </h2>
+                <span class="text-muted d-none d-md-block">Refine your search results</span>
+            </div>
+            
+            <form id="filterForm" method="get">
+                <!-- First Row - Skills, Year, Location -->
+                <div class="row mb-3">
+                    <!-- Skills Filter -->
+                    <div class="col-md-4 mb-3">
+                        <label for="skillsInput" class="form-label">
+                            <i class="fas fa-code text-primary me-2"></i>
+                            Skills
+                        </label>
+                        <div class="position-relative">
+                            <input type="text" id="skillsInput" class="form-control" placeholder="Type to search skills...">
+                            <div id="skillsDropdown" class="dropdown-menu w-100" style="display: none;"></div>
+                        </div>
+                        <div id="selectedSkills" class="d-flex flex-wrap gap-2 mt-2"></div>
+                        <input type="hidden" id="skills" name="skills">
+                    </div>
+
+                    <!-- Graduation Year -->
+                    <div class="col-md-4 mb-3">
+                        <label for="graduation_year" class="form-label">
+                            <i class="fas fa-graduation-cap text-primary me-2"></i>
+                            Graduation Year
+                        </label>
+                        <select id="graduation_year" name="graduation_year" class="form-select">
+                            <option value="">All Years</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                        </select>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="col-md-4 mb-3">
+                        <label for="locationInput" class="form-label">
+                            <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                            Location
+                        </label>
+                        <div class="position-relative">
+                            <input type="text" id="locationInput" class="form-control" placeholder="Type to search locations or enter custom...">
+                            <div id="locationDropdown" class="dropdown-menu w-100" style="display: none;"></div>
+                        </div>
+                        <div id="selectedLocations" class="d-flex flex-wrap gap-2 mt-2"></div>
+                        <input type="hidden" id="location" name="location">
+                    </div>
+                </div>
+
+                <!-- Second Row - Percentage, Search -->
+                <div class="row mb-3">
+                    <!-- Graduation Percentage -->
+                    <div class="col-md-6 mb-3">
+                        <label for="graduation_percentage" class="form-label">
+                            <i class="fas fa-percentage text-primary me-2"></i>
+                            Min Graduation %
+                        </label>
+                        <div class="input-group">
+                            <input type="number" id="graduation_percentage" name="min_percentage" class="form-control" placeholder="Enter minimum percentage" min="0" max="100">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+
+                    <!-- Search -->
+                    <div class="col-md-6 mb-3">
+                        <label for="search" class="form-label">
+                            <i class="fas fa-search text-primary me-2"></i>
+                            Search Candidates
+                        </label>
+                        <input type="text" id="search" name="search" class="form-control" placeholder="Search by name, email, etc.">
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex flex-column flex-sm-row justify-content-end gap-2 pt-2">
+                    <button type="button" onclick="resetFilters()" class="btn btn-outline-secondary">
+                        <i class="fas fa-undo me-2"></i>
+                        Reset Filters
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-filter me-2"></i>
+                        Apply Filters
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- User List -->
+    <div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="h4">User List <span id="userCount" class="text-muted">({{ users|length }} users)</span></h2>
+            <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-outline-secondary" title="Refresh List">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-secondary" title="Export Data">
+                    <i class="fas fa-download"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="row" id="userListContainer">
+            {% if users %}
+                {% for user in users %}
+                <div class="col-12 col-md-6 col-lg-4 mb-4 user-card"
+                    data-skills="{{ user.skills|join:' ' }}"
+                    data-graduation-year="{{ user.graduation_year }}"
+                    data-location="{{ user.location }}"
+                    data-graduation-percentage="{{ user.Graduation_Percentage }}">
+                    <div class="card h-100">
+                        <div class="bg-primary" style="height: 10px;"></div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <p class="text-muted small mb-1">ID: <span class="fw-medium">{{ user.id }}</span></p>
+                                <h5 class="card-title mb-1">{{ user.username }}</h5>
+                                <p class="text-primary small"><i class="fas fa-envelope me-1"></i> {{ user.email }}</p>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <p class="text-muted small mb-1">
+                                    <span class="fw-medium">Father's Name:</span> {{ user.father_name }}
+                                </p>
+                                <p class="text-muted small mb-1">
+                                    <span class="fw-medium">Graduation:</span> 
+                                    <span class="fw-semibold {% if user.Graduation_Percentage >= 80 %}text-success{% elif user.Graduation_Percentage >= 60 %}text-primary{% else %}text-warning{% endif %}">
+                                        {{ user.Graduation_Percentage }}%
+                                    </span>
+                                </p>
+                                {% if user.skills %}
+                                <div class="text-muted small mb-1">
+                                    <span class="fw-medium">Skills:</span>
+                                    <div class="d-flex flex-wrap gap-1 mt-1">
+                                        {% for skill in user.skills %}
+                                        <span class="badge bg-primary bg-opacity-10 text-primary skill-badge">{{ skill }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if user.location %}
+                                <p class="text-muted small">
+                                    <span class="fw-medium">Location:</span> 
+                                    <i class="fas fa-map-marker-alt text-muted me-1"></i>{{ user.location }}
+                                </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-top">
+                            <button onclick="viewUserDetails('{{ user.id }}')" class="btn btn-primary btn-sm float-end">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12">
+                    <div class="card text-center py-5">
+                        <div class="card-body">
+                            <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                                <i class="fas fa-search text-primary fs-3"></i>
+                            </div>
+                            <h3 class="h5">No users found</h3>
+                            <p class="text-muted">Try adjusting your filter criteria</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Pagination Controls -->
+        <div id="pagination" class="d-flex justify-content-center align-items-center gap-2 my-4"></div>
+    </div>
+</div>
+
+<!-- Modal for user details -->
+<div id="userDetailsModal" class="modal fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">User Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="userDetailsContent" class="modal-body">
+                <!-- User details will be loaded here -->
+                <div class="text-center py-5">
+                    <div class="spinner-border text-primary mb-3" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <h5 class="mb-2">Loading User Details</h5>
+                    <p class="text-muted">Please wait while we fetch the details...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- Include jQuery, Bootstrap JS and Select2 JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    // Pagination variables
+    let currentPage = 1;
+    const usersPerPage = 12;
+    let filteredUsers = [];
+    let allSkills = [];
+    let allLocations = [];
+    
+    // Initialize when document is ready
+    $(document).ready(function() {
+        // Initialize modal
+        const userDetailsModal = new bootstrap.Modal(document.getElementById('userDetailsModal'));
+        
+        // Fetch all skills and locations for autocomplete
+        fetchInitialData();
+        
+        // Initialize skills input with autocomplete
+        $('#skillsInput').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            if (searchTerm.length < 1) {
+                $('#skillsDropdown').hide();
+                return;
+            }
+            
+            const filteredSkills = allSkills.filter(skill => 
+                skill.toLowerCase().includes(searchTerm)
+            );
+            
+            showDropdown('skillsDropdown', filteredSkills, 'skill');
+        });
+        
+        // Allow adding custom skills with Enter key
+        $('#skillsInput').on('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const skill = $(this).val().trim();
+                if (skill) {
+                    addSelectedSkill(skill);
+                    $(this).val('');
+                    $('#skillsDropdown').hide();
+                }
+            }
+        });
+        
+        // Initialize location input with autocomplete
+        $('#locationInput').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            if (searchTerm.length < 1) {
+                $('#locationDropdown').hide();
+                return;
+            }
+            
+            const filteredLocations = allLocations.filter(location => 
+                location.toLowerCase().includes(searchTerm)
+            );
+            
+            showDropdown('locationDropdown', filteredLocations, 'location');
+        });
+        
+        // Allow adding custom locations with Enter key
+        $('#locationInput').on('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const location = $(this).val().trim();
+                if (location) {
+                    $('#location').val(location);
+                    updateSelectedLocations([location]);
+                    $(this).val('');
+                    $('#locationDropdown').hide();
+                }
+            }
+        });
+        
+        // Handle skill selection from dropdown
+        $(document).on('click', '.skill-item', function() {
+            const skill = $(this).text();
+            addSelectedSkill(skill);
+            $('#skillsInput').val('');
+            $('#skillsDropdown').hide();
+        });
+        
+        // Handle location selection from dropdown
+        $(document).on('click', '.location-item', function() {
+            const location = $(this).text();
+            $('#locationInput').val(location);
+            $('#location').val(location);
+            $('#locationDropdown').hide();
+            updateSelectedLocations([location]);
+        });
+        
+        // Remove selected skill
+        $(document).on('click', '.remove-skill', function() {
+            const skill = $(this).data('skill');
+            removeSkill(skill);
+        });
+        
+        // Remove selected location
+        $(document).on('click', '.remove-location', function() {
+            removeLocation();
+        });
+        
+        // Initialize pagination with all users
+        filteredUsers = Array.from(document.querySelectorAll('.user-card'));
+        updateResultsCount(filteredUsers.length);
+        updatePaginationControls();
+        displayUsers(currentPage);
+        
+        // Form submission handler
+        document.getElementById('filterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            applyFilters();
+        });
+        
+        // Global function to show modal
+        window.viewUserDetails = function(userId) {
+            userDetailsModal.show();
+            document.getElementById('userDetailsContent').innerHTML = `
+                <div class="text-center py-5">
+                    <div class="spinner-border text-primary mb-3" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <h5 class="mb-2">Loading User Details</h5>
+                    <p class="text-muted">Fetching details for user ID: ${userId}</p>
+                </div>
+            `;
+            
+            fetch(`/get_user_details/${userId}`)
+                .then(handleResponse)
+                .then(data => displayUserDetails(data))
+                .catch(handleError);
+        };
+        
+        // Global function to close modal
+        window.closeModal = function() {
+            userDetailsModal.hide();
+        };
+    });
+
+    // Fetch initial data for skills and locations
+    function fetchInitialData() {
+        // Fetch skills
+        fetch('/get_skills/')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    allSkills = data.skills;
+                }
+            });
+        
+        // Fetch locations
+        fetch('/get_locations/')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    allLocations = data.locations;
+                }
+            });
+    }
+
+    // Show dropdown with suggestions
+    function showDropdown(dropdownId, items, type) {
+        const dropdown = $(`#${dropdownId}`);
+        dropdown.empty();
+        
+        if (items.length === 0) {
+            dropdown.append('<div class="dropdown-item text-muted">No matches found</div>');
+        } else {
+            items.forEach(item => {
+                const itemClass = type === 'skill' ? 'skill-item' : 'location-item';
+                dropdown.append(`<div class="dropdown-item ${itemClass}">${item}</div>`);
+            });
+        }
+        
+        dropdown.show();
+    }
+
+    // Add selected skill
+    function addSelectedSkill(skill) {
+        // Get current skills from hidden input
+        let currentSkills = $('#skills').val() ? $('#skills').val().split(',') : [];
+        
+        // Add new skill if not already selected
+        if (!currentSkills.includes(skill)) {
+            currentSkills.push(skill);
+            $('#skills').val(currentSkills.join(','));
+            
+            // Add to selected skills display
+            const skillBadge = `
+                <span class="badge bg-primary bg-opacity-10 text-primary d-inline-flex align-items-center">
+                    ${skill}
+                    <button type="button" class="btn-close btn-close-white ms-2 remove-skill" data-skill="${skill}" aria-label="Close"></button>
+                </span>
+            `;
+            $('#selectedSkills').append(skillBadge);
+            
+            // Reapply filters if we're adding skills dynamically
+            applyFilters();
+        }
+    }
+
+    // Remove selected skill
+    function removeSkill(skill) {
+        // Get current skills from hidden input
+        let currentSkills = $('#skills').val() ? $('#skills').val().split(',') : [];
+        
+        // Remove the skill
+        currentSkills = currentSkills.filter(s => s !== skill);
+        $('#skills').val(currentSkills.join(','));
+        
+        // Remove from display
+        $(`.remove-skill[data-skill="${skill}"]`).parent().remove();
+        
+        // Reapply filters
+        applyFilters();
+    }
+    
+    // Remove selected location
+    function removeLocation() {
+        $('#location').val('');
+        $('#locationInput').val('');
+        $('#selectedLocations').empty();
+        applyFilters();
+    }
+
+    // Update selected locations display
+    function updateSelectedLocations(locations) {
+        $('#selectedLocations').empty();
+        if (locations.length > 0) {
+            locations.forEach(location => {
+                $('#selectedLocations').append(`
+                    <span class="badge bg-primary bg-opacity-10 text-primary d-inline-flex align-items-center">
+                        ${location}
+                        <button type="button" class="btn-close btn-close-white ms-2 remove-location" aria-label="Close"></button>
+                    </span>
+                `);
+            });
+        }
+    }
+
+    // Apply filters
+    function applyFilters() {
+        const selectedSkills = $('#skills').val() ? $('#skills').val().split(',') : [];
+        const selectedLocation = $('#location').val();
+        const gradYear = document.getElementById('graduation_year').value;
+        const minPercentage = document.getElementById('graduation_percentage').value;
+        const searchTerm = document.getElementById('search').value.toLowerCase();
+        
+        const allUsers = Array.from(document.querySelectorAll('.user-card'));
+        filteredUsers = [];
+        
+        allUsers.forEach(card => {
+            const cardSkills = card.dataset.skills ? card.dataset.skills.toLowerCase().split(' ') : [];
+            const cardLocation = card.dataset.location ? card.dataset.location.toLowerCase() : '';
+            const cardGradYear = card.dataset.graduationYear;
+            const cardPercentage = parseFloat(card.dataset.graduationPercentage);
+            const cardContent = card.textContent.toLowerCase();
+            
+            let visible = true;
+            
+            // Skills filter
+            if (selectedSkills.length > 0) {
+                visible = visible && selectedSkills.every(skill => 
+                    cardSkills.some(cardSkill => cardSkill.includes(skill.toLowerCase()))
+                );
+            }
+            
+            // Location filter
+            if (selectedLocation) {
+                visible = visible && (cardLocation === selectedLocation.toLowerCase());
+            }
+            
+            // Graduation year filter
+            if (gradYear && cardGradYear !== gradYear) {
+                visible = false;
+            }
+            
+            // Graduation percentage filter
+            if (minPercentage && cardPercentage < parseFloat(minPercentage)) {
+                visible = false;
+            }
+            
+            // Search term filter
+            if (searchTerm && !cardContent.includes(searchTerm)) {
+                visible = false;
+            }
+            
+            if (visible) {
+                filteredUsers.push(card);
+            }
+        });
+        
+        updateResultsCount(filteredUsers.length);
+        currentPage = 1; // Reset to first page when filters change
+        updatePaginationControls();
+        displayUsers(currentPage);
+    }
+
+    // Reset all filters
+    function resetFilters() {
+        $('#skills').val('');
+        $('#selectedSkills').empty();
+        $('#location').val('');
+        $('#locationInput').val('');
+        $('#selectedLocations').empty();
+        document.getElementById('graduation_year').value = '';
+        document.getElementById('graduation_percentage').value = '';
+        document.getElementById('search').value = '';
+        
+        filteredUsers = Array.from(document.querySelectorAll('.user-card'));
+        updateResultsCount(filteredUsers.length);
+        currentPage = 1;
+        updatePaginationControls();
+        displayUsers(currentPage);
+    }
+
+    // Close dropdowns when clicking outside
+    $(document).click(function(e) {
+        if (!$(e.target).closest('#skillsInput, #skillsDropdown').length) {
+            $('#skillsDropdown').hide();
+        }
+        if (!$(e.target).closest('#locationInput, #locationDropdown').length) {
+            $('#locationDropdown').hide();
+        }
+    });
+
+    function handleResponse(response) {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+    }
+
+    function handleError(error) {
+        console.error("Error:", error);
+        document.getElementById('userDetailsContent').innerHTML = `
+            <div class="text-center py-5">
+                <div class="bg-danger bg-opacity-10 text-danger rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                    <i class="fas fa-exclamation-triangle fs-3"></i>
+                </div>
+                <h5 class="mb-2">Error</h5>
+                <p class="text-muted">${error.message}</p>
+            </div>
+        `;
+    }
+
+    function displayUserDetails(response) {
+        if (!response.success) {
+            document.getElementById('userDetailsContent').innerHTML = `
+                <div class="text-center py-5">
+                    <div class="bg-danger bg-opacity-10 text-danger rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-exclamation-triangle fs-3"></i>
+                    </div>
+                    <h5 class="mb-2">Error</h5>
+                    <p class="text-muted">${response.error || 'Failed to load user details'}</p>
+                </div>
+            `;
+            return;
+        }
+
+        const userData = response.data;
+        const profilePicHtml = userData.profile_picture 
+            ? `<img src="data:image/jpeg;base64,${userData.profile_picture}" class="rounded-circle shadow" style="width: 128px; height: 128px; object-fit: cover;">`
+            : `<div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center shadow" style="width: 128px; height: 128px; font-size: 3rem;">
+                  ${userData.username?.charAt(0)?.toUpperCase() || 'U'}
+               </div>`;
+
+        const downloadButton = userData.has_resume
+            ? `<a href="/download_resume/${userData.user_id}/" class="btn btn-primary" download="${userData.resume_filename || 'resume.pdf'}">
+                  <i class="fas fa-download me-2"></i> Download Resume
+               </a>`
+            : `<button class="btn btn-secondary" disabled>
+                  <i class="fas fa-download me-2"></i> No Resume Available
+               </button>`;
+
+        document.getElementById('userDetailsContent').innerHTML = `
+            <div class="text-center mb-4 border-bottom pb-4">
+                ${profilePicHtml}
+                <h3 class="mt-3 mb-1">${userData.username || 'N/A'}</h3>
+                <p class="text-primary"><i class="fas fa-envelope me-1"></i> ${userData.email || 'N/A'}</p>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title d-flex align-items-center">
+                                <i class="fas fa-user-circle text-primary me-2"></i>
+                                Personal Information
+                            </h5>
+                            <div class="mt-3">
+                                <p class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                                    <span class="text-muted">Father's Name:</span>
+                                    <span class="fw-medium">${userData.father_name || 'N/A'}</span>
+                                </p>
+                                <p class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                                    <span class="text-muted">Mobile:</span>
+                                    <span class="fw-medium">${userData.mobile || 'N/A'}</span>
+                                </p>
+                                <p class="d-flex justify-content-between">
+                                    <span class="text-muted">Location:</span>
+                                    <span class="fw-medium">
+                                        <i class="fas fa-map-marker-alt text-muted me-1"></i>
+                                        ${userData.location || 'N/A'}
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title d-flex align-items-center">
+                                <i class="fas fa-graduation-cap text-primary me-2"></i>
+                                Educational Information
+                            </h5>
+                            <div class="mt-3">
+                                <p class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                                    <span class="text-muted">Branch:</span>
+                                    <span class="fw-medium">${userData.branch || 'N/A'}</span>
+                                </p>
+                                <p class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                                    <span class="text-muted">UG College:</span>
+                                    <span class="fw-medium">${userData.ug_college || 'N/A'}</span>
+                                </p>
+                                <p class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                                    <span class="text-muted">Passout Year:</span>
+                                    <span class="fw-medium">${userData.Passout_Year || 'N/A'}</span>
+                                </p>
+                                <div class="pt-2">
+                                    <p class="text-muted mb-2">Academic Performance:</p>
+                                    <div class="row g-2">
+                                        <div class="col-4">
+                                            <div class="bg-primary bg-opacity-10 p-2 rounded text-center">
+                                                <span class="d-block text-muted small">10th</span>
+                                                <span class="fw-bold text-primary">${userData["10th_Percentage"] || 'N/A'}%</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="bg-primary bg-opacity-10 p-2 rounded text-center">
+                                                <span class="d-block text-muted small">12th</span>
+                                                <span class="fw-bold text-primary">${userData["12th_Percentage"] || 'N/A'}%</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="bg-primary bg-opacity-10 p-2 rounded text-center">
+                                                <span class="d-block text-muted small">Graduation</span>
+                                                <span class="fw-bold text-primary">${userData.Graduation_Percentage || 'N/A'}%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title d-flex align-items-center">
+                        <i class="fas fa-code text-primary me-2"></i>
+                        Skills
+                    </h5>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        ${Array.isArray(userData.skills) && userData.skills.length > 0 
+                            ? userData.skills.map(skill => `<span class="badge bg-primary bg-opacity-10 text-primary">${skill}</span>`).join('') 
+                            : '<span class="text-muted">No skills listed</span>'}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-end gap-2">
+                <button class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                ${downloadButton}
+            </div>
+        `;
+    }
+
+    // Pagination functions
+    function displayUsers(page) {
+        const totalUsers = filteredUsers.length;
+        
+        // Hide all users first
+        const allUsers = document.querySelectorAll('.user-card');
+        allUsers.forEach(user => user.style.display = 'none');
+        
+        // Calculate start and end index for current page
+        const start = (page - 1) * usersPerPage;
+        const end = Math.min(start + usersPerPage, totalUsers);
+        
+        // Show only users for current page
+        for (let i = start; i < end; i++) {
+            if (filteredUsers[i]) {
+                filteredUsers[i].style.display = 'block';
+            }
+        }
+    }
+
+    function updatePaginationControls() {
+        const container = document.getElementById('pagination');
+        container.innerHTML = '';
+        
+        const totalUsers = filteredUsers.length;
+        const totalPages = Math.ceil(totalUsers / usersPerPage);
+        
+        if (totalPages <= 1) return; // Don't show pagination if only one page
+        
+        // Previous button
+        const prevBtn = createPaginationButton('Previous', currentPage === 1);
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                displayUsers(currentPage);
+                updatePaginationControls();
+            }
+        });
+        container.appendChild(prevBtn);
+        
+        // Page number buttons
+        const maxVisiblePages = 5; // Maximum number of page buttons to show
+        let startPage, endPage;
+        
+        if (totalPages <= maxVisiblePages) {
+            // Show all pages
+            startPage = 1;
+            endPage = totalPages;
+        } else {
+            // Calculate start and end pages
+            const maxPagesBeforeCurrent = Math.floor(maxVisiblePages / 2);
+            const maxPagesAfterCurrent = Math.ceil(maxVisiblePages / 2) - 1;
+            
+            if (currentPage <= maxPagesBeforeCurrent) {
+                // Current page near the start
+                startPage = 1;
+                endPage = maxVisiblePages;
+            } else if (currentPage + maxPagesAfterCurrent >= totalPages) {
+                // Current page near the end
+                startPage = totalPages - maxVisiblePages + 1;
+                endPage = totalPages;
+            } else {
+                // Current page somewhere in the middle
+                startPage = currentPage - maxPagesBeforeCurrent;
+                endPage = currentPage + maxPagesAfterCurrent;
+            }
+        }
+        
+        // Add first page and ellipsis if needed
+        if (startPage > 1) {
+            const firstBtn = createPaginationButton(1, false, 1 === currentPage);
+            firstBtn.addEventListener('click', () => {
+                currentPage = 1;
+                displayUsers(currentPage);
+                updatePaginationControls();
+            });
+            container.appendChild(firstBtn);
+            
+            if (startPage > 2) {
+                const ellipsis = document.createElement('span');
+                ellipsis.className = 'px-3 py-2';
+                ellipsis.textContent = '...';
+                container.appendChild(ellipsis);
+            }
+        }
+        
+        // Add page number buttons
+        for (let i = startPage; i <= endPage; i++) {
+            const pageBtn = createPaginationButton(i, false, i === currentPage);
+            pageBtn.addEventListener('click', () => {
+                currentPage = i;
+                displayUsers(currentPage);
+                updatePaginationControls();
+            });
+            container.appendChild(pageBtn);
+        }
+        
+        // Add last page and ellipsis if needed
+        if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+                const ellipsis = document.createElement('span');
+                ellipsis.className = 'px-3 py-2';
+                ellipsis.textContent = '...';
+                container.appendChild(ellipsis);
+            }
+            
+            const lastBtn = createPaginationButton(totalPages, false, totalPages === currentPage);
+            lastBtn.addEventListener('click', () => {
+                currentPage = totalPages;
+                displayUsers(currentPage);
+                updatePaginationControls();
+            });
+            container.appendChild(lastBtn);
+        }
+        
+        // Next button
+        const nextBtn = createPaginationButton('Next', currentPage === totalPages);
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayUsers(currentPage);
+                updatePaginationControls();
+            }
+        });
+        container.appendChild(nextBtn);
+    }
+
+    function createPaginationButton(text, disabled, isActive = false) {
+        const btn = document.createElement('button');
+        btn.textContent = text;
+        btn.className = 'btn btn-sm pagination-button';
+        
+        if (isActive) {
+            btn.classList.add('btn-primary');
+        } else {
+            btn.classList.add('btn-outline-primary');
+        }
+        
+        if (disabled) {
+            btn.disabled = true;
+            btn.classList.add('disabled');
+        }
+        
+        return btn;
+    }
+
+    function updateResultsCount(count) {
+        document.getElementById('userCount').textContent = `(${count} users)`;
+    }
+</script>
+{% endblock %}

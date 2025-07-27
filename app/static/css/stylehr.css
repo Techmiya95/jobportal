@@ -1,0 +1,310 @@
+/* Modern Card Styles */
+.card {
+    border: none;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Job Cards with Different Top Borders */
+.job-card {
+    transition: all 0.3s ease;
+    height: 100%;
+    border-top: 5px solid;  /* <-- Make it bolder */
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Color rotation for job cards */
+/* Color rotation for job cards */
+.job-card.color-1 { border-top-color: #4e73df; }
+.job-card.color-2 { border-top-color: #1cc88a; }
+.job-card.color-3 { border-top-color: #36b9cc; }
+.job-card.color-4 { border-top-color: #f6c23e; }
+.job-card.color-5 { border-top-color: #e74a3b; }
+.job-card.color-6 { border-top-color: #858796; }
+.job-card.color-7 { border-top-color: #6f42c1; }
+.job-card.color-8 { border-top-color: #fd7e14; }
+.job-card.color-9 { border-top-color: #20c997; }
+.job-card.color-10 { border-top-color: #d63384; }
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.job-card .card-header {
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 1rem 1.25rem;
+}
+
+.job-card .card-body {
+    padding: 1.25rem;
+}
+
+.job-card .card-footer {
+    background-color: rgba(0,0,0,0.03);
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding: 1rem 1.25rem;
+}
+
+
+.skills-badge {
+    --bs-badge-color: #212529; /* Override text color variable */
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 0.75rem;
+    background-color: #f8f9fa;
+    color: #212529;
+    border: 1px solid #dee2e6;
+}
+
+.applicant-card {
+    transition: all 0.3s;
+    border-left: 4px solid #4e73df;
+}
+
+.applicant-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.banner-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://cdnjs.cloudflare.com/ajax/libs/twilight/2.0.0/bg.png') repeat;
+    opacity: 0.1;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url('https://cdnjs.cloudflare.com/ajax/libs/twilight/2.0.0/img/wave.svg') repeat-x;
+    animation: wave 15s linear infinite;
+}
+
+@keyframes wave {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 1000px;
+    }
+}
+
+.feature-icon {
+    height: 70px;
+    width: 70px;
+    padding: 15px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.feature-icon:hover {
+    transform: translateY(-10px);
+}
+
+.applicant-item {
+    display: none;
+}
+
+/* Pagination Styles */
+.pagination .page-item.active .page-link {
+    background-color: #4e73df;
+    border-color: #4e73df;
+}
+
+.pagination .page-link {
+    color: #4e73df;
+}
+
+/* Scroll to Applicants Animation */
+@keyframes highlight {
+    0% { background-color: rgba(78, 115, 223, 0.1); }
+    100% { background-color: transparent; }
+}
+
+.highlight-section {
+    animation: highlight 2s ease;
+}
+
+/* Status Badges */
+.status-badge {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    font-size: 0.7rem;
+    padding: 5px 8px;
+}
+
+/* Improved job type badge */
+.job-type-badge {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    margin-left: 8px;
+}
+
+/* Salary highlight */
+.salary-highlight {
+    font-weight: 600;
+    color: #2e59d9;
+}
+
+/* Deadline styling */
+.deadline-text {
+    font-weight: 500;
+}
+
+/* Company logo placeholder */
+.company-logo {
+    width: 50px;
+    height: 50px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #6c757d;
+    font-size: 1.5rem;
+}
+
+#locationSuggestions {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#locationSuggestions a {
+    border: none;
+    border-radius: 0;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+#locationSuggestions a:hover, 
+#locationSuggestions a.active {
+    background-color: #f8f9fa;
+    color: #0d6efd;
+}
+
+#selectedLocations .badge {
+    font-size: 0.9rem;
+    padding: 0.35em 0.65em;
+}
+
+#selectedLocations .btn-close {
+    font-size: 0.7rem;
+    padding: 0.25em;
+}
+
+#locationSearch {
+    position: relative;
+    z-index: 1001;
+}
+#skillsSuggestions {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#skillsSuggestions a {
+    border: none;
+    border-radius: 0;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+#skillsSuggestions a:hover, 
+#skillsSuggestions a.active {
+    background-color: #f8f9fa;
+    color: #0d6efd;
+}
+
+#selectedSkills .badge {
+    font-size: 0.9rem;
+    padding: 0.35em 0.65em;
+}
+
+#selectedSkills .btn-close {
+    font-size: 0.7rem;
+    padding: 0.25em;
+}
+
+#skillsSearch {
+    position: relative;
+    z-index: 1001;
+}.pagination .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.pagination .page-link {
+    color: #0d6efd;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+#educationSuggestions {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#educationSuggestions a {
+    border: none;
+    border-radius: 0;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+#educationSuggestions a:hover, 
+#educationSuggestions a.active {
+    background-color: #f8f9fa;
+    color: #0d6efd;
+}
+
+#selectedEducation .badge {
+    font-size: 0.9rem;
+    padding: 0.35em 0.65em;
+    background-color: #0dcaf0; /* Info color */
+}
+
+#selectedEducation .btn-close {
+    font-size: 0.7rem;
+    padding: 0.25em;
+}
+
+#educationSearch {
+    position: relative;
+    z-index: 1001;
+}

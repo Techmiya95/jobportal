@@ -1,0 +1,7 @@
+Django==2.2.26
+djongo==1.3.6
+dnspython==2.6.1
+pymongo==3.12.1
+pyspark==3.5.5
+pytz==2025.2
+sqlparse==0.2.4

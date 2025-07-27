@@ -1,0 +1,2047 @@
+<!-- hr_panel.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>HR Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="{% static 'css/stylehr.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .card-header {
+            color: white;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+            font-weight: bold;
+        }
+        .custom-bordered-card {
+            border-top: 9px solid currentColor;      /* Top border uses dynamic color */
+            border-left: 1px solid #e0e0e0;          /* Light gray */
+            border-right: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {% endblock %}
+    {% block content %}
+    
+
+    <!-- Full-width HR Banner -->
+    <section class="banner-section text-white py-5">
+        <div class="container-fluid px-4 px-md-5 py-5 position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1 class="display-4 fw-bold">Human Resources Portal</h1>
+                    <p class="lead my-4">Streamline workforce management, boost employee engagement, and optimize your recruitment process</p>
+                    
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        
+                            <div class="bg-white bg-opacity-25 p-3 rounded-3">
+                                <h4 class="mb-0"><i class="bi bi-people-fill me-2"></i> {{ total_employees }}</h4>
+                                <small>Employees</small>
+                            </div>
+                        
+                        <div class="bg-white bg-opacity-25 p-3 rounded-3">
+                            <h4 class="mb-0"><i class="bi bi-briefcase-fill me-2"></i> {{ hr_jobs|length }}</h4>
+                            <small>Open Positions</small>
+                        </div>
+                        <div class="bg-white bg-opacity-25 p-3 rounded-3">
+                            <h4 class="mb-0"><i class="bi bi-check-circle-fill me-2"></i> 86%</h4>
+                            <small>Retention Rate</small>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-light btn-lg mt-5 fw-bold">
+                        <i class="bi bi-speedometer2 me-2"></i>Enter Dashboard
+                    </button>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1570/1570887.png" alt="HR Management" class="img-fluid" style="max-height: 300px;">
+                </div>
+            </div>
+        </div>
+        <div class="wave"></div>
+    </section>
+<!-- Add this section right after the Jobs Section header -->
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="h5 mb-0">
+                <i class="fas fa-filter text-primary me-2"></i>
+                Filter Jobs
+            </h2>
+            <span class="text-muted d-none d-md-block">Refine your job listings</span>
+        </div>
+        
+        <form id="jobFilterForm">
+            <!-- First Row - Skills, Job Type, Location -->
+            <div class="row mb-3">
+                <!-- Skills Filter -->
+                <div class="col-md-4 mb-3">
+                    <label for="jobSkillsInput" class="form-label">
+                        <i class="fas fa-code text-primary me-2"></i>
+                        Skills
+                    </label>
+                    <div class="position-relative">
+                        <input type="text" id="jobSkillsInput" class="form-control" placeholder="Type to search skills...">
+                        <div id="jobSkillsDropdown" class="dropdown-menu w-100" style="display: none;"></div>
+                    </div>
+                    <div id="jobSelectedSkills" class="d-flex flex-wrap gap-2 mt-2"></div>
+                    <input type="hidden" id="jobSkills" name="skills">
+                </div>
+
+                <!-- Job Type -->
+                <div class="col-md-4 mb-3">
+                    <label for="jobTypeFilter" class="form-label">
+                        <i class="fas fa-briefcase text-primary me-2"></i>
+                        Job Type
+                    </label>
+                    <select id="jobTypeFilter" name="job_type" class="form-select">
+                        <option value="">All Types</option>
+                        <option value="Full-time">Full-time</option>
+                        <option value="Part-time">Part-time</option>
+                        <option value="Contract">Contract</option>
+                        <option value="Internship">Internship</option>
+                        <option value="Remote">Remote</option>
+                    </select>
+                </div>
+
+                <!-- Location -->
+                <div class="col-md-4 mb-3">
+                    <label for="jobLocationInput" class="form-label">
+                        <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                        Location
+                    </label>
+                    <div class="position-relative">
+                        <input type="text" id="jobLocationInput" class="form-control" placeholder="Type to search locations...">
+                        <div id="jobLocationDropdown" class="dropdown-menu w-100" style="display: none;"></div>
+                    </div>
+                    <div id="jobSelectedLocations" class="d-flex flex-wrap gap-2 mt-2"></div>
+                    <input type="hidden" id="jobLocation" name="location">
+                </div>
+            </div>
+
+            <!-- Second Row - Salary, Search -->
+            <div class="row mb-3">
+                <!-- Salary Range -->
+                <div class="col-md-6 mb-3">
+                    <label for="salaryRange" class="form-label">
+                        <i class="fas fa-money-bill-wave text-primary me-2"></i>
+                        Min Salary (LPA)
+                    </label>
+                    <input type="number" id="salaryRange" name="min_salary" class="form-control" placeholder="Enter minimum salary" min="0">
+                </div>
+
+                <!-- Search -->
+                <div class="col-md-6 mb-3">
+                    <label for="jobSearch" class="form-label">
+                        <i class="fas fa-search text-primary me-2"></i>
+                        Search Jobs
+                    </label>
+                    <input type="text" id="jobSearch" name="search" class="form-control" placeholder="Search by title, company, etc.">
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex flex-column flex-sm-row justify-content-end gap-2 pt-2">
+                <button type="button" onclick="resetJobFilters()" class="btn btn-outline-secondary">
+                    <i class="fas fa-undo me-2"></i>
+                    Reset Filters
+                </button>
+                <button type="button" onclick="applyJobFilters()" class="btn btn-primary">
+                    <i class="fas fa-filter me-2"></i>
+                    Apply Filters
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+    <div class="container py-4">
+        <!-- Alert Messages -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    <i class="bi bi-check-circle-fill me-2"></i>{{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Jobs Section -->
+    <!-- Jobs Section -->
+<section id="jobs-section" class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">
+            <i class="bi bi-briefcase me-2"></i>Job Listings
+        </h2>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createJobModal">
+            <i class="bi bi-plus-circle me-2"></i>Create New Job
+        </button>
+    </div>
+
+    {% if hr_jobs %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="jobs-container">
+            {% for job in hr_jobs %}
+                <div class="col job-item">
+                    <div class="card job-card shadow-sm h-100 custom-bordered-card color-{{ forloop.counter0|add:1 }}"
+                         data-skills="{{ job.Skills|join:','|lower }}"
+                         data-location="{{ job.Location|lower }}"
+                         data-job-type="{{ job.job_type|lower }}"
+                         data-salary="{{ job.Salary }}" 
+                         data-company="{{ job.Org|lower }}">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            {% if job.disabled %}
+                            <span class="badge bg-danger status-badge">Disabled</span>
+                            {% endif %}
+                            <div><h5 class="card-title mb-0">{{ job.Job }}</h5></div>
+                           
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item edit-job" href="#" data-job-id="{{ job.id }}">
+                                        <i class="bi bi-pencil-square me-2"></i>Edit
+                                    </a></li>
+                                    {% if job.disabled %}
+                                    <li><a class="dropdown-item text-success enable-job" href="#" data-job-id="{{ job.job_id}}">
+                                        <i class="bi bi-check-circle me-2"></i>Enable
+                                    </a></li>
+                                    {% else %}
+                                    <li><a class="dropdown-item text-warning disable-job" href="#" data-job-id="{{ job.job_id}}">
+                                        <i class="bi bi-slash-circle me-2"></i>Disable
+                                    </a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="company-logo">
+                                    <i class="bi bi-building"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0">{{ job.Org }}</h6>
+                                    <small class="text-muted">{{ job.Location }}</small>
+                                    <span class="badge bg-primary job-type-badge">{{ job.job_type }}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mb-3">
+                                <div>
+                                    <i class="bi bi-currency-dollar me-1"></i>
+                                    <span class="salary-highlight">{{ job.Salary }} LPA</span>
+                                </div>
+                                <div>
+                                    <i class="bi bi-clock me-1"></i>
+                                    <span>{{ job.posted_date|date:"M d, Y" }}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <i class="bi bi-calendar-x me-1"></i>
+                                <span class="text-danger deadline-text">Deadline: {{ job.deadline }}</span>
+                            </div>
+                            
+                            <h6 class="mt-3">Skills Required:</h6>
+                            <div class="mb-3">
+                                {% for skill in job.Skills %}
+                                    <span class="skills-badge">{{ skill }}</span>
+                                {% endfor %}
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h6>Description:</h6>
+                                <p class="card-text text-muted">{{ job.FullDescription|truncatechars:150 }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <h6>Education Requirement:</h6>
+                                <p class="card-text text-muted">
+                                    {% if job.education %}
+                                        {{ job.education }}
+                                    {% else %}
+                                        <span class="text-muted">Not specified</span>
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a href="{% url 'job_applicants' job.id %}" class="btn btn-outline-primary w-100">
+                                <i class="bi bi-people me-2"></i>View Applicants
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+                
+               <!-- Pagination -->
+<nav aria-label="Job pagination" class="mt-4">
+    <ul class="pagination justify-content-center">
+        <!-- Pagination will be dynamically inserted here by JavaScript -->
+    </ul>
+</nav>
+            {% else %}
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle me-2"></i>
+                    You haven't created any jobs yet. Use the "Create New Job" button to add your first job listing.
+                </div>
+            {% endif %}
+        </section>
+
+        {% comment %} <!-- Applicants Section -->
+        <section id="applicants-section" class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold">
+                    <i class="bi bi-people me-2"></i>Job Applicants
+                </h2>
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-funnel me-1"></i>Filter by Job
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+                        <li><a class="dropdown-item" href="#" data-job-id="all">
+                            <i class="bi bi-grid me-2"></i>All Jobs
+                        </a></li>
+                        {% for job in hr_jobs %}
+                        <li><a class="dropdown-item" href="#" data-job-id="{{ job.id }}">
+                            <i class="bi bi-briefcase me-2"></i>{{ job.Job }}
+                        </a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        
+            {% if applicants %}
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="applicants-container">
+                {% for applicant in applicants %}
+                <div class="col applicant-item" data-job-id="{{ applicant.applied_job_id }}">
+                    <div class="card applicant-card shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                {% if applicant.profile_picture %}
+                                <img src="data:image/jpeg;base64,{{ applicant.profile_picture }}" 
+                                alt="Profile" 
+                                class="rounded-circle me-3" 
+                                style="width: 60px; height: 60px; object-fit: cover;">
+                                {% else %}
+                                <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
+                                    <i class="bi bi-person text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                                {% endif %}
+                                <div>
+                                    <h5 class="card-title mb-0">{{ applicant.username }}</h5>
+                                    <p class="text-muted mb-0">Applied for: {{ applicant.applied_job_title }}</p>
+                                </div>
+                            </div>
+            
+                            <div class="mb-3">
+                                <i class="bi bi-envelope me-2"></i>
+                                <span>{{ applicant.email }}</span>
+                            </div>
+                            
+                            {% if applicant.mobile %}
+                            <div class="mb-3">
+                                <i class="bi bi-telephone me-2"></i>
+                                <span>{{ applicant.mobile }}</span>
+                            </div>
+                            {% endif %}
+                            
+                            <div class="mb-3">
+                                <i class="bi bi-mortarboard me-2"></i>
+                                <span>{{ applicant.branch }} - {{ applicant.ug_college }}</span>
+                            </div>
+                            
+                            {% if applicant.skills %}
+                            <div class="mt-2">
+                                <h6 class="small fw-bold mb-2">Skills:</h6>
+                                {% for skill in applicant.skills %}
+                                <span class="badge bg-light text-dark skills-badge">{{ skill }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-sm btn-outline-primary view-applicant" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#viewApplicantModal" 
+                                        data-user-id="{{ applicant.applicant_id }}">
+                                    <i class="bi bi-eye me-1"></i>View
+                                </button>
+                                <button class="btn btn-sm btn-outline-success contact-applicant" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#contactApplicantModal" 
+                                        data-email="{{ applicant.email }}" 
+                                        data-name="{{ applicant.username }}">
+                                    <i class="bi bi-envelope me-1"></i>Contact
+                                </button>
+                            </div>
+                            <small class="text-muted mt-2 d-block">
+                                <i class="bi bi-clock me-1"></i>
+                                {% if applicant.applied_at != 'N/A' %}
+                                    Applied: {{ applicant.applied_at|date:"M d, Y" }}
+                                {% else %}
+                                    Date not available
+                                {% endif %}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Pagination for Applicants -->
+            <nav aria-label="Applicant pagination" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+            
+            {% else %}
+            <div class="alert alert-info">
+                <i class="bi bi-info-circle me-2"></i>
+                No applications received yet for your job postings.
+            </div>
+            {% endif %}
+        </section> {% endcomment %}
+    </div>
+
+    <!-- View Applicant Modal -->
+    <div class="modal fade" id="viewApplicantModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Applicant Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4" id="applicant-spinner">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                    
+                    <div id="applicant-details" style="display: none;">
+                        <div class="row mb-4">
+                            <div class="col-md-4 text-center">
+                                <div id="applicant-profile-pic" class="mb-3">
+                                    <!-- Profile picture will be inserted here -->
+                                </div>
+                                <h4 id="applicant-name" class="mb-1">
+                                    <i class="bi bi-person-fill me-2"></i>
+                                    <span id="applicant-name-text"></span>
+                                </h4>
+                                <p id="applicant-location" class="text-muted">
+                                    <i class="bi bi-geo-alt-fill me-2"></i>
+                                    <span id="applicant-location-text"></span>
+                                </p>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">
+                                                    <i class="bi bi-envelope-fill me-2"></i>Contact
+                                                </h6>
+                                                <p id="applicant-email" class="mb-1"></p>
+                                                <p id="applicant-mobile" class="mb-0"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">
+                                                    <i class="bi bi-mortarboard-fill me-2"></i>Education
+                                                </h6>
+                                                <p id="applicant-college" class="mb-1"></p>
+                                                <p id="applicant-branch" class="mb-0"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header bg-light">
+                                        <h6 class="mb-0">Educational Background</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 mb-3">
+                                                <h6>Graduation</h6>
+                                                <p id="applicant-graduation-percentage" class="mb-1"></p>
+                                                <p id="applicant-passout-year" class="mb-0"></p>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <h6>12th Standard</h6>
+                                                <p id="applicant-12th-percentage" class="mb-0"></p>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <h6>10th Standard</h6>
+                                                <p id="applicant-10th-percentage" class="mb-0"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header bg-light">
+                                        <h6 class="mb-0">Skills & Qualifications</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="applicant-skills" class="d-flex flex-wrap">
+                                            <!-- Skills will be inserted here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-1"></i>Close
+                    </button>
+                    <button type="button" class="btn btn-primary contact-from-modal">
+                        <i class="bi bi-envelope me-1"></i>Contact Applicant
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Applicant Modal -->
+    <div class="modal fade" id="contactApplicantModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Contact Applicant</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="contactForm" method="post" action="{% url 'contact_applicant' %}">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="applicant_email" class="form-label">To</label>
+                            <input type="email" class="form-control" id="applicant_email" name="applicant_email" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email_subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="email_subject" name="email_subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email_message" class="form-label">Message</label>
+                            <textarea class="form-control" id="email_message" name="email_message" rows="6" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle me-1"></i>Cancel
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="sendEmail()">
+                            <i class="bi bi-send me-1"></i>Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Job Modal -->
+    <div class="modal fade" id="createJobModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="jobModalTitle">Create New Job</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="jobForm" method="post" action="{% url 'create_job' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="hr_id" value="{{ request.session.hr_id }}">
+                    <input type="hidden" name="job_id" id="job_id" value="">
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="title" class="form-label">Job Title</label>
+                                <input type="text" class="form-control" id="title" name="title" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="company" class="form-label">Company</label>
+                                <input type="text" class="form-control" id="company" name="company" required>
+                            </div>
+                           <!-- In your createJobModal form -->
+<!-- In your createJobModal form -->
+<div class="col-md-6">
+    <label for="jobLocations" class="form-label">Job Locations (Select multiple)</label>
+    <div class="input-group">
+        <input type="text" class="form-control" id="locationSearch" placeholder="Search locations..." autocomplete="off">
+        <button class="btn btn-outline-secondary" type="button" id="addLocationBtn">Add</button>
+    </div>
+    <div id="locationSuggestions" class="list-group position-absolute w-100" style="z-index: 1000; display: none;"></div>
+    <div id="selectedLocations" class="mt-2 d-flex flex-wrap gap-2"></div>
+    <input type="hidden" name="locations" id="locationsInput">
+</div>
+                            <div class="col-md-6">
+                                <label for="salary" class="form-label">Salary</label>
+                                <input type="text" class="form-control" id="salary" name="salary" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="job_type" class="form-label">Job Type</label>
+                                <select class="form-select" id="job_type" name="job_type" required>
+                                    <option value="">Select...</option>
+                                    <option value="Full-time">Full-time</option>
+                                    <option value="Part-time">Part-time</option>
+                                    <option value="Contract">Contract</option>
+                                    <option value="Internship">Internship</option>
+                                    <option value="Remote">Remote</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="experience" class="form-label">Experience Required (years)</label>
+                                <input type="text" class="form-control" id="experience" name="experience" min="0" max="20" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="skillsSearch" class="form-label">Skills Required</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="skillsSearch" placeholder="Search skills..." autocomplete="off">
+                                    <button class="btn btn-outline-secondary" type="button" id="addSkillBtn">Add</button>
+                                </div>
+                                <div id="skillsSuggestions" class="list-group position-absolute w-100" style="z-index: 1000; display: none;"></div>
+                                <div id="selectedSkills" class="mt-2 d-flex flex-wrap gap-2"></div>
+                                <input type="hidden" name="Skills" id="skillsInput">
+                            </div>
+                            <div class="col-12">
+                                <label for="description" class="form-label">Job Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="educationSearch" class="form-label">Education Requirements</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="educationSearch" placeholder="Search education..." autocomplete="off">
+                                    <button class="btn btn-outline-secondary" type="button" id="addEducationBtn">Add</button>
+                                </div>
+                                <div id="educationSuggestions" class="list-group position-absolute w-100" style="z-index: 1000; display: none;"></div>
+                                <div id="selectedEducation" class="mt-2 d-flex flex-wrap gap-2"></div>
+                                <input type="hidden" name="education" id="educationInput">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="deadline" class="form-label">Application Deadline</label>
+                                <input type="date" class="form-control" id="deadline" name="deadline" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle me-1"></i>Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-save me-1"></i>Save Job
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteJobModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Confirm Deletion</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this job posting? This action cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-1"></i>Cancel
+                    </button>
+                    <form id="deleteJobForm" method="post" action="{% url 'delete_job' %}">
+                        {% csrf_token %}
+                        <input type="hidden" id="delete_job_id" name="job_id">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-trash me-1"></i>Delete Job
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="premiumModal" tabindex="-1" aria-labelledby="premiumModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content rounded-4 shadow">
+            <div class="modal-header bg-warning bg-gradient text-dark">
+              <h5 class="modal-title" id="premiumModalLabel">Premium Access Required</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>To view the user list, please upgrade to a <strong>Premium Membership</strong>.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <a href="{% url 'payment'%}" class="btn btn-primary">Active Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HR Panel Footer -->
+{% endblock %}
+  {% block scripts %}
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script>
+        // Initialize all dropdowns
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize tooltips and popovers
+            var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'));
+            var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+                return new bootstrap.Dropdown(dropdownToggleEl);
+            });
+            
+            // For dynamically loaded content, use event delegation
+            document.body.addEventListener('click', function(e) {
+                if (e.target.classList.contains('dropdown-toggle') {
+                    e.preventDefault();
+                    var dropdown = new bootstrap.Dropdown(e.target);
+                    dropdown.toggle();
+                }
+            });
+        });
+        </script>
+    <script>
+        // Initialize EmailJS
+        (function(){
+            emailjs.init("GyvTODto1wNKmd3Nh"); // Replace with your actual Public Key
+        })();
+             
+        // Handle Edit Job
+        // Helper function to setup remove buttons
+        function setupRemoveButtons() {
+            // Remove location buttons
+            document.querySelectorAll('#selectedLocations .btn-close').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const badge = this.closest('.badge');
+                    const location = badge.textContent.trim();
+                    
+                    // Update the selectedLocations array
+                    let locations = JSON.parse(document.getElementById('locationsInput').value || '[]');
+                    locations = locations.filter(l => l !== location);
+                    document.getElementById('locationsInput').value = JSON.stringify(locations);
+                    
+                    // Remove the badge
+                    badge.remove();
+                });
+            });
+        
+            // Remove skill buttons
+            document.querySelectorAll('#selectedSkills .btn-close').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const badge = this.closest('.badge');
+                    const skill = badge.textContent.trim();
+                    
+                    // Update the selectedSkills array
+                    let skills = document.getElementById('skillsInput').value.split(',').map(s => s.trim()).filter(s => s);
+                    skills = skills.filter(s => s !== skill);
+                    document.getElementById('skillsInput').value = skills.join(', ');
+                    
+                    // Remove the badge
+                    badge.remove();
+                });
+            });
+        
+            // Remove education buttons
+            document.querySelectorAll('#selectedEducation .btn-close').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const badge = this.closest('.badge');
+                    const education = badge.textContent.trim();
+                    
+                    // Update the selectedEducation array
+                    let educationItems = document.getElementById('educationInput').value.split(',').map(e => e.trim()).filter(e => e);
+                    educationItems = educationItems.filter(e => e !== education);
+                    document.getElementById('educationInput').value = educationItems.join(', ');
+                    
+                    // Remove the badge
+                    badge.remove();
+                });
+            });
+        }
+        
+        // Update the edit button event listener
+        document.querySelectorAll('.edit-job').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const jobId = this.getAttribute('data-job-id');
+                
+                fetch(`/get_job_details/${jobId}/`, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    }
+                })
+                .then(response => response.json())
+                .then(job => {
+                    // Clear previous selections
+                    document.getElementById('selectedLocations').innerHTML = '';
+                    document.getElementById('selectedSkills').innerHTML = '';
+                    document.getElementById('selectedEducation').innerHTML = '';
+                    
+                    // Populate basic form fields
+                    document.getElementById('job_id').value = job._id;
+                    document.getElementById('title').value = job.Job;
+                    document.getElementById('company').value = job.Org;
+                    document.getElementById('salary').value = job.Salary;
+                    document.getElementById('job_type').value = job.job_type;
+                    document.getElementById('experience').value = job.experience;
+                    document.getElementById('description').value = job.FullDescription;
+                    document.getElementById('deadline').value = job.deadline;
+                    
+                    // Helper function to handle array or string values
+                    const parseField = (fieldValue) => {
+                        if (Array.isArray(fieldValue)) {
+                            return fieldValue;
+                        }
+                        if (typeof fieldValue === 'string') {
+                            try {
+                                // Try to parse as JSON if it looks like JSON
+                                const parsed = JSON.parse(fieldValue);
+                                return Array.isArray(parsed) ? parsed : [parsed];
+                            } catch (e) {
+                                // If not JSON, split by comma
+                                return fieldValue.split(',').map(item => item.trim()).filter(item => item);
+                            }
+                        }
+                        return [];
+                    };
+                    
+                    // Handle locations
+                    const locations = parseField(job.Location);
+                    locations.forEach(loc => {
+                        const badge = document.createElement('span');
+                        badge.className = 'badge bg-primary d-flex align-items-center';
+                        badge.innerHTML = `${loc}<button type="button" class="btn-close btn-close-white ms-2" aria-label="Remove"></button>`;
+                        document.getElementById('selectedLocations').appendChild(badge);
+                    });
+                    document.getElementById('locationsInput').value = JSON.stringify(locations);
+                    
+                    // Handle skills
+                    const skills = parseField(job.Skills);
+                    skills.forEach(skill => {
+                        const badge = document.createElement('span');
+                        badge.className = 'badge bg-primary d-flex align-items-center';
+                        badge.innerHTML = `${skill}<button type="button" class="btn-close btn-close-white ms-2" aria-label="Remove"></button>`;
+                        document.getElementById('selectedSkills').appendChild(badge);
+                    });
+                    document.getElementById('skillsInput').value = skills.join(', ');
+                    
+                    // Handle education
+                    const educationItems = parseField(job.education);
+                    educationItems.forEach(edu => {
+                        const badge = document.createElement('span');
+                        badge.className = 'badge bg-info d-flex align-items-center';
+                        badge.innerHTML = `${edu}<button type="button" class="btn-close btn-close-white ms-2" aria-label="Remove"></button>`;
+                        document.getElementById('selectedEducation').appendChild(badge);
+                    });
+                    document.getElementById('educationInput').value = educationItems.join(', ');
+                    
+                    // Set up remove buttons
+                    setupRemoveButtons();
+                    
+                    // Change modal title and action
+                    document.getElementById('jobModalTitle').textContent = 'Edit Job';
+                    document.getElementById('jobForm').action = "{% url 'update_job' %}";
+                    
+                    // Show modal
+                    new bootstrap.Modal(document.getElementById('createJobModal')).show();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to load job details. Please try again.');
+                });
+            });
+        });
+        
+        // Also set up remove buttons when adding new items
+        document.getElementById('addLocationBtn').addEventListener('click', function() {
+            setTimeout(setupRemoveButtons, 100);
+        });
+        
+        document.getElementById('addSkillBtn').addEventListener('click', function() {
+            setTimeout(setupRemoveButtons, 100);
+        });
+        
+        document.getElementById('addEducationBtn').addEventListener('click', function() {
+            setTimeout(setupRemoveButtons, 100);
+        });
+
+        
+        // Helper function to get CSRF token
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        // Handle Delete Job
+        document.querySelectorAll('.delete-job').forEach(button => {
+            button.addEventListener('click', function() {
+                const jobId = this.getAttribute('data-job-id');
+                console.log('Job ID to delete:', jobId);
+                document.getElementById('delete_job_id').value = jobId;
+                console.log('Form value set to:', document.getElementById('delete_job_id').value);
+                new bootstrap.Modal(document.getElementById('deleteJobModal')).show();
+            });
+        });
+
+        // Handle View Applicants button
+        document.querySelectorAll('.view-applicants').forEach(button => {
+            button.addEventListener('click', function() {
+                const jobId = this.getAttribute('data-job-id');
+                
+                // Hide all applicants first
+                document.querySelectorAll('.applicant-item').forEach(applicant => {
+                    applicant.style.display = 'none';
+                });
+                
+                // Show only applicants for this job
+                document.querySelectorAll(`.applicant-item[data-job-id="${jobId}"]`).forEach(applicant => {
+                    applicant.style.display = 'block';
+                });
+                
+                // Scroll to applicants section with animation
+                const applicantsSection = document.getElementById('applicants-section');
+                applicantsSection.classList.add('highlight-section');
+                
+                setTimeout(() => {
+                    applicantsSection.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+                
+                // Remove highlight class after animation completes
+                setTimeout(() => {
+                    applicantsSection.classList.remove('highlight-section');
+                }, 2000);
+                
+                // Update filter dropdown to show current job
+                document.getElementById('filterDropdown').textContent = `Filtered: ${this.closest('.job-card').querySelector('.card-title').textContent}`;
+            });
+        });
+
+        // Handle applicant filtering
+        document.querySelectorAll('#filterDropdown .dropdown-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const jobId = this.getAttribute('data-job-id');
+                const applicantItems = document.querySelectorAll('.applicant-item');
+                
+                applicantItems.forEach(applicant => {
+                    if (jobId === 'all' || applicant.getAttribute('data-job-id') === jobId) {
+                        applicant.style.display = 'block';
+                    } else {
+                        applicant.style.display = 'none';
+                    }
+                });
+                
+                // Update dropdown button text
+                document.getElementById('filterDropdown').textContent = 
+                    jobId === 'all' ? 'Filter by Job' : `Filtered: ${this.textContent}`;
+                
+                // Scroll to applicants section
+                setTimeout(() => {
+                    document.getElementById('applicants-section').scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            });
+        });
+
+        // Handle View Applicant Modal
+        document.querySelectorAll('.view-applicant').forEach(button => {
+            button.addEventListener('click', function() {
+                const userId = this.getAttribute('data-user-id');
+                
+                // Show spinner, hide details
+                document.getElementById('applicant-spinner').style.display = 'block';
+                document.getElementById('applicant-details').style.display = 'none';
+                
+                // Fetch applicant details
+                fetch(`/get_applicant_details/${userId}/`)
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result.success) {
+                            const data = result.data;
+                            
+                            // Populate modal with applicant details
+                            document.getElementById('applicant-name-text').textContent = data.username;
+                            document.getElementById('applicant-location-text').textContent = data.location || 'Location not specified';
+                            document.getElementById('applicant-email').textContent = data.email;
+                            document.getElementById('applicant-mobile').textContent = data.mobile || 'Phone not provided';
+                            document.getElementById('applicant-college').textContent = data.ug_college;
+                            document.getElementById('applicant-branch').textContent = data.branch;
+                            document.getElementById('applicant-graduation-percentage').textContent = `${data.Graduation_Percentage}%`;
+                            document.getElementById('applicant-passout-year').textContent = `Year: ${data.Passout_Year}`;
+                            document.getElementById('applicant-12th-percentage').textContent = `${data['12th_Percentage']}%`;
+                            document.getElementById('applicant-10th-percentage').textContent = `${data['10th_Percentage']}%`;
+                            
+                            // Profile picture
+                            const profilePicContainer = document.getElementById('applicant-profile-pic');
+                            if (data.profile_picture) {
+                                profilePicContainer.innerHTML = `
+                                    <img src="data:image/jpeg;base64,${data.profile_picture}" 
+                                         alt="Profile" 
+                                         class="rounded-circle" 
+                                         style="width: 120px; height: 120px; object-fit: cover;">
+                                `;
+                            } else {
+                                profilePicContainer.innerHTML = `
+                                    <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center mx-auto" 
+                                         style="width: 120px; height: 120px;">
+                                        <i class="bi bi-person text-white" style="font-size: 3rem;"></i>
+                                    </div>
+                                `;
+                            }
+                            
+                            // Skills
+                            const skillsContainer = document.getElementById('applicant-skills');
+                            if (data.skills && data.skills.length > 0) {
+                                skillsContainer.innerHTML = data.skills.map(skill => 
+                                    `<span class="badge bg-primary me-2 mb-2 p-2">${skill}</span>`
+                                ).join('');
+                            } else {
+                                skillsContainer.innerHTML = '<p class="text-muted">No skills listed</p>';
+                            }
+                            
+                            // Set email for contact button
+                            const contactBtn = document.querySelector('.contact-from-modal');
+                            contactBtn.setAttribute('data-email', data.email);
+                            contactBtn.setAttribute('data-name', data.username);
+                            
+                            // Hide spinner, show details
+                            document.getElementById('applicant-spinner').style.display = 'none';
+                            document.getElementById('applicant-details').style.display = 'block';
+                        } else {
+                            console.error("Error fetching applicant details:", result.error);
+                            alert("Failed to load applicant details.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("An error occurred while fetching applicant details.");
+                    });
+            });
+        });
+
+        // Connect Contact button in view modal to contact modal
+        document.querySelector('.contact-from-modal').addEventListener('click', function() {
+            const email = this.getAttribute('data-email');
+            const name = this.getAttribute('data-name');
+            
+            // Close view modal and open contact modal
+            bootstrap.Modal.getInstance(document.getElementById('viewApplicantModal')).hide();
+            
+            // Set values in contact modal
+            document.getElementById('applicant_email').value = email;
+            document.getElementById('email_subject').value = `Regarding Your Job Application`;
+            document.getElementById('email_message').value = `Dear ${name},\n\nThank you for your interest in the position. We've reviewed your application and would like to discuss next steps.\n\nBest regards,\n${document.querySelector('.text-light.me-3').textContent.replace('Welcome, ', '')}`;
+            
+            // Show contact modal
+            new bootstrap.Modal(document.getElementById('contactApplicantModal')).show();
+        });
+
+        // Handle Contact Applicant Modal
+        document.getElementById('contactApplicantModal').addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            if (button) {
+                const email = button.getAttribute('data-email');
+                const name = button.getAttribute('data-name');
+                
+                document.getElementById('applicant_email').value = email;
+                document.getElementById('email_subject').value = `Regarding Your Job Application`;
+                document.getElementById('email_message').value = `Dear ${name},\n\nThank you for your interest in the position. We've reviewed your application and would like to discuss next steps.\n\nBest regards,\n${document.querySelector('.text-light.me-3').textContent.replace('Welcome, ', '')}`;
+            }
+        });
+
+        // Email sending function
+        function sendEmail() {
+            var applicantEmail = document.getElementById('applicant_email').value.trim();
+            var subject = document.getElementById('email_subject').value.trim();
+            var message = document.getElementById('email_message').value.trim();
+        
+            if (!applicantEmail) {
+                alert("❌ Error: The recipient's email is empty!");
+                return;
+            }
+        
+            var params = {
+                email: applicantEmail,
+                title: subject,
+                message: message,
+                reply_to: applicantEmail,
+            };
+        
+            console.log("📧 Preparing email with params:", params);
+        
+            // Fetch API keys first, then send email
+            fetchApiKeys().then(({ serviceID, templateID }) => {
+                console.log("Fetched API keys:", serviceID, templateID);
+        
+                // Send email using EmailJS
+                emailjs.send(serviceID, templateID, params)
+                    .then(function (response) {
+                        console.log("✅ Email sent successfully!", response);
+                        alert("Email sent successfully!");
+                        bootstrap.Modal.getInstance(document.getElementById('contactApplicantModal')).hide();
+                    })
+                    .catch(function (error) {
+                        console.error("❌ Email sending failed:", error);
+                        alert("Failed to send email. Check console for details.");
+                    });
+        
+            }).catch(function (error) {
+                console.error("❌ Error fetching API keys:", error);
+                alert("Failed to fetch API keys. Cannot send email.");
+            });
+        }
+        
+        // Fetch API keys using JavaScript's Fetch API
+        function fetchApiKeys() {
+            return fetch("/get_api_keys_message/")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("API keys fetched:", data.serviceID, data.templateID);
+                    return { serviceID: data.serviceID, templateID: data.templateID };
+                })
+                .catch(error => {
+                    console.error("❌ Error fetching API keys:", error);
+                    throw error;
+                });
+        }
+
+        
+        
+        
+
+        // Handle Disable Job
+document.querySelectorAll('.disable-job').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const jobId = this.getAttribute('data-job-id');
+        if (confirm('Are you sure you want to disable this job? It will no longer be visible to candidates.')) {
+            disableJob(jobId, true);
+        }
+    });
+});
+
+// Handle Enable Job
+document.querySelectorAll('.enable-job').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const jobId = this.getAttribute('data-job-id');
+        if (confirm('Are you sure you want to enable this job? It will become visible to candidates.')) {
+            disableJob(jobId, false);
+        }
+    });
+});
+
+// Update your disable/enable functions
+function toggleJobStatus(jobId, disable) {
+    fetch('/toggle_job_status/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken'),
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({
+            job_id: jobId,
+            disable: disable
+        })
+    })
+    .then(response => {
+        if (response.redirected) {
+            window.location.href = response.url;
+            return;
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data && data.success) {
+            alert(`Job has been ${disable ? 'disabled' : 'enabled'} successfully!`);
+            location.reload();
+        } else if (data) {
+            alert('Error: ' + (data.error || 'Unknown error occurred'));
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while updating the job status.');
+    });
+}
+
+// Update event listeners
+document.querySelectorAll('.disable-job, .enable-job').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const jobId = this.getAttribute('data-job-id');
+        const action = this.classList.contains('disable-job') ? 'disable' : 'enable';
+        
+        if (confirm(`Are you sure you want to ${action} this job?`)) {
+            toggleJobStatus(jobId, action === 'disable');
+        }
+    });
+});
+
+
+// Location autocomplete functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const locationSearch = document.getElementById('locationSearch');
+    const suggestionsContainer = document.getElementById('locationSuggestions');
+    const selectedLocationsContainer = document.getElementById('selectedLocations');
+    const locationsInput = document.getElementById('locationsInput');
+    const addLocationBtn = document.getElementById('addLocationBtn');
+    let selectedLocations = [];
+    let debounceTimer;
+
+    // Function to update the hidden input with selected locations
+    function updateHiddenInput() {
+        locationsInput.value = JSON.stringify(selectedLocations);
+    }
+
+    // Function to add a location to selected list
+    function addLocation(location) {
+        if (!selectedLocations.includes(location)) {
+            selectedLocations.push(location);
+            
+            const badge = document.createElement('span');
+            badge.className = 'badge bg-primary d-flex align-items-center';
+            badge.innerHTML = `
+                ${location}
+                <button type="button" class="btn-close btn-close-white ms-2" aria-label="Remove"></button>
+            `;
+            
+            badge.querySelector('button').addEventListener('click', function() {
+                selectedLocations = selectedLocations.filter(l => l !== location);
+                badge.remove();
+                updateHiddenInput();
+            });
+            
+            selectedLocationsContainer.appendChild(badge);
+            updateHiddenInput();
+            locationSearch.value = '';
+            suggestionsContainer.style.display = 'none';
+        }
+    }
+
+    // Search for locations
+    locationSearch.addEventListener('input', function(e) {
+        clearTimeout(debounceTimer);
+        const searchTerm = e.target.value.trim();
+        
+        if (searchTerm.length < 2) {
+            suggestionsContainer.style.display = 'none';
+            return;
+        }
+        
+        debounceTimer = setTimeout(() => {
+            fetch(`/get_locations/?search=${encodeURIComponent(searchTerm)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.locations.length > 0) {
+                        suggestionsContainer.innerHTML = '';
+                        data.locations.forEach(location => {
+                            if (!selectedLocations.includes(location)) {
+                                const suggestionItem = document.createElement('a');
+                                suggestionItem.href = '#';
+                                suggestionItem.className = 'list-group-item list-group-item-action';
+                                suggestionItem.textContent = location;
+                                suggestionItem.addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    addLocation(location);
+                                });
+                                suggestionsContainer.appendChild(suggestionItem);
+                            }
+                        });
+                        suggestionsContainer.style.display = suggestionsContainer.children.length ? 'block' : 'none';
+                    } else {
+                        suggestionsContainer.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching locations:', error);
+                    suggestionsContainer.style.display = 'none';
+                });
+        }, 300);
+    });
+
+    // Add button click handler
+    addLocationBtn.addEventListener('click', function() {
+        const location = locationSearch.value.trim();
+        if (location && !selectedLocations.includes(location)) {
+            addLocation(location);
+        }
+    });
+
+    // Handle Enter key
+    locationSearch.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const activeSuggestion = document.querySelector('#locationSuggestions a.active');
+            if (activeSuggestion) {
+                addLocation(activeSuggestion.textContent);
+            } else if (locationSearch.value.trim()) {
+                addLocation(locationSearch.value.trim());
+            }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const activeSuggestion = document.querySelector('#locationSuggestions a.active');
+            const suggestions = document.querySelectorAll('#locationSuggestions a');
+            
+            if (!activeSuggestion) {
+                suggestions[0]?.classList.add('active');
+            } else {
+                activeSuggestion.classList.remove('active');
+                const next = activeSuggestion.nextElementSibling;
+                if (next) next.classList.add('active');
+            }
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const activeSuggestion = document.querySelector('#locationSuggestions a.active');
+            if (activeSuggestion) {
+                activeSuggestion.classList.remove('active');
+                const prev = activeSuggestion.previousElementSibling;
+                if (prev) prev.classList.add('active');
+            }
+        }
+    });
+
+    // Hide suggestions when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('#locationSearch') && !e.target.closest('#locationSuggestions')) {
+            suggestionsContainer.style.display = 'none';
+        }
+    });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const skillsSearch = document.getElementById('skillsSearch');
+    const suggestionsContainer = document.getElementById('skillsSuggestions');
+    const selectedSkillsContainer = document.getElementById('selectedSkills');
+    const skillsInput = document.getElementById('skillsInput');
+    const addSkillBtn = document.getElementById('addSkillBtn');
+    let selectedSkills = [];
+    let debounceTimer;
+
+    // Function to update the hidden input with selected skills
+    function updateSkillsInput() {
+        skillsInput.value = selectedSkills.join(', ');
+    }
+
+    // Function to add a skill to selected list
+    function addSkill(skill) {
+        skill = skill.trim();
+        if (skill && !selectedSkills.includes(skill)) {
+            selectedSkills.push(skill);
+            
+            const badge = document.createElement('span');
+            badge.className = 'badge bg-primary d-flex align-items-center';
+            badge.innerHTML = `
+                ${skill}
+                <button type="button" class="btn-close btn-close-white ms-2" aria-label="Remove"></button>
+            `;
+            
+            badge.querySelector('button').addEventListener('click', function() {
+                selectedSkills = selectedSkills.filter(s => s !== skill);
+                badge.remove();
+                updateSkillsInput();
+            });
+            
+            selectedSkillsContainer.appendChild(badge);
+            updateSkillsInput();
+            skillsSearch.value = '';
+            suggestionsContainer.style.display = 'none';
+        }
+    }
+
+    // Search for skills
+    skillsSearch.addEventListener('input', function(e) {
+        clearTimeout(debounceTimer);
+        const searchTerm = e.target.value.trim();
+        
+        if (searchTerm.length < 1) {  // Show suggestions even after 1 character
+            suggestionsContainer.style.display = 'none';
+            return;
+        }
+        
+        debounceTimer = setTimeout(() => {
+            fetch(`/get_skills/?search=${encodeURIComponent(searchTerm)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.skills.length > 0) {
+                        suggestionsContainer.innerHTML = '';
+                        data.skills.forEach(skill => {
+                            if (!selectedSkills.includes(skill)) {
+                                const suggestionItem = document.createElement('a');
+                                suggestionItem.href = '#';
+                                suggestionItem.className = 'list-group-item list-group-item-action';
+                                suggestionItem.textContent = skill;
+                                suggestionItem.addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    addSkill(skill);
+                                });
+                                suggestionsContainer.appendChild(suggestionItem);
+                            }
+                        });
+                        suggestionsContainer.style.display = suggestionsContainer.children.length ? 'block' : 'none';
+                    } else {
+                        suggestionsContainer.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching skills:', error);
+                    suggestionsContainer.style.display = 'none';
+                });
+        }, 300);
+    });
+
+    // Add button click handler
+    addSkillBtn.addEventListener('click', function() {
+        const skill = skillsSearch.value.trim();
+        if (skill) {
+            addSkill(skill);
+        }
+    });
+
+    // Handle Enter key
+    skillsSearch.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const activeSuggestion = document.querySelector('#skillsSuggestions a.active');
+            if (activeSuggestion) {
+                addSkill(activeSuggestion.textContent);
+            } else if (skillsSearch.value.trim()) {
+                addSkill(skillsSearch.value.trim());
+            }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const activeSuggestion = document.querySelector('#skillsSuggestions a.active');
+            const suggestions = document.querySelectorAll('#skillsSuggestions a');
+            
+            if (!activeSuggestion) {
+                suggestions[0]?.classList.add('active');
+            } else {
+                activeSuggestion.classList.remove('active');
+                const next = activeSuggestion.nextElementSibling;
+                if (next) next.classList.add('active');
+            }
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const activeSuggestion = document.querySelector('#skillsSuggestions a.active');
+            if (activeSuggestion) {
+                activeSuggestion.classList.remove('active');
+                const prev = activeSuggestion.previousElementSibling;
+                if (prev) prev.classList.add('active');
+            }
+        }
+    });
+
+    // Hide suggestions when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('#skillsSearch') && !e.target.closest('#skillsSuggestions')) {
+            suggestionsContainer.style.display = 'none';
+        }
+    });
+});
+// Initialize pagination for jobs
+document.addEventListener('DOMContentLoaded', function() {
+    const itemsPerPage = 6; // Number of jobs per page
+    const jobItems = document.querySelectorAll('.job-item');
+    const totalItems = jobItems.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    let currentPage = 1;
+
+    // Function to show a specific page
+    function showPage(page) {
+        currentPage = page;
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        
+        // Hide all items first
+        jobItems.forEach(item => {
+            item.style.display = 'none';
+        });
+        
+        // Show items for current page
+        for (let i = start; i < end && i < totalItems; i++) {
+            if (jobItems[i]) {
+                jobItems[i].style.display = 'block';
+            }
+        }
+        
+        // Update pagination controls
+        updatePaginationControls();
+    }
+
+    // Function to update pagination controls
+    function updatePaginationControls() {
+        const paginationContainer = document.querySelector('.pagination');
+        if (!paginationContainer) return;
+        
+        paginationContainer.innerHTML = '';
+        
+        // Previous button
+        const prevLi = document.createElement('li');
+        prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+        prevLi.innerHTML = `<a class="page-link" href="#" tabindex="-1">Previous</a>`;
+        prevLi.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentPage > 1) showPage(currentPage - 1);
+        });
+        paginationContainer.appendChild(prevLi);
+        
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+            const pageLi = document.createElement('li');
+            pageLi.className = `page-item ${i === currentPage ? 'active' : ''}`;
+            pageLi.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+            pageLi.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage(i);
+            });
+            paginationContainer.appendChild(pageLi);
+        }
+        
+        // Next button
+        const nextLi = document.createElement('li');
+        nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+        nextLi.innerHTML = `<a class="page-link" href="#">Next</a>`;
+        nextLi.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentPage < totalPages) showPage(currentPage + 1);
+        });
+        paginationContainer.appendChild(nextLi);
+    }
+
+    // Initialize pagination
+    if (totalItems > 0) {
+        showPage(1);
+    }
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const educationSearch = document.getElementById('educationSearch');
+    const suggestionsContainer = document.getElementById('educationSuggestions');
+    const selectedEducationContainer = document.getElementById('selectedEducation');
+    const educationInput = document.getElementById('educationInput');
+    const addEducationBtn = document.getElementById('addEducationBtn');
+    let selectedEducation = [];
+    let debounceTimer;
+
+    // Function to update the hidden input
+    function updateEducationInput() {
+        educationInput.value = JSON.stringify(selectedEducation);
+    }
+
+    // Function to add education
+    function addEducation(education) {
+        education = education.trim();
+        if (education && !selectedEducation.includes(education)) {
+            selectedEducation.push(education);
+            
+            const badge = document.createElement('span');
+            badge.className = 'badge bg-info d-flex align-items-center';
+            badge.innerHTML = `
+                ${education}
+                <button type="button" class="btn-close btn-close-white ms-2" aria-label="Remove"></button>
+            `;
+            
+            badge.querySelector('button').addEventListener('click', function() {
+                selectedEducation = selectedEducation.filter(e => e !== education);
+                badge.remove();
+                updateEducationInput();
+            });
+            
+            selectedEducationContainer.appendChild(badge);
+            updateEducationInput();
+            educationSearch.value = '';
+            suggestionsContainer.style.display = 'none';
+        }
+    }
+
+    // Search for education
+    educationSearch.addEventListener('input', function(e) {
+        clearTimeout(debounceTimer);
+        const searchTerm = e.target.value.trim();
+        
+        if (searchTerm.length < 2) {
+            suggestionsContainer.style.display = 'none';
+            return;
+        }
+        
+        debounceTimer = setTimeout(() => {
+            fetch(`/get_education/?search=${encodeURIComponent(searchTerm)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.education.length > 0) {
+                        suggestionsContainer.innerHTML = '';
+                        data.education.forEach(edu => {
+                            if (!selectedEducation.includes(edu)) {
+                                const suggestionItem = document.createElement('a');
+                                suggestionItem.href = '#';
+                                suggestionItem.className = 'list-group-item list-group-item-action';
+                                suggestionItem.textContent = edu;
+                                suggestionItem.addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    addEducation(edu);
+                                });
+                                suggestionsContainer.appendChild(suggestionItem);
+                            }
+                        });
+                        suggestionsContainer.style.display = suggestionsContainer.children.length ? 'block' : 'none';
+                    } else {
+                        suggestionsContainer.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching education:', error);
+                    suggestionsContainer.style.display = 'none';
+                });
+        }, 300);
+    });
+
+    // Add button click handler
+    addEducationBtn.addEventListener('click', function() {
+        const education = educationSearch.value.trim();
+        if (education) {
+            addEducation(education);
+        }
+    });
+
+    // Handle Enter key
+    educationSearch.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const activeSuggestion = document.querySelector('#educationSuggestions a.active');
+            if (activeSuggestion) {
+                addEducation(activeSuggestion.textContent);
+            } else if (educationSearch.value.trim()) {
+                addEducation(educationSearch.value.trim());
+            }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const activeSuggestion = document.querySelector('#educationSuggestions a.active');
+            const suggestions = document.querySelectorAll('#educationSuggestions a');
+            
+            if (!activeSuggestion) {
+                suggestions[0]?.classList.add('active');
+            } else {
+                activeSuggestion.classList.remove('active');
+                const next = activeSuggestion.nextElementSibling;
+                if (next) next.classList.add('active');
+            }
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const activeSuggestion = document.querySelector('#educationSuggestions a.active');
+            if (activeSuggestion) {
+                activeSuggestion.classList.remove('active');
+                const prev = activeSuggestion.previousElementSibling;
+                if (prev) prev.classList.add('active');
+            }
+        }
+    });
+
+    // Hide suggestions when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('#educationSearch') && !e.target.closest('#educationSuggestions')) {
+            suggestionsContainer.style.display = 'none';
+        }
+    });
+});
+    </script>
+    <script>
+        // Job filtering variables
+        let allJobSkills = [];
+        let allJobLocations = [];
+        
+        // Initialize when document is ready
+        $(document).ready(function() {
+            // Fetch all skills and locations for autocomplete
+            fetchJobFilterData();
+            
+            // Initialize skills input with autocomplete
+            $('#jobSkillsInput').on('input', function() {
+                const searchTerm = $(this).val().toLowerCase();
+                if (searchTerm.length < 1) {
+                    $('#jobSkillsDropdown').hide();
+                    return;
+                }
+                
+                const filteredSkills = allJobSkills.filter(skill => 
+                    skill.toLowerCase().includes(searchTerm) &&
+                    !$('#jobSkills').val().split(',').map(s => s.trim()).includes(skill)
+                );
+                
+                showJobDropdown('jobSkillsDropdown', filteredSkills, 'skill');
+            });
+            
+            // Allow adding custom skills with Enter key
+            $('#jobSkillsInput').on('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const skill = $(this).val().trim();
+                    if (skill) {
+                        addSelectedJobSkill(skill);
+                        $(this).val('');
+                        $('#jobSkillsDropdown').hide();
+                    }
+                }
+            });
+            
+            // Initialize location input with autocomplete
+            $('#jobLocationInput').on('input', function() {
+                const searchTerm = $(this).val().toLowerCase();
+                if (searchTerm.length < 1) {
+                    $('#jobLocationDropdown').hide();
+                    return;
+                }
+                
+                const filteredLocations = allJobLocations.filter(location => 
+                    location.toLowerCase().includes(searchTerm) &&
+                    !$('#jobSelectedLocations').text().includes(location)
+                );
+                
+                showJobDropdown('jobLocationDropdown', filteredLocations, 'location');
+            });
+            
+            // Allow adding custom locations with Enter key
+            $('#jobLocationInput').on('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const location = $(this).val().trim();
+                    if (location) {
+                        addSelectedJobLocation(location);
+                        $(this).val('');
+                        $('#jobLocationDropdown').hide();
+                    }
+                }
+            });
+            
+            // Handle skill selection from dropdown
+            $(document).on('click', '.job-skill-item', function() {
+                const skill = $(this).text();
+                addSelectedJobSkill(skill);
+                $('#jobSkillsInput').val('');
+                $('#jobSkillsDropdown').hide();
+            });
+            
+            // Handle location selection from dropdown
+            $(document).on('click', '.job-location-item', function() {
+                const location = $(this).text();
+                addSelectedJobLocation(location);
+                $('#jobLocationInput').val('');
+                $('#jobLocationDropdown').hide();
+            });
+            
+            // Remove selected skill
+            $(document).on('click', '.remove-job-skill', function() {
+                const skill = $(this).data('skill');
+                removeJobSkill(skill);
+            });
+            
+            // Remove selected location
+            $(document).on('click', '.remove-job-location', function() {
+                const location = $(this).data('location');
+                removeJobLocation(location);
+            });
+            
+            // Apply filters button
+            $('#applyFiltersBtn').on('click', function() {
+                applyJobFilters();
+            });
+            
+            // Reset filters button
+            $('#resetFiltersBtn').on('click', function() {
+                resetJobFilters();
+            });
+        });
+        
+        // Fetch initial data for skills and locations
+        function fetchJobFilterData() {
+            // Fetch skills
+            fetch('/get_skills/')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        allJobSkills = data.skills;
+                    }
+                });
+            
+            // Fetch locations
+            fetch('/get_locations/')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        allJobLocations = data.locations;
+                    }
+                });
+        }
+        
+        // Show dropdown with suggestions
+        function showJobDropdown(dropdownId, items, type) {
+            const dropdown = $(`#${dropdownId}`);
+            dropdown.empty();
+            
+            if (items.length === 0) {
+                dropdown.append('<div class="dropdown-item text-muted">No matches found</div>');
+            } else {
+                items.forEach(item => {
+                    const itemClass = type === 'skill' ? 'job-skill-item' : 'job-location-item';
+                    dropdown.append(`<div class="dropdown-item ${itemClass}">${item}</div>`);
+                });
+            }
+            
+            dropdown.show();
+        }
+        
+        // Add selected skill
+        function addSelectedJobSkill(skill) {
+            // Get current skills from hidden input
+            let currentSkills = $('#jobSkills').val() ? $('#jobSkills').val().split(',').map(s => s.trim()) : [];
+            
+            // Add new skill if not already selected
+            if (!currentSkills.includes(skill)) {
+                currentSkills.push(skill);
+                $('#jobSkills').val(currentSkills.join(','));
+                
+                // Add to selected skills display
+                const skillBadge = `
+                    <span class="badge bg-primary bg-opacity-10 text-primary d-inline-flex align-items-center">
+                        ${skill}
+                        <button type="button" class="btn-close btn-close-white ms-2 remove-job-skill" data-skill="${skill}" aria-label="Close"></button>
+                    </span>
+                `;
+                $('#jobSelectedSkills').append(skillBadge);
+            }
+        }
+        
+        // Add selected location
+        function addSelectedJobLocation(location) {
+            // Get current locations from hidden input
+            let currentLocations = $('#jobLocation').val() ? $('#jobLocation').val().split(',').map(l => l.trim()) : [];
+            
+            // Add new location if not already selected
+            if (!currentLocations.includes(location)) {
+                currentLocations.push(location);
+                $('#jobLocation').val(currentLocations.join(','));
+                
+                // Add to selected locations display
+                const locationBadge = `
+                    <span class="badge bg-primary bg-opacity-10 text-primary d-inline-flex align-items-center">
+                        ${location}
+                        <button type="button" class="btn-close btn-close-white ms-2 remove-job-location" data-location="${location}" aria-label="Close"></button>
+                    </span>
+                `;
+                $('#jobSelectedLocations').append(locationBadge);
+            }
+        }
+        
+        // Remove selected skill
+        function removeJobSkill(skill) {
+            // Get current skills from hidden input
+            let currentSkills = $('#jobSkills').val() ? $('#jobSkills').val().split(',').map(s => s.trim()) : [];
+            
+            // Remove the skill
+            currentSkills = currentSkills.filter(s => s !== skill);
+            $('#jobSkills').val(currentSkills.join(','));
+            
+            // Remove from display
+            $(`.remove-job-skill[data-skill="${skill}"]`).parent().remove();
+        }
+        
+        // Remove selected location
+        function removeJobLocation(location) {
+            // Get current locations from hidden input
+            let currentLocations = $('#jobLocation').val() ? $('#jobLocation').val().split(',').map(l => l.trim()) : [];
+            
+            // Remove the location
+            currentLocations = currentLocations.filter(l => l !== location);
+            $('#jobLocation').val(currentLocations.join(','));
+            
+            // Remove from display
+            $(`.remove-job-location[data-location="${location}"]`).parent().remove();
+        }
+        
+        // Apply filters to jobs
+        function applyJobFilters() {
+            const selectedSkills = $('#jobSkills').val() ? $('#jobSkills').val().split(',').map(s => s.trim().toLowerCase()) : [];
+            const selectedLocations = $('#jobLocation').val() ? $('#jobLocation').val().split(',').map(l => l.trim().toLowerCase()) : [];
+            const jobType = $('#jobTypeFilter').val()?.toLowerCase();
+             const minSalary = parseFloat($('#salaryRange').val()) || 0;
+            console.log(minSalary);
+            const searchTerm = $('#jobSearch').val().toLowerCase();
+            
+            const allJobs = $('.job-item');
+            let visibleCount = 0;
+            
+            allJobs.each(function() {
+                const jobCard = $(this).find('.job-card');
+                
+                // Get data attributes and ensure proper formatting
+                const jobSkills = jobCard.data('skills')?.split(',').map(s => s.trim().toLowerCase()) || [];
+                const jobLocations = jobCard.data('location')?.split(',').map(l => l.trim().toLowerCase()) || [];
+                const jobTypeValue = jobCard.data('job-type')?.toLowerCase() || '';
+             
+                let jobSalary = 0;
+const salaryText = jobCard.data('salary') || '';
+console.log(salaryText);
+// Extract first numeric value from salary string (handles "10 LPA", "10,000", etc.)
+const salaryMatch = salaryText.toString().match(/\d+/);
+if (salaryMatch) {
+    jobSalary = parseFloat(salaryMatch[0]);
+    console.log(jobSalary);
+}
+              
+                const jobCompany = jobCard.data('company')?.toLowerCase() || '';
+                const jobContent = $(this).text().toLowerCase();
+                
+                let visible = true;
+                
+                // Skills filter - check if any selected skill matches any job skill
+                if (selectedSkills.length > 0) {
+                    visible = visible && selectedSkills.some(skill => 
+                        jobSkills.some(jobSkill => jobSkill.includes(skill))
+                    );
+                }
+                
+                // Location filter - check if any selected location matches any job location
+                if (selectedLocations.length > 0) {
+                    visible = visible && selectedLocations.some(location => 
+                        jobLocations.some(jobLocation => jobLocation.includes(location))
+                    );
+                }
+                
+                // Job type filter - exact match
+                if (jobType && jobTypeValue !== jobType) {
+                    visible = false;
+                }
+                
+                // Salary filter - numeric comparison
+                if (minSalary > 0 && jobSalary !== minSalary) {
+                    visible = false;
+                }
+                
+                // Search term filter (searches in company name and all text content)
+                if (searchTerm) {
+                    visible = visible && (
+                        jobCompany.includes(searchTerm) || 
+                        jobContent.includes(searchTerm)
+                    );
+                }
+                
+                if (visible) {
+                    $(this).show();
+                    visibleCount++;
+                } else {
+                    $(this).hide();
+                }
+            });
+            
+            // Update results count
+            $('#jobs-section h2').find('.text-muted').remove();
+            $('#jobs-section h2').append(`<span class="text-muted">(${visibleCount} jobs)</span>`);
+            
+            // Show message if no jobs found
+            if (visibleCount === 0) {
+                if ($('#jobs-container .no-jobs-message').length === 0) {
+                    $('#jobs-container').append(`
+                        <div class="col-12 no-jobs-message">
+                            <div class="card text-center py-5">
+                                <div class="card-body">
+                                    <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                                        <i class="fas fa-search text-primary fs-3"></i>
+                                    </div>
+                                    <h3 class="h5">No jobs found</h3>
+                                    <p class="text-muted">Try adjusting your filter criteria</p>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                }
+            } else {
+                $('#jobs-container .no-jobs-message').remove();
+            }
+        }
+        
+        // Reset all filters
+        function resetJobFilters() {
+            $('#jobSkills').val('');
+            $('#jobSelectedSkills').empty();
+            $('#jobLocation').val('');
+            $('#jobLocationInput').val('');
+            $('#jobSelectedLocations').empty();
+            $('#jobTypeFilter').val('');
+            $('#salaryRange').val('');
+            $('#jobSearch').val('');
+            
+            // Show all jobs
+            $('.job-item').show();
+            
+            // Reset results count
+            const totalJobs = $('.job-item').length;
+            $('#jobs-section h2').find('.text-muted').remove();
+            $('#jobs-section h2').append(`<span class="text-muted">(${totalJobs} jobs)</span>`);
+            
+            // Remove "no jobs found" message if present
+            $('#jobs-container .no-jobs-message').remove();
+        }
+        
+        // Close dropdowns when clicking outside
+        $(document).click(function(e) {
+            if (!$(e.target).closest('#jobSkillsInput, #jobSkillsDropdown').length) {
+                $('#jobSkillsDropdown').hide();
+            }
+            if (!$(e.target).closest('#jobLocationInput, #jobLocationDropdown').length) {
+                $('#jobLocationDropdown').hide();
+            }
+        });
+        </script>
+    
+    {% endblock %}

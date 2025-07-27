@@ -1,0 +1,963 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <title>Applicants for {{ job.Job }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        /* Modern Card Styles */
+.card {
+    border: none;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Job Cards with Different Top Borders */
+.job-card {
+    transition: all 0.3s ease;
+    height: 100%;
+    border-top: 4px solid;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Color rotation for job cards */
+/* Color rotation for job cards */
+.job-card.color-1 { border-top-color: #4e73df; }
+.job-card.color-2 { border-top-color: #1cc88a; }
+.job-card.color-3 { border-top-color: #36b9cc; }
+.job-card.color-4 { border-top-color: #f6c23e; }
+.job-card.color-5 { border-top-color: #e74a3b; }
+.job-card.color-6 { border-top-color: #858796; }
+.job-card.color-7 { border-top-color: #6f42c1; }
+.job-card.color-8 { border-top-color: #fd7e14; }
+.job-card.color-9 { border-top-color: #20c997; }
+.job-card.color-10 { border-top-color: #d63384; }
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.job-card .card-header {
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 1rem 1.25rem;
+}
+
+.job-card .card-body {
+    padding: 1.25rem;
+}
+
+.job-card .card-footer {
+    background-color: rgba(0,0,0,0.03);
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding: 1rem 1.25rem;
+}
+
+
+.skills-badge {
+    --bs-badge-color: #212529; /* Override text color variable */
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 0.75rem;
+    background-color: #f8f9fa;
+    color: #212529;
+    border: 1px solid #dee2e6;
+}
+
+.applicant-card {
+    transition: all 0.3s;
+    border-left: 4px solid #4e73df;
+}
+
+.applicant-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.banner-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://cdnjs.cloudflare.com/ajax/libs/twilight/2.0.0/bg.png') repeat;
+    opacity: 0.1;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url('https://cdnjs.cloudflare.com/ajax/libs/twilight/2.0.0/img/wave.svg') repeat-x;
+    animation: wave 15s linear infinite;
+}
+
+@keyframes wave {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 1000px;
+    }
+}
+
+.feature-icon {
+    height: 70px;
+    width: 70px;
+    padding: 15px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.feature-icon:hover {
+    transform: translateY(-10px);
+}
+
+.applicant-item {
+    display: none;
+}
+
+/* Pagination Styles */
+.pagination .page-item.active .page-link {
+    background-color: #4e73df;
+    border-color: #4e73df;
+}
+
+.pagination .page-link {
+    color: #4e73df;
+}
+
+/* Scroll to Applicants Animation */
+@keyframes highlight {
+    0% { background-color: rgba(78, 115, 223, 0.1); }
+    100% { background-color: transparent; }
+}
+
+.highlight-section {
+    animation: highlight 2s ease;
+}
+
+/* Status Badges */
+.status-badge {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    font-size: 0.7rem;
+    padding: 5px 8px;
+}
+
+/* Improved job type badge */
+.job-type-badge {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    margin-left: 8px;
+}
+
+/* Salary highlight */
+.salary-highlight {
+    font-weight: 600;
+    color: #2e59d9;
+}
+
+/* Deadline styling */
+.deadline-text {
+    font-weight: 500;
+}
+
+/* Company logo placeholder */
+.company-logo {
+    width: 50px;
+    height: 50px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #6c757d;
+    font-size: 1.5rem;
+}
+        /* Copy all your existing CSS styles here */
+        .applicant-card {
+            transition: all 0.3s;
+            border-left: 4px solid #4e73df;
+        }
+        .applicant-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .skills-badge {
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-size: 0.75rem;
+            background-color: #f8f9fa;
+            color: #212529;
+            border: 1px solid #dee2e6;
+        }
+        /* Add other styles as needed */
+    </style>
+    {% endblock %}
+    {% block content %}
+   
+    <div class="container" style="margin-top: 80px;">
+        <!-- Job Details Header -->
+<div class="card mb-4 border-0 shadow-sm">
+    <div class="card-body p-4">
+        <!-- Job Title and Basic Info -->
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
+            <div class="mb-3 mb-md-0">
+                <h2 class="mb-2 fw-bold text-primary">{{ job.Job }}</h2>
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                    <span class="text-muted">
+                        <i class="bi bi-building me-1"></i>{{ job.Org }}
+                    </span>
+                    <span class="text-muted">
+                        <i class="bi bi-geo-alt me-1"></i>{{ job.Location }}
+                    </span>
+                </div>
+            </div>
+            <div class="d-flex flex-column align-items-end">
+                <span class="badge bg-primary bg-opacity-10 text-primary fs-6 mb-2 px-3 py-2">
+                    <i class="bi bi-briefcase me-1"></i>{{ job.job_type }}
+                </span>
+                <h4 class="m-0 text-success fw-bold">{{ job.Salary }} LPA</h4>
+            </div>
+        </div>
+
+        <hr class="my-3">
+
+        <!-- Key Details Row -->
+        <div class="row g-4 mb-3">
+            <!-- Skills Section -->
+            <div class="col-md-6">
+                <div class="bg-light bg-opacity-10 p-3 rounded">
+                    <h5 class="d-flex align-items-center gap-2 mb-3">
+                        <i class="bi bi-tools text-primary"></i>Skills Required
+                    </h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for skill in job.Skills %}
+                            <span class="badge bg-primary bg-opacity-10 text-primary py-2 px-3 fs-6">
+                                {{ skill }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deadline Section -->
+            <div class="col-md-6">
+                <div class="bg-light bg-opacity-10 p-3 rounded h-100">
+                    <h5 class="d-flex align-items-center gap-2 mb-3">
+                        <i class="bi bi-calendar-check text-danger"></i>Application Deadline
+                    </h5>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="fs-5 fw-semibold text-danger">{{ job.deadline }}</span>
+                        {% if job.deadline == today %}
+                            <span class="badge bg-danger bg-opacity-10 text-danger">Last Day!</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Qualifications and Description -->
+        <div class="row g-4">
+            <!-- Qualifications Section -->
+          <!-- Qualifications Section -->
+<div class="col-md-6">
+    <div class="bg-light bg-opacity-10 p-3 rounded">
+        <h5 class="d-flex align-items-center gap-2 mb-3">
+            <i class="bi bi-mortarboard text-info"></i>Qualifications
+        </h5>
+        <ul class="list-unstyled mb-0">
+            {% for qual in job.education_list %}
+                <li class="mb-2 d-flex align-items-start">
+                    <i class="bi bi-check-circle-fill text-info me-2 mt-1"></i>
+                    <span>{{ qual }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+            <!-- Experience Section -->
+            <div class="col-md-6">
+                <div class="bg-light bg-opacity-10 p-3 rounded h-100">
+                    <h5 class="d-flex align-items-center gap-2 mb-3">
+                        <i class="bi bi-person-workspace text-warning"></i>Experience
+                    </h5>
+                    <p class="fs-5 m-0">{{ job.experience }} years</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Description -->
+        <div class="mt-4">
+            <h5 class="d-flex align-items-center gap-2 mb-3">
+                <i class="bi bi-file-text-fill text-secondary"></i>Job Description
+            </h5>
+            <div class="bg-light bg-opacity-10 p-3 rounded">
+                <p class="m-0">{{ job.FullDescription }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Applicants Section -->
+        <h3 class="mb-4">Applicants ({{ applicants|length }})</h3>
+        
+        {% if applicants %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for applicant in applicants %}
+            <div class="col">
+                <div class="card applicant-card shadow-sm h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            {% if applicant.profile_picture %}
+                            <img src="data:image/jpeg;base64,{{ applicant.profile_picture }}" 
+                                alt="Profile" 
+                                class="rounded-circle me-3" 
+                                style="width: 60px; height: 60px; object-fit: cover;">
+                            {% else %}
+                            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-person text-white" style="font-size: 1.5rem;"></i>
+                            </div>
+                            {% endif %}
+                            <div>
+                                <h5 class="card-title mb-0">{{ applicant.username }}</h5>
+                                <p class="text-muted mb-0">{{ applicant.email }}</p>
+                            </div>
+                        </div>
+
+                        {% if applicant.mobile %}
+                        <div class="mb-3">
+                            <i class="bi bi-telephone me-2"></i>
+                            <span>{{ applicant.mobile }}</span>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="mb-3">
+                            <i class="bi bi-mortarboard me-2"></i>
+                            <span>{{ applicant.branch }} - {{ applicant.ug_college }}</span>
+                        </div>
+                        
+                        {% if applicant.skills %}
+                        <div class="mt-2">
+                            <h6 class="small fw-bold mb-2">Skills:</h6>
+                            {% for skill in applicant.skills %}
+                            <span class="badge bg-light text-dark skills-badge">{{ skill }}</span>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-sm btn-outline-primary view-applicant" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#viewApplicantModal" 
+                                    data-user-id="{{ applicant.applicant_id }}">
+                                <i class="bi bi-eye me-1"></i>View Details
+                            </button>
+                            <button class="btn btn-sm btn-outline-success contact-applicant" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#contactApplicantModal" 
+                                    data-email="{{ applicant.email }}" 
+                                    data-name="{{ applicant.username }}">
+                                <i class="bi bi-envelope me-1"></i>Contact
+                            </button>
+                        </div>
+                        <small class="text-muted mt-2 d-block">
+                            <i class="bi bi-clock me-1"></i>
+                            Applied: {{ applicant.applied_at|date:"M d, Y" }}
+                        </small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i>
+            No applicants have applied for this job yet.
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Include the same modals from your hr_panel.html -->
+    <!-- View Applicant Modal -->
+    <div class="modal fade" id="viewApplicantModal" tabindex="-1" aria-hidden="true">
+        <!-- Copy the same modal structure from hr_panel.html -->
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Applicant Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4" id="applicant-spinner">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                    
+                    <div id="applicant-details" style="display: none;">
+                        <div class="row mb-4">
+                            <div class="col-md-4 text-center">
+                                <div id="applicant-profile-pic" class="mb-3">
+                                    <!-- Profile picture will be inserted here -->
+                                </div>
+                                <h4 id="applicant-name" class="mb-1">
+                                    <i class="bi bi-person-fill me-2"></i>
+                                    <span id="applicant-name-text"></span>
+                                </h4>
+                                <p id="applicant-location" class="text-muted">
+                                    <i class="bi bi-geo-alt-fill me-2"></i>
+                                    <span id="applicant-location-text"></span>
+                                </p>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">
+                                                    <i class="bi bi-envelope-fill me-2"></i>Contact
+                                                </h6>
+                                                <p id="applicant-email" class="mb-1"></p>
+                                                <p id="applicant-mobile" class="mb-0"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">
+                                                    <i class="bi bi-mortarboard-fill me-2"></i>Education
+                                                </h6>
+                                                <p id="applicant-college" class="mb-1"></p>
+                                                <p id="applicant-branch" class="mb-0"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header bg-light">
+                                        <h6 class="mb-0">Educational Background</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4 mb-3">
+                                                <h6>Graduation</h6>
+                                                <p id="applicant-graduation-percentage" class="mb-1"></p>
+                                                <p id="applicant-passout-year" class="mb-0"></p>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <h6>12th Standard</h6>
+                                                <p id="applicant-12th-percentage" class="mb-0"></p>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <h6>10th Standard</h6>
+                                                <p id="applicant-10th-percentage" class="mb-0"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header bg-light">
+                                        <h6 class="mb-0">Skills & Qualifications</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="applicant-skills" class="d-flex flex-wrap">
+                                            <!-- Skills will be inserted here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-1"></i>Close
+                    </button>
+                    <button type="button" class="btn btn-primary contact-from-modal">
+                        <i class="bi bi-envelope me-1"></i>Contact Applicant
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Applicant Modal -->
+    <div class="modal fade" id="contactApplicantModal" tabindex="-1" aria-hidden="true">
+        <!-- Copy the same modal structure from hr_panel.html -->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Contact Applicant</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="contactForm" method="post" action="{% url 'contact_applicant' %}">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="applicant_email" class="form-label">To</label>
+                            <input type="email" class="form-control" id="applicant_email" name="applicant_email" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email_subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="email_subject" name="email_subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email_message" class="form-label">Message</label>
+                            <textarea class="form-control" id="email_message" name="email_message" rows="6" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle me-1"></i>Cancel
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="sendEmail()">
+                            <i class="bi bi-send me-1"></i>Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- HR Panel Footer -->
+    <div class="modal fade" id="premiumModal" tabindex="-1" aria-labelledby="premiumModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content rounded-4 shadow">
+            <div class="modal-header bg-warning bg-gradient text-dark">
+              <h5 class="modal-title" id="premiumModalLabel">Premium Access Required</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>To view the user list, please upgrade to a <strong>Premium Membership</strong>.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+              <a href="{% url 'payment'%}" class="btn btn-primary">Active Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  {% endblock %}
+  {% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS
+        (function(){
+            emailjs.init("GyvTODto1wNKmd3Nh"); // Replace with your actual Public Key
+        })();
+
+        // Copy all your existing JavaScript for handling modals and email sending
+        // from hr_panel.html to here
+        // Handle Edit Job
+        document.querySelectorAll('.edit-job').forEach(button => {
+            button.addEventListener('click', function() {
+                const jobId = this.getAttribute('data-job-id');
+                console.log('Job ID to edit:', jobId);
+
+                if (jobId) {
+                    // Fetch job details
+                    fetch(`/get_job_details/${jobId}/`)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(job => {
+                            console.log('Job details:', job);
+                            console.log('Job ID to edit2:', job._id);
+
+                            // Populate form fields
+                            document.getElementById('job_id').value = job._id;
+                            document.getElementById('title').value = job.Job;
+                            document.getElementById('company').value = job.Org;
+                            document.getElementById('location').value = job.Location;
+                            document.getElementById('salary').value = job.Salary;
+                            document.getElementById('job_type').value = job.job_type;
+                            document.getElementById('experience').value = job.experience;
+                            document.getElementById('skills').value = Array.isArray(job.Skills) ? job.Skills.join(', ') : job.Skills;
+                            document.getElementById('description').value = job.Fulldescription;
+                            document.getElementById('education').value = job.education;
+                            document.getElementById('deadline').value = job.deadline;
+
+                            // Change modal title
+                            document.getElementById('jobModalTitle').textContent = 'Edit Job';
+
+                            // Update form action
+                            document.getElementById('jobForm').action = "{% url 'update_job' %}";
+
+                            // Show modal
+                            new bootstrap.Modal(document.getElementById('createJobModal')).show();
+                        })
+                        .catch(error => {
+                            console.error('Error fetching job details:', error);
+                        });
+                } else {
+                    console.error('Job ID is empty or undefined.');
+                }
+            });
+        });
+
+        // Handle Delete Job
+        document.querySelectorAll('.delete-job').forEach(button => {
+            button.addEventListener('click', function() {
+                const jobId = this.getAttribute('data-job-id');
+                console.log('Job ID to delete:', jobId);
+                document.getElementById('delete_job_id').value = jobId;
+                console.log('Form value set to:', document.getElementById('delete_job_id').value);
+                new bootstrap.Modal(document.getElementById('deleteJobModal')).show();
+            });
+        });
+
+        // Handle View Applicants button
+        document.querySelectorAll('.view-applicants').forEach(button => {
+            button.addEventListener('click', function() {
+                const jobId = this.getAttribute('data-job-id');
+                
+                // Hide all applicants first
+                document.querySelectorAll('.applicant-item').forEach(applicant => {
+                    applicant.style.display = 'none';
+                });
+                
+                // Show only applicants for this job
+                document.querySelectorAll(`.applicant-item[data-job-id="${jobId}"]`).forEach(applicant => {
+                    applicant.style.display = 'block';
+                });
+                
+                // Scroll to applicants section with animation
+                const applicantsSection = document.getElementById('applicants-section');
+                applicantsSection.classList.add('highlight-section');
+                
+                setTimeout(() => {
+                    applicantsSection.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+                
+                // Remove highlight class after animation completes
+                setTimeout(() => {
+                    applicantsSection.classList.remove('highlight-section');
+                }, 2000);
+                
+                // Update filter dropdown to show current job
+                document.getElementById('filterDropdown').textContent = `Filtered: ${this.closest('.job-card').querySelector('.card-title').textContent}`;
+            });
+        });
+
+        // Handle applicant filtering
+        document.querySelectorAll('#filterDropdown .dropdown-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const jobId = this.getAttribute('data-job-id');
+                const applicantItems = document.querySelectorAll('.applicant-item');
+                
+                applicantItems.forEach(applicant => {
+                    if (jobId === 'all' || applicant.getAttribute('data-job-id') === jobId) {
+                        applicant.style.display = 'block';
+                    } else {
+                        applicant.style.display = 'none';
+                    }
+                });
+                
+                // Update dropdown button text
+                document.getElementById('filterDropdown').textContent = 
+                    jobId === 'all' ? 'Filter by Job' : `Filtered: ${this.textContent}`;
+                
+                // Scroll to applicants section
+                setTimeout(() => {
+                    document.getElementById('applicants-section').scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            });
+        });
+
+        // Handle View Applicant Modal
+        document.querySelectorAll('.view-applicant').forEach(button => {
+            button.addEventListener('click', function() {
+                const userId = this.getAttribute('data-user-id');
+                
+                // Show spinner, hide details
+                document.getElementById('applicant-spinner').style.display = 'block';
+                document.getElementById('applicant-details').style.display = 'none';
+                
+                // Fetch applicant details
+                fetch(`/get_applicant_details/${userId}/`)
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result.success) {
+                            const data = result.data;
+                            
+                            // Populate modal with applicant details
+                            document.getElementById('applicant-name-text').textContent = data.username;
+                            document.getElementById('applicant-location-text').textContent = data.location || 'Location not specified';
+                            document.getElementById('applicant-email').textContent = data.email;
+                            document.getElementById('applicant-mobile').textContent = data.mobile || 'Phone not provided';
+                            document.getElementById('applicant-college').textContent = data.ug_college;
+                            document.getElementById('applicant-branch').textContent = data.branch;
+                            document.getElementById('applicant-graduation-percentage').textContent = `${data.Graduation_Percentage}%`;
+                            document.getElementById('applicant-passout-year').textContent = `Year: ${data.Passout_Year}`;
+                            document.getElementById('applicant-12th-percentage').textContent = `${data['12th_Percentage']}%`;
+                            document.getElementById('applicant-10th-percentage').textContent = `${data['10th_Percentage']}%`;
+                            
+                            // Profile picture
+                            const profilePicContainer = document.getElementById('applicant-profile-pic');
+                            if (data.profile_picture) {
+                                profilePicContainer.innerHTML = `
+                                    <img src="data:image/jpeg;base64,${data.profile_picture}" 
+                                         alt="Profile" 
+                                         class="rounded-circle" 
+                                         style="width: 120px; height: 120px; object-fit: cover;">
+                                `;
+                            } else {
+                                profilePicContainer.innerHTML = `
+                                    <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center mx-auto" 
+                                         style="width: 120px; height: 120px;">
+                                        <i class="bi bi-person text-white" style="font-size: 3rem;"></i>
+                                    </div>
+                                `;
+                            }
+                            
+                            // Skills
+                            const skillsContainer = document.getElementById('applicant-skills');
+                            if (data.skills && data.skills.length > 0) {
+                                skillsContainer.innerHTML = data.skills.map(skill => 
+                                    `<span class="badge bg-primary me-2 mb-2 p-2">${skill}</span>`
+                                ).join('');
+                            } else {
+                                skillsContainer.innerHTML = '<p class="text-muted">No skills listed</p>';
+                            }
+                            
+                            // Set email for contact button
+                            const contactBtn = document.querySelector('.contact-from-modal');
+                            contactBtn.setAttribute('data-email', data.email);
+                            contactBtn.setAttribute('data-name', data.username);
+                            
+                            // Hide spinner, show details
+                            document.getElementById('applicant-spinner').style.display = 'none';
+                            document.getElementById('applicant-details').style.display = 'block';
+                        } else {
+                            console.error("Error fetching applicant details:", result.error);
+                            alert("Failed to load applicant details.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("An error occurred while fetching applicant details.");
+                    });
+            });
+        });
+
+        // Connect Contact button in view modal to contact modal
+        document.querySelector('.contact-from-modal').addEventListener('click', function() {
+            const email = this.getAttribute('data-email');
+            const name = this.getAttribute('data-name');
+            
+            // Close view modal and open contact modal
+            bootstrap.Modal.getInstance(document.getElementById('viewApplicantModal')).hide();
+            
+            // Set values in contact modal
+            document.getElementById('applicant_email').value = email;
+            document.getElementById('email_subject').value = `Regarding Your Job Application`;
+            document.getElementById('email_message').value = `Dear ${name},\n\nThank you for your interest in the position. We've reviewed your application and would like to discuss next steps.\n\nBest regards,\n${document.querySelector('.text-light.me-3').textContent.replace('Welcome, ', '')}`;
+            
+            // Show contact modal
+            new bootstrap.Modal(document.getElementById('contactApplicantModal')).show();
+        });
+
+        // Handle Contact Applicant Modal
+        document.getElementById('contactApplicantModal').addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            if (button) {
+                const email = button.getAttribute('data-email');
+                const name = button.getAttribute('data-name');
+                
+                document.getElementById('applicant_email').value = email;
+                document.getElementById('email_subject').value = `Regarding Your Job Application`;
+                document.getElementById('email_message').value = `Dear ${name},\n\nThank you for your interest in the position. We've reviewed your application and would like to discuss next steps.\n\nBest regards,\n${document.querySelector('.text-light.me-3').textContent.replace('Welcome, ', '')}`;
+            }
+        });
+
+        // Email sending function
+        function sendEmail() {
+            var applicantEmail = document.getElementById('applicant_email').value.trim();
+            var subject = document.getElementById('email_subject').value.trim();
+            var message = document.getElementById('email_message').value.trim();
+        
+            if (!applicantEmail) {
+                alert("❌ Error: The recipient's email is empty!");
+                return;
+            }
+        
+            var params = {
+                email: applicantEmail,
+                title: subject,
+                message: message,
+                reply_to: applicantEmail,
+            };
+        
+            console.log("📧 Preparing email with params:", params);
+        
+            // Fetch API keys first, then send email
+            fetchApiKeys().then(({ serviceID, templateID }) => {
+                console.log("Fetched API keys:", serviceID, templateID);
+        
+                // Send email using EmailJS
+                emailjs.send(serviceID, templateID, params)
+                    .then(function (response) {
+                        console.log("✅ Email sent successfully!", response);
+                        alert("Email sent successfully!");
+                        bootstrap.Modal.getInstance(document.getElementById('contactApplicantModal')).hide();
+                    })
+                    .catch(function (error) {
+                        console.error("❌ Email sending failed:", error);
+                        alert("Failed to send email. Check console for details.");
+                    });
+        
+            }).catch(function (error) {
+                console.error("❌ Error fetching API keys:", error);
+                alert("Failed to fetch API keys. Cannot send email.");
+            });
+        }
+        
+        // Fetch API keys using JavaScript's Fetch API
+        function fetchApiKeys() {
+            return fetch("/get_api_keys_message/")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("API keys fetched:", data.serviceID, data.templateID);
+                    return { serviceID: data.serviceID, templateID: data.templateID };
+                })
+                .catch(error => {
+                    console.error("❌ Error fetching API keys:", error);
+                    throw error;
+                });
+        }
+
+        // Initialize pagination for jobs (client-side)
+        function paginateItems(containerSelector, itemsPerPage) {
+            const container = document.querySelector(containerSelector);
+            if (!container) return;
+            
+            const items = container.children;
+            const totalItems = items.length;
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            
+            // Show first page by default
+            showPage(1);
+            
+            function showPage(page) {
+                const start = (page - 1) * itemsPerPage;
+                const end = start + itemsPerPage;
+                
+                for (let i = 0; i < totalItems; i++) {
+                    if (i >= start && i < end) {
+                        items[i].style.display = 'block';
+                    } else {
+                        items[i].style.display = 'none';
+                    }
+                }
+            }
+            
+            // Update pagination controls (you would implement this based on your UI)
+        }
+        
+        // Initialize pagination when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            paginateItems('#jobs-container', 6); // 6 jobs per page
+            paginateItems('#applicants-container', 6); // 6 applicants per page
+            
+            // Show all applicants by default
+            document.querySelectorAll('.applicant-item').forEach(item => {
+                item.style.display = 'block';
+            });
+        });
+
+        // Handle Disable Job
+document.querySelectorAll('.disable-job').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const jobId = this.getAttribute('data-job-id');
+        if (confirm('Are you sure you want to disable this job? It will no longer be visible to candidates.')) {
+            disableJob(jobId, true);
+        }
+    });
+});
+
+// Handle Enable Job
+document.querySelectorAll('.enable-job').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const jobId = this.getAttribute('data-job-id');
+        if (confirm('Are you sure you want to enable this job? It will become visible to candidates.')) {
+            disableJob(jobId, false);
+        }
+    });
+});
+
+// Function to disable/enable job
+function disableJob(jobId, disable) {
+    fetch('/toggle_job_status/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify({
+            job_id: jobId,
+            disable: disable
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(`Job has been ${disable ? 'disabled' : 'enabled'} successfully!`);
+            location.reload(); // Refresh to update the UI
+        } else {
+            alert('Error: ' + data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while updating the job status.');
+    });
+}
+    </script><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    
+    {% endblock %}

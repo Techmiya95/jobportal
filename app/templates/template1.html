@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: "Helvetica", sans-serif;
+            margin: 30px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .info, .education, .skills {
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #888;
+            padding: 6px;
+            text-align: left;
+        }
+        th {
+            background: #444;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align:center;">{{ user_data.user_name }}</h1>
+    <div class="info" style="text-align:center;">
+        {{ user_data.email }} | {{ user_data.mobile }} | {{ user_data.location }}
+    </div>
+
+    <div class="section education">
+        <h2>Education</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Degree</th>
+                    <th>Institution</th>
+                    <th>Year</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Graduation</td>
+                    <td>{{ user_data.ug_college }}</td>
+                    <td>{{ user_data.Passout_Year }}</td>
+                    <td>{{ user_data.Graduation_Percentage }}</td>
+                </tr>
+                <tr>
+                    <td>12th</td>
+                    <td>{{ user_data.twelfth_school }}</td>
+                    <td>{{ user_data.twelfth_year }}</td>
+                    <td>{{ user_data.twelfth_percentage }}</td>
+                </tr>
+                <tr>
+                    <td>10th</td>
+                    <td>{{ user_data.tenth_school }}</td>
+                    <td>{{ user_data.tenth_year }}</td>
+                    <td>{{ user_data.tenth_percentage }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    {% if user_data.skills %}
+    <div class="section skills">
+        <h2>Skills</h2>
+        <p>{{ user_data.skills|join:", " }}</p>
+    </div>
+    {% endif %}
+
+</body>
+</html>

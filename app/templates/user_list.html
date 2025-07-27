@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+</head>
+<body>
+    <h2>List of Users</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date Joined</th>
+            <th>Father Name</th>
+        </tr>
+        {% if user %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.date_joined }}</td>
+            <td>{{user.father_name}}</td
+        </tr>
+        {% endif %}
+    </table>
+
+    <h2>Social Authentication Users</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Provider</th>
+            <th>UID</th>
+            <th>Extra Data</th>
+            <th>Created</th>
+            <th>Modified</th>
+        </tr>
+        {% for auth in social_auths %}
+        <tr>
+            <td>{{ auth.id }}</td>
+            <td>{{ auth.user_id }}</td>
+            <td>{{ auth.provider }}</td>
+            <td>{{ auth.uid }}</td>
+            <td>{{ auth.extra_data }}</td>
+            <td>{{ auth.created }}</td>
+            <td>{{ auth.modified }}</td>
+           
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

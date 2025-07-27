@@ -1,0 +1,899 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job List</title>
+    <link rel="stylesheet" href="{% static 'css/stylehome.css' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <style>
+        .navbar .dropdown-toggle::after {
+            display: none !important;
+        }
+        .navbar-brand .logo-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            color: #3498db;
+        }
+    </style>
+    {% endblock %}
+
+    {% block content %}
+    <div class="main-content">
+  <!-- Navbar -->
+
+
+        {% comment %} <!-- Sidebar Backdrop -->
+        <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+       {% endcomment %}
+        <!-- Profile Sidebar -->
+        <div class="profile-sidebar" id="profileSidebar">
+            <div class="profile-header">
+                <h4 class="text-center mb-0">My Profile</h4>
+                <button class="close-sidebar" id="closeSidebar">
+                    <i class="bi bi-x"></i>
+                </button>
+            </div>
+            {% load static %}
+            <div class="profile-content">
+                <!-- View Profile Section -->
+                <div id="viewProfile">
+                    <div class="profile-pic-container">
+                        <img id="profilePicture" src="{% static 'images/default-profile.png' %}" class="profile-pic">
+                        <div class="completion-percent" id="completionPercent">0%</div>
+                        <button class="edit-pic-btn" id="editPicBtn">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="profile-info">
+                        <div class="profile-info-item">
+                            <div class="profile-info-label">Name</div>
+                            <div class="profile-info-value" id="profileName">Loading...</div>
+                        </div>
+                        
+                        <div class="profile-info-item">
+                            <div class="profile-info-label">Email</div>
+                            <div class="profile-info-value" id="profileEmail">Loading...</div>
+                        </div>
+                        
+                        <div class="profile-info-item">
+                            <div class="profile-info-label">Father's Name</div>
+                            <div class="profile-info-value" id="profileFatherName">Loading...</div>
+                        </div>
+                        
+                        <div class="profile-info-item">
+                            <div class="profile-info-label">UG College</div>
+                            <div class="profile-info-value" id="profileUgCollege">Loading...</div>
+                        </div>
+                        
+                        <div class="profile-info-item">
+                            <div class="profile-info-label">Branch</div>
+                            <div class="profile-info-value" id="profileBranch">Loading...</div>
+                        </div>
+                        
+                        <div class="profile-info-item">
+                            <div class="profile-info-label">Passout Year</div>
+                            <div class="profile-info-value" id="profilePassoutYear">Loading...</div>
+                        </div>
+                        
+                        <div class="profile-info-item">
+                            <div class="profile-info-label">Graduation Percentage</div>
+                            <div class="profile-info-value" id="profileGradPercentage">Loading...</div>
+                        </div>
+                        
+                        <div class="profile-info-item">
+                            <div class="profile-info-label">10th Percentage</div>
+                            <div class="profile-info-value" id="profileTenthPercentage">Loading...</div>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="editProfileBtn">
+                            <i class="bi bi-pencil-fill me-1"></i> Edit Profile
+                        </button>
+                        <button class="btn btn-outline-secondary" id="changePasswordBtn">
+                            <i class="bi bi-lock-fill me-1"></i> Change Password
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Edit Profile Section -->
+                <div id="editProfile" class="edit-profile-section">
+                    <h5 class="text-center mb-4">Edit Profile</h5>
+                    
+                    <form id="profileForm">
+                        <div class="form-group">
+                            <label for="editProfilePic" class="form-label">Profile Picture</label>
+                            <input type="file" class="form-control" id="editProfilePic" name="profile_pic">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="editName" name="name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="editEmail" name="email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editFatherName" class="form-label">Father's Name</label>
+                            <input type="text" class="form-control" id="editFatherName" name="father_name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editUgCollege" class="form-label">UG College</label>
+                            <input type="text" class="form-control" id="editUgCollege" name="ug_college">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editBranch" class="form-label">Branch</label>
+                            <input type="text" class="form-control" id="editBranch" name="branch">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editPassoutYear" class="form-label">Passout Year</label>
+                            <input type="text" class="form-control" id="editPassoutYear" name="passout_year">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editGradPercentage" class="form-label">Graduation Percentage</label>
+                            <input type="text" class="form-control" id="editGradPercentage" name="grad_percentage">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="editTenthPercentage" class="form-label">10th Percentage</label>
+                            <input type="text" class="form-control" id="editTenthPercentage" name="tenth_percentage">
+                        </div>
+                        
+                        <div class="action-buttons mt-4">
+                            <button type="button" class="btn btn-secondary" id="cancelEditBtn">
+                                <i class="bi bi-x-circle-fill me-1"></i> Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save-fill me-1"></i> Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <section class="hero-banner">
+            <div class="banner-shape-1"></div>
+            <div class="banner-shape-2"></div>
+            
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Text Content -->
+                    <div class="col-lg-6 col-md-12 order-lg-1 order-2 banner-content">
+                        <h1 class="banner-title">Find Your Dream <span class="text-primary">Tech Job</span></h1>
+                        <p class="banner-subtitle">
+                            Join thousands of professionals who found their perfect tech career match. 
+                            Get personalized job recommendations and connect with top employers.
+                        </p>
+                        
+                        <div class="d-flex flex-wrap gap-3 mb-4">
+                            <a href="#jobs" class="btn banner-btn banner-btn-primary">
+                                <i class="bi bi-search me-2"></i>Browse Jobs
+                            </a>
+                            <a href="#how-it-works" class="btn banner-btn banner-btn-outline">
+                                <i class="bi bi-play-circle me-2"></i>How It Works
+                            </a>
+                        </div>
+                        
+                        <!-- Trust Badges -->
+                        <div class="d-flex flex-wrap trust-badges">
+                            <div class="trust-item">
+                                <div class="trust-icon text-success">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                </div>
+                                <div class="trust-text">
+                                    <small>Verified Companies</small>
+                                    <strong>5,000+</strong>
+                                </div>
+                            </div>
+                            
+                            <div class="trust-item">
+                                <div class="trust-icon text-info">
+                                    <i class="bi bi-people-fill"></i>
+                                </div>
+                                <div class="trust-text">
+                                    <small>Active Candidates</small>
+                                    <strong>250,000+</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Image Content -->
+                    <div class="col-lg-6 col-md-12 order-lg-2 order-1">
+                        <div class="banner-image-container">
+                            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                                 alt="Happy professionals working" 
+                                 class="banner-image">
+                            
+                            <!-- Floating badge -->
+                            <div class="floating-badge">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-3">
+                                        <div class="fs-3 fw-bold text-primary">4.9</div>
+                                    </div>
+                                    <div>
+                                        <div class="d-flex mb-1">
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                        </div>
+                                        <small class="text-muted">TrustScore</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Job List Section -->
+        <div class="container mt-5" id="jobs">
+            <div class="search-container">
+                <h2 class="text-center mb-4 text-primary fw-bold">Available Jobs</h2>
+                
+                <!-- Search Bar -->
+                <div class="row mb-4">
+                    <div class="col-md-8 mx-auto">
+                        <div class="input-group">
+                            <input type="text" id="jobSearch" class="form-control search-input" placeholder="Search for jobs...">
+                            <button class="btn btn-primary" type="button" id="searchButton">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job Filters -->
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <div class="autocomplete-container">
+                            <input type="text" id="jobRole" class="form-control search-input" 
+                                   placeholder="Search job roles..." autocomplete="off">
+                            <div id="jobRoleSuggestions" class="autocomplete-suggestions"></div>
+                        </div>
+                        <input type="hidden" id="selectedJobRole" value="">
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <select id="jobType" class="form-select filter-select">
+                            <option value="">Job Type</option>
+                            <option value="Full-time">Full Time</option>
+                            <option value="Part-time">Part Time</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="autocomplete-container">
+                            <input type="text" id="jobLocation" class="form-control search-input" 
+                                   placeholder="Search locations..." autocomplete="off" data-field="location">
+                            <div id="jobLocationSuggestions" class="autocomplete-suggestions"></div>
+                        </div>
+                        <input type="hidden" id="selectedJobLocation" value="">
+                    </div>
+                    
+                    <div class="col-md-3 d-flex">
+                        <select id="jobExperience" class="form-select filter-select me-2">
+                            <option value="">Experience</option>
+                            <option value="0-1">0-1 Years</option>
+                            <option value="1-2">1-2 Years</option>
+                            <option value="0-5">0-5 Years</option>
+                        </select>
+                        <button class="btn btn-sm btn-primary" id="filterButton">Apply</button>
+                    </div>
+                    
+                    <div class="col-12 text-center">
+                        <button class="btn btn-sm btn-outline-danger" id="removeFilterButton">
+                            <i class="bi bi-x-circle"></i> Clear Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Job List -->
+            <div class="row" id="jobList">
+                {% for job in jobs %}
+                <div class="col-lg-4 col-md-6 mb-4 job-card" 
+                data-role="{{ job.Job }}" 
+                data-type="{{ job.job_type }}" 
+                data-location="{{ job.Location }}" 
+                data-experience="{{ job.experience }}">
+               
+               <div class="card h-100">
+                   <div class="job-card-header">
+                       <div class="job-type-badge">{{ job.job_type }}</div>
+                       <h3 class="job-title">{{ job.Job }}</h3>
+                       <p class="job-company">{{ job.Org }}</p>
+                   </div>
+                   
+                   <div class="job-card-body">
+                       <div class="job-detail">
+                           <span class="job-detail-icon"><i class="fas fa-map-marker-alt"></i></span>
+                           <span>{{ job.location_display }}</span>
+                       </div>
+                       
+                       <div class="job-detail">
+                           <span class="job-detail-icon"><i class="fas fa-money-bill-wave"></i></span>
+                           <span>₹{{ job.Salary }} LPA</span>
+                       </div>
+                       
+                       <div class="job-detail">
+                           <span class="job-detail-icon"><i class="fas fa-briefcase"></i></span>
+                           <span>{{ job.experience }} Years Experience</span>
+                       </div>
+                       
+                       <div class="job-skills">
+                           {% for skill in job.Skills %}
+                               <span class="skill-badge">{{ skill }}</span>
+                           {% endfor %}
+                       </div>
+                       
+                       <p class="job-description">
+                           {{ job.FullDescription|truncatewords:30 }}
+                       </p>
+                       
+                       <div class="job-meta">
+                           <span class="job-posted">
+                               <i class="far fa-clock"></i> {{ job.posted_date|timesince }} ago
+                           </span>
+                           <span class="job-deadline">
+                               <i class="far fa-calendar-alt"></i> {{ job.deadline }}
+                           </span>
+                       </div>
+                       
+                       <div class="mt-3">
+                           <a href="{% url 'job_detail' job.jid %}" class="btn btn-primary view-details-btn">
+                               <i class="fas fa-eye"></i> View Details
+                           </a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+                {% endfor %}
+            </div>
+            
+            <!-- No Jobs Found Message (Hidden by Default) -->
+            <div id="noJobsFound" class="text-center py-5" style="display: none;">
+                <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                <h3 class="text-muted">No Jobs Found</h3>
+                <p class="text-muted">Try adjusting your search filters</p>
+                <button class="btn btn-outline-primary" id="resetFiltersBtn">
+                    <i class="fas fa-sync-alt"></i> Reset Filters
+                </button>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination-container text-center mt-5">
+                <button class="btn btn-outline-primary me-2" id="prevPage">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <span id="paginationNumbers"></span>
+                <button class="btn btn-outline-primary ms-2" id="nextPage">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block scripts %}
+    <script src="{% static 'js/scripthome.js' %}"></script>
+    <script>
+        {% comment %} // Initialize tooltips
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl, {
+                    trigger: 'hover'
+                });
+            });
+        }); {% endcomment %}
+   
+        $(document).ready(function() {
+            // Profile Sidebar Toggle
+            const profileBtn = $('#profile-btn');
+            const sidebar = $('#profileSidebar');
+            const backdrop = $('#sidebarBackdrop');
+            const closeBtn = $('#closeSidebar');
+            
+            // Open sidebar
+            profileBtn.on('click', function(e) {
+                e.preventDefault();
+                sidebar.addClass('active');
+                backdrop.fadeIn();
+                fetchProfileData();
+            });
+            
+            // Close sidebar
+            closeBtn.on('click', closeSidebar);
+            backdrop.on('click', closeSidebar);
+            
+            function closeSidebar() {
+                sidebar.removeClass('active');
+                backdrop.fadeOut();
+            }
+            
+            // Edit Profile Toggle
+            const editProfileBtn = $('#editProfileBtn');
+            const cancelEditBtn = $('#cancelEditBtn');
+            const viewProfile = $('#viewProfile');
+            const editProfile = $('#editProfile');
+            
+            editProfileBtn.on('click', function() {
+                viewProfile.hide();
+                editProfile.show();
+            });
+            
+            cancelEditBtn.on('click', function() {
+                editProfile.hide();
+                viewProfile.show();
+            });
+            
+            // Fetch Profile Data
+            function fetchProfileData() {
+                $.ajax({
+                    url: '/get_user_profile/',
+                    method: 'GET',
+                    success: function(response) {
+                        console.log("Fetched Data:", response);
+                        if (response.success && response.data.length > 0) {
+                            const user = response.data[0];
+                            
+                            // Update view
+                            $('#profileName').text(user.user_name || 'Not provided');
+                            $('#profileEmail').text(user.email || 'Not provided');
+                            $('#profileFatherName').text(user.father_name || 'Not provided');
+                            $('#profileUgCollege').text(user.ug_college || 'Not provided');
+                            $('#profileBranch').text(user.branch || 'Not provided');
+                            $('#profilePassoutYear').text(user.Passout_Year || 'Not provided');
+                            $('#profileGradPercentage').text(user.Graduation_Percentage ? user.Graduation_Percentage.replace(/%+/g, '') + '%' : 'Not provided');
+                            $('#profileTenthPercentage').text(user.Percentage_10 ? user.Percentage_10.replace(/%+/g, '') + '%' : 'Not provided');
+                            
+                            // Update edit form
+                            $('#editName').val(user.user_name || '');
+                            $('#editEmail').val(user.email || '');
+                            $('#editFatherName').val(user.father_name || '');
+                            $('#editUgCollege').val(user.ug_college || '');
+                            $('#editBranch').val(user.branch || '');
+                            $('#editPassoutYear').val(user.Passout_Year || '');
+                            $('#editGradPercentage').val(user.Graduation_Percentage ? user.Graduation_Percentage.replace(/%+/g, '') : '');
+                            $('#editTenthPercentage').val(user.Percentage_10 ? user.Percentage_10.replace(/%+/g, '') : '');
+                            
+                            // Update profile picture if available
+                            if (user.profile_picture) {
+                                $('#profilePicture').attr('src', `data:image/jpeg;base64, ${user.profile_picture}`);
+                            }
+                            
+                            // Calculate and update profile completion
+                            updateProfileCompletion(user);
+                        }
+                    },
+                    error: function(xhr) {
+                        console.error('Error fetching profile data:', xhr.responseText);
+                        alert('Error loading profile data. Please try again.');
+                    }
+                });
+            }
+            
+            // Update Profile Completion with circular progress on profile image border
+            function updateProfileCompletion(user) {
+                const fields = [
+                    'user_name', 'email', 'father_name', 'ug_college',
+                    'branch', 'Passout_Year', 'Graduation_Percentage', 'Percentage_10'
+                ];
+                
+                let completedFields = 0;
+                
+                fields.forEach(field => {
+                    if (user[field] && user[field].toString().trim() !== '') {
+                        completedFields++;
+                    }
+                });
+                
+                // Add check for profile picture
+                if (user.profile_picture) {
+                    completedFields++;
+                }
+                
+                const totalFields = fields.length + 1; // +1 for profile picture
+                const completionPercentage = Math.round((completedFields / totalFields) * 100);
+                
+                $('#completionPercent').text(completionPercentage + '%');
+                
+                // Update circular progress on profile image border
+                const rotation = (completionPercentage / 100) * 360;
+                $('.profile-pic-container::after').css({
+                    'transform': `rotate(${rotation}deg)`,
+                    'border-top-color': completionPercentage >= 50 ? '#28a745' : '#dc3545',
+                    'border-right-color': completionPercentage >= 50 ? '#28a745' : '#dc3545'
+                });
+                
+                // Change text color based on completion
+                $('#completionPercent').css('color', completionPercentage >= 50 ? '#28a745' : '#dc3545');
+            }
+            
+            // Save Profile Changes
+            $('#profileForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                
+                $.ajax({
+                    url: '/update_profile/',
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            alert('Profile updated successfully!');
+                            fetchProfileData(); // Refresh data
+                            editProfile.hide();
+                            viewProfile.show();
+                        } else {
+                            alert('Error: ' + response.message);
+                        }
+                    },
+                    error: function(xhr) {
+                        console.error('Error updating profile:', xhr.responseText);
+                        alert('Error updating profile. Please try again.');
+                    }
+                });
+            });
+            
+            // Initialize autocomplete data
+            const jobRoles = {{ job_roles|safe }};
+            const locations = {{ locations|safe }};
+            
+            // Job Role Autocomplete
+            $("#jobRole").on("input", function() {
+                const input = $(this).val().toLowerCase();
+                const suggestions = $("#jobRoleSuggestions");
+                
+                if (input.length < 2) {
+                    suggestions.hide();
+                    return;
+                }
+                
+                const matches = jobRoles.filter(role => 
+                    role && role.toLowerCase().includes(input))
+                    .slice(0, 10); // Limit to 10 suggestions
+                
+                if (matches.length > 0) {
+                    suggestions.empty();
+                    matches.forEach(role => {
+                        suggestions.append(`<div data-value="${role}">${role}</div>`);
+                    });
+                    suggestions.show();
+                } else {
+                    suggestions.hide();
+                }
+            });
+            
+            // Location Autocomplete
+            $("#jobLocation").on("input", function() {
+                const input = $(this).val().toLowerCase();
+                const suggestions = $("#jobLocationSuggestions");
+                
+                if (input.length < 2) {
+                    suggestions.hide();
+                    return;
+                }
+                
+                const matches = locations.filter(location => 
+                    location && location.toLowerCase().includes(input))
+                    .slice(0, 10); // Limit to 10 suggestions
+                
+                if (matches.length > 0) {
+                    suggestions.empty();
+                    matches.forEach(location => {
+                        suggestions.append(`<div data-value="${location}">${location}</div>`);
+                    });
+                    suggestions.show();
+                } else {
+                    suggestions.hide();
+                }
+            });
+            
+            // Handle suggestion selection
+            $(document).on("click", "#jobRoleSuggestions div, #jobLocationSuggestions div", function() {
+                const selectedValue = $(this).data("value");
+                const container = $(this).parent();
+                
+                if (container.is("#jobRoleSuggestions")) {
+                    $("#jobRole").val(selectedValue);
+                    $("#selectedJobRole").val(selectedValue);
+                } else {
+                    $("#jobLocation").val(selectedValue);
+                    $("#selectedJobLocation").val(selectedValue);
+                }
+                container.hide();
+            });
+            
+            // Close suggestions when clicking outside
+            $(document).on("click", function(e) {
+                if (!$(e.target).closest(".autocomplete-container").length) {
+                    $("#jobRoleSuggestions, #jobLocationSuggestions").hide();
+                }
+            });
+            
+            // Remove Filters
+            $("#removeFilterButton, #resetFiltersBtn").on("click", function() {
+                location.reload();
+            });
+            
+            // Search Functionality
+            $("#searchButton").on("click", function() {
+                var value = $("#jobSearch").val().toLowerCase();
+                var jobsFound = false;
+        
+                $(".job-card").each(function() {
+                    var match = $(this).text().toLowerCase().indexOf(value) > -1;
+                    $(this).toggle(match);
+                    if (match) jobsFound = true;
+                });
+        
+                // Show/hide no jobs found message
+                if (!jobsFound) {
+                    $("#jobList").hide();
+                    $("#noJobsFound").show();
+                } else {
+                    $("#jobList").show();
+                    $("#noJobsFound").hide();
+                }
+            });
+            
+            // Filter Functionality
+            $("#filterButton").on("click", function() {
+                var selectedRole = $("#selectedJobRole").val();
+                var selectedType = $("#jobType").val();
+                var selectedLocation = $("#selectedJobLocation").val();
+              
+                var selectedExperience = $("#jobExperience").val();
+                console.log("Selected Experience", selectedExperience);
+                var jobsFound = false;
+        
+                $(".job-card").each(function() {
+                    var jobRole = $(this).data("role");
+                    var jobType = $(this).data("type") || "";
+                    var jobLocation = $(this).data("location");
+
+                    // If jobLocation is like ['Bengaluru', 'West Bengal']
+                    // Clean it
+                    if (typeof jobLocation === "string") {
+                        jobLocation = jobLocation.replace(/\[|\]|'/g, "");  // Remove [ ] '
+                    }
+                   
+                    var jobExperience = $(this).data("experience") || "";
+                    console.log("JOB ExperiEnce" , jobExperience);
+        
+                    var showJob = true;
+        
+                    if (selectedRole && jobRole !== selectedRole) {
+                        showJob = false;
+                    }
+                    if (selectedType && jobType !== selectedType) {
+                        showJob = false;
+                    }
+                    if (selectedLocation && jobLocation !== selectedLocation) {
+                        showJob = false;
+                    }
+                    if (selectedExperience && jobExperience !== selectedExperience) {
+                        showJob = false;
+                    }
+        
+                    $(this).toggle(showJob);
+                    if (showJob) jobsFound = true;
+                });
+        
+                // Show/hide no jobs found message
+                if (!jobsFound) {
+                    $("#jobList").hide();
+                    $("#noJobsFound").show();
+                } else {
+                    $("#jobList").show();
+                    $("#noJobsFound").hide();
+                }
+            });
+             
+            // Apply Button Functionality
+            $(".apply-btn").on("click", function() {
+                var button = $(this);
+                var jobId = button.data("job-id").trim();
+                var hrId = button.data("hr-id");
+                
+                if (!jobId || !hrId) {
+                    alert("Error: Missing job information");
+                    return;
+                }
+            
+                $.ajax({
+                    url: "{% url 'toggle_apply_job' %}",
+                    method: "POST",
+                    data: {
+                        job_id: jobId,
+                        hr_id: hrId,
+                        csrfmiddlewaretoken: "{{ csrf_token }}"
+                    },
+                    success: function(response) {
+                        if (response.status === "applied") {
+                            button.html('<i class="fas fa-check-circle"></i> Applied')
+                                  .removeClass("btn-primary")
+                                  .addClass("applied-btn")
+                                  .prop("disabled", true);
+                        } else {
+                            button.html('<i class="fas fa-paper-plane"></i> Apply Now')
+                                  .removeClass("applied-btn")
+                                  .addClass("btn-primary")
+                                  .prop("disabled", false);
+                        }
+                    },
+                    error: function(xhr) {
+                        console.error("Error applying for job:", xhr.responseText);
+                        alert("Error applying for job. Please try again.");
+                    }
+                });
+            });
+            
+            // Pagination
+            var jobsPerPage = 6;
+            var currentPage = 1;
+            var jobCards = $(".job-card");
+            var totalPages = Math.ceil(jobCards.length / jobsPerPage);
+        
+            function showPage(page) {
+                jobCards.hide();
+                jobCards.slice((page - 1) * jobsPerPage, page * jobsPerPage).show();
+                
+                // Update pagination numbers
+                var paginationHtml = '';
+                var startPage = Math.max(1, page - 2);
+                var endPage = Math.min(totalPages, startPage + 4);
+                
+                if (page > 1) {
+                    paginationHtml += `<button class="btn btn-outline-secondary page-btn" data-page="${page-1}">${page-1}</button> `;
+                }
+                
+                paginationHtml += `<button class="btn btn-primary page-btn" data-page="${page}">${page}</button> `;
+                
+                if (page < totalPages) {
+                    paginationHtml += `<button class="btn btn-outline-secondary page-btn" data-page="${page+1}">${page+1}</button>`;
+                }
+                
+                $("#paginationNumbers").html(paginationHtml);
+                
+                // Enable/disable prev/next buttons
+                $("#prevPage").toggle(page > 1);
+                $("#nextPage").toggle(page < totalPages);
+            }
+        
+            // Initial Page Load
+            showPage(currentPage);
+        
+            // Pagination Click Event
+            $(document).on("click", ".page-btn", function() {
+                currentPage = parseInt($(this).data("page"));
+                showPage(currentPage);
+                $("html, body").animate({ scrollTop: $("#jobs").offset().top - 20 }, 500);
+            });
+        
+            // Previous and Next Button Events
+            $("#prevPage").on("click", function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    showPage(currentPage);
+                    $("html, body").animate({ scrollTop: $("#jobs").offset().top - 20 }, 500);
+                }
+            });
+        
+            $("#nextPage").on("click", function() {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    showPage(currentPage);
+                    $("html, body").animate({ scrollTop: $("#jobs").offset().top - 20 }, 500);
+                }
+            });
+        
+            // Smooth scrolling
+            $("a").on('click', function(event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+                    
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top - 70
+                    }, 800, function(){
+                        window.location.hash = hash;
+                    });
+                }
+            });
+            
+            // Close mobile menu when clicking on a nav link
+            $('.navbar-nav>li>a').on('click', function(){
+                $('.navbar-collapse').collapse('hide');
+            });
+        });
+        </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Prevent dropdown from closing when clicking inside
+            $('.dropdown-menu').on('click', function(e) {
+                e.stopPropagation();
+            });
+        
+            // Close other dropdowns when opening a new one
+            $('.dropdown-toggle').on('click', function() {
+                var $dropdown = $(this).parent().siblings('.dropdown');
+                $dropdown.removeClass('show');
+                $dropdown.find('.dropdown-menu').removeClass('show');
+            });
+        
+            // Close navbar when clicking outside on mobile
+            $(document).on('click', function(e) {
+                if ($(window).width() <= 991.98) {
+                    if (!$(e.target).closest('.navbar-collapse').length && 
+                        !$(e.target).is('.navbar-toggler')) {
+                        $('.navbar-collapse').collapse('hide');
+                    }
+                }
+            });
+        });
+
+        $(document).ready(function() {
+            // Prevent dropdown from closing when clicking inside
+            $('.dropdown-menu').on('click', function(e) {
+                e.stopPropagation();
+            });
+            
+            // Close other dropdowns when opening a new one
+            $('.dropdown-toggle').on('click', function() {
+                var $dropdown = $(this).parent().siblings('.dropdown');
+                $dropdown.removeClass('show');
+                $dropdown.find('.dropdown-menu').removeClass('show');
+            });
+            
+            // Close navbar when clicking outside on mobile
+            $(document).on('click', function(e) {
+                if ($(window).width() <= 991.98) {
+                    if (!$(e.target).closest('.navbar-collapse').length && 
+                        !$(e.target).is('.navbar-toggler')) {
+                        $('.navbar-collapse').collapse('hide');
+                    }
+                }
+            });
+        });
+        </script>
+     
+        
+    {% endblock %}

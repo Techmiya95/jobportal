@@ -1,0 +1,1320 @@
+{
+  "timestamp": "2025-04-15T17:04:05.287347",
+  "inserted_count": 20,
+  "jobs": [
+    {
+      "_id": "67fe442d20e619e889a081a7",
+      "job_id": "zDPqCTMeTyt9gzojAAAAAA==",
+      "job_title": ".Net Web API Developer",
+      "employer_name": "Ethics Infotech",
+      "employer_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOhN7H7TBm8h3VZMh5OxSdG9jM7bAjhmes318f&s=0",
+      "employer_website": "http://www.ethicsinfotech.in/",
+      "job_publisher": "LinkedIn",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://in.linkedin.com/jobs/view/net-web-api-developer-at-ethics-infotech-4209816291?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "LinkedIn",
+          "apply_link": "https://in.linkedin.com/jobs/view/net-web-api-developer-at-ethics-infotech-4209816291?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "Skills\n\u2022 C#, OOPS,MS SQL, MVC\n\nRole & Responsibilities\n\u2022 Act as an important team member who can play key role in software development activities.\n\u2022 Can bridge between Team Lead and Software Engineers\n\u2022 Understand and implement new requirements with maintaining the existing application\n\nRequirements\n\u2022 Strong background with C#, OOPS, Databases and SQL MS SQL\n\u2022 Sound Knowledge on OOPS concepts and hands-on on OOP.\n\u2022 Strong skills in troubleshooting the code, problem-solving and thinking skills.\n\u2022 Nice to have Knowledge SSRS and Crystal Reporting Tool.\n\u2022 Database concepts and PL/SQL queries (Stored procedures, Functions, Triggers etc).\n\u2022 .Net Core.\n\u2022 Entity framework or Other ORM tools.\n\nHands on Asp.Net and MVC will be an added advantage. Skills:- undefined and undefined",
+      "job_is_remote": false,
+      "job_posted_at": "21 hours ago",
+      "job_posted_at_timestamp": 1744639200,
+      "job_posted_at_datetime_utc": "2025-04-14T14:00:00.000Z",
+      "job_location": "Gurugram, Haryana",
+      "job_city": "Gurugram",
+      "job_state": "Haryana",
+      "job_country": "IN",
+      "job_latitude": 28.4594965,
+      "job_longitude": 77.0266383,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DzDPqCTMeTyt9gzojAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": "YEAR",
+      "job_highlights": {},
+      "job_onet_soc": "15113200",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081a8",
+      "job_id": "pnZ2cPvMBZv_MqlsAAAAAA==",
+      "job_title": "Senior Software Engineer- JAVA (Full Stack)",
+      "employer_name": "Clarivate",
+      "employer_logo": null,
+      "employer_website": "https://clarivate.com",
+      "job_publisher": "Clarivate",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://careers.clarivate.com/job/JREQ131194/Senior-Software-Engineer-JAVA-Full-Stack?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "Clarivate",
+          "apply_link": "https://careers.clarivate.com/job/JREQ131194/Senior-Software-Engineer-JAVA-Full-Stack?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Built In",
+          "apply_link": "https://builtin.com/job/senior-software-engineer-java-full-stack/4382414?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Indeed",
+          "apply_link": "https://in.indeed.com/viewjob?jk=9293b2b6e2007483&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "ClimateTechList",
+          "apply_link": "https://www.climatetechlist.com/job/fluence-senior-software-engineer-java-springboot-V6eK22u8xtc80f?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Iitjobs",
+          "apply_link": "https://www.iitjobs.com/job/senior-software-engineer-core-java-bangalore-karnataka-india-harp-technologies-services-pvt-ltd-91941?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "BeBee",
+          "apply_link": "https://in.bebee.com/job/e101ac9d525ef143aba4b783db960c11?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Expertini",
+          "apply_link": "https://in.expertini.com/jobs/job/senior-software-engineer-java-bengaluru-corporate-resources-3a72eed4b1/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Companies | HighFive Partners Job Board - HighFive Partners",
+          "apply_link": "https://jobs.highfivepartners.com/companies/proquest/jobs/47169767-senior-software-engineer-java-full-stack?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "We are looking for Senior Software Engineer- Full stack who should be passionate about software development and technology, have demonstrable technical and problem-solving skills. The candidate will show a clear understanding of development trends and a broad understanding of development paradigms. They will have excellent organizational skills, good knowledge of the full software development life cycle JAVA and Angular processes.\n\nAbout You \u2013 experience, education, skills, and accomplishments\n\u2022 Bachelor\u2019s Degree or equivalent in computer science, software engineering, or a related field\n\u2022 At least 4+ Years of Relevant Experience\n\u2022 Java/J2EE 1.5+: JDBC, File I/O, Advanced Java, Multi-Threading, Collections (min 2 years).\n\u2022 Spring Web MVC, Spring Boot, Apache ActiveMQ\n\u2022 Object-oriented software design patterns.\n\u2022 Release cycle of modern, Java-based web applications\n\u2022 Developing web services: REST, SOAP, WSDL, Apache CXF, Apache Axis.\n\u2022 Database knowledge - SQL, Oracle 19c, Postgres.\n\u2022 Client-side tools & frameworks: Angular, JavaScript, HTML, CSS, D3(Nice to have).\n\u2022 Agile/Scrum Software development methodologies (min 2 years)\n\u2022 Unix/Linux environments\n\u2022 Linux Shell scripting (2+ years)\n\nIt would be great if you also had . . .\n\u2022 Configuration Management tools: Jira, Jenkins/Hudson, Maven/Gradle.\n\u2022 Version Control: GIT, bitbucket, SVN, Mercurial\n\u2022 Working with continuous integration and continuous development environments.\n\u2022 IDE: IntelliJ, Visual Studio Code, Eclipse\n\nWhat will you be doing in this role?\n\u2022 Write clean, efficient, and maintainable code in accordance with coding standards.\n\u2022 Review other code to ensure clean, efficient, and maintainable code.\n\u2022 Defines architecture of software solution.\n\u2022 Suggests alternative methodologies or techniques to achieving desired results.\n\u2022 Develops and maintains understanding of software development lifecycle and delivery methodology.\n\u2022 Reviews and revises new procedures as needed for the continuing development of high-quality systems.\n\u2022 Maintains knowledge of technical advances and evaluates new hardware / software for company use.\n\u2022 Follows departmental policies, procedures, and work instructions.\n\u2022 Works closely with higher-level engineers to increase functional knowledge.\n\u2022 Automate tests and unit tests all assigned applications.\n\u2022 Participates as a team member on various engineering projects.\n\u2022 Writes application technical documentation.\n\nProduct you will be developing\n\nCortellis\n\nAbout the Team\n\nCortellis is a suite of Life Science intelligence solutions.\n\nIt has multiple products under it that power the life sciences innovation, supporting the entire drug and device development life cycle. We have 4 squads each consists of Developers, Testers, Lead and Scrum Master.\n\nAll squads work on one or multiple product of the Cortellis suite (group of application/product).\n\nHours of Work\n\u2022 Fulltime\n\u2022 40 h/week\n\u2022 Hybrid working model\n\nAt Clarivate, we are committed to providing equal employment opportunities for all persons with respect to hiring, compensation, promotion, training, and other terms, conditions, and privileges of employment. We comply with applicable laws and regulations governing non-discrimination in all locations.",
+      "job_is_remote": false,
+      "job_posted_at": "21 days ago",
+      "job_posted_at_timestamp": 1742860800,
+      "job_posted_at_datetime_utc": "2025-03-25T00:00:00.000Z",
+      "job_location": "Bengaluru, Karnataka",
+      "job_city": "Bengaluru",
+      "job_state": "Karnataka",
+      "job_country": "IN",
+      "job_latitude": 12.9715987,
+      "job_longitude": 77.5945627,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DpnZ2cPvMBZv_MqlsAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_salary": null,
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": null,
+      "job_highlights": {},
+      "job_onet_soc": "15113300",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081a9",
+      "job_id": "3kKoIRqd3SRU0WxgAAAAAA==",
+      "job_title": "Unity Game Developer | Lucknow",
+      "employer_name": "Duplex Technologies Services Pvt Ltd",
+      "employer_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt_abEi8VbcFT8R07txR4RJxVnZewb6uhkt9H4&s=0",
+      "employer_website": "https://duplextech.com",
+      "job_publisher": "LinkedIn",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://in.linkedin.com/jobs/view/unity-game-developer-lucknow-at-duplex-technologies-services-pvt-ltd-3656598314?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "LinkedIn",
+          "apply_link": "https://in.linkedin.com/jobs/view/unity-game-developer-lucknow-at-duplex-technologies-services-pvt-ltd-3656598314?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Jobrapido.com",
+          "apply_link": "https://in.jobrapido.com/jobpreview/6090974429930586112?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "Experience- 2-5 years of experience\n\nSkills Required- Game Design, Unity 3D, Undefined, Game Development\n\nJob Description :- Excellent knowledge of Unity, including experience with scripting, textures, animation, GUI styles, and user session management- Familiarity with level design and planning- Experience with game physics and particle systems- Experience with mobile and console game development- Experience optimizing memory and space usage for support of older hardware- Experience with 3D is a plus- Prior experience with a well-known mobile title or AAA titles are a significant asset- Ability to constantly learn and stay in touch with evolving game standards and development technologies- Strong understanding of object-oriented programming- Familiarity with current design and architectural patterns- Knack for writing clean, readable, and easily maintainable code- Experience implementing automated testing platforms and unit tests- Proficient knowledge of code versioning tools- Plus experience in game development Skills:- Unity 3D, Game Design, C, Game development and Video game development",
+      "job_is_remote": false,
+      "job_posted_at": null,
+      "job_posted_at_timestamp": null,
+      "job_posted_at_datetime_utc": null,
+      "job_location": "India",
+      "job_city": null,
+      "job_state": null,
+      "job_country": "IN",
+      "job_latitude": 20.593684,
+      "job_longitude": 78.96288,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3D3kKoIRqd3SRU0WxgAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": "YEAR",
+      "job_highlights": {},
+      "job_onet_soc": "15113200",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081aa",
+      "job_id": "ZiiPA5hkzCk6hyc9AAAAAA==",
+      "job_title": "Lead Software Engineer (Lead ETL PySpark Developer)",
+      "employer_name": "Clarivate",
+      "employer_logo": null,
+      "employer_website": "https://clarivate.com",
+      "job_publisher": "Clarivate",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://careers.clarivate.com/job/JREQ131266/Lead-Software-Engineer-Lead-ETL-PySpark-Developer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "Clarivate",
+          "apply_link": "https://careers.clarivate.com/job/JREQ131266/Lead-Software-Engineer-Lead-ETL-PySpark-Developer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Built In",
+          "apply_link": "https://builtin.com/job/lead-software-engineer-lead-etl-pyspark-developer/4410197?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Glassdoor",
+          "apply_link": "https://www.glassdoor.co.in/job-listing/software-engineer-oracle-technical-developer-enphase-energy-JV_IC2940587_KO0,44_KE45,59.htm?jl=1009577258797&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "SimplyHired",
+          "apply_link": "https://www.simplyhired.co.in/job/PKi6IQZch7MyxsuuU-VceMms8cY4uxa8XNg590nzd4KLRj6ocP-Eww?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Indeed",
+          "apply_link": "https://in.indeed.com/viewjob?jk=effcb6f66cf922b5&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "LinkedIn",
+          "apply_link": "https://in.linkedin.com/jobs/view/software-engineer-oracle-technical-developer-at-enphase-energy-4172849428?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Jooble",
+          "apply_link": "https://in.jooble.org/rjdp/6638252899771554882?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "JobzMall",
+          "apply_link": "https://www.jobzmall.com/fidelity-national-information-fis/job/lead-engineer-java-springboot-developer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": true
+        }
+      ],
+      "job_description": "We are looking for a Lead ETL Developer to join our C3 Data team based in Bangalore. This role offers a unique opportunity to work on Clarivate Customer Cloud (C3) and make rich content available across the Clarivate platform to all customers. As the Lead ETL Developer, you will support the data team by loading new content to Clarivate Customer Cloud, and you will have the chance to work with modern, cutting-edge big data technologies. Our team has expertise in Python, PySpark, Spark, Databricks, ECS, AWS, and Airflow -- and we would love to speak with you if you have experience in Spark, Databricks, or PySpark.\n\nAbout You \u2013 experience, education, skills, and accomplishments\n\u2022 At least 5+ years of experience in building ETL pipelines and proficiency in PySpark.\n\u2022 At least 2 years of proficient in Python3 and experience with Databricks and Apache Spark\n\u2022 Strong SQL and non-SQL database skills.\n\u2022 Passionate about code and software architecture.\n\nIt would be great if you also had\n\u2022 AWS services: EC2, ECS, RDS, S3\n\u2022 OpenSearch, Snowflake\n\u2022 Oracle, PostgreSQL\n\u2022 Docker\n\nWhat will you be doing in this role?\n\u2022 Providing technical leadership and guidance, evaluating various technologies to balance business needs and cost-effectiveness.\n\u2022 Collaborating with business and IT teams to design and implement a data lake platform.\n\u2022 Maintaining the overall solution architecture for the data lake platform.\n\u2022 Establishing technical best practices for big data management and solutions, from technology selection to architecture and implementation.\n\u2022 Ensuring all components of the data lake platform meet SLAs.\n\u2022 Leading technical investigations, POCs, and hands-on coding to make technical recommendations.\n\u2022 Mentoring and coaching team members to enhance their technical and professional skills.\n\nAbout the Team\n\nThe C3 Data team consists of over 50 experts across the globe who work on Clarivate Customer Cloud to provide access to data for products, consulting-led engagements, or direct customer access.\n\nHours of Work\n\nThis is a permanent position in Bangalore (8 hours per day as per IST Time zone).\n\nAt Clarivate, we are committed to providing equal employment opportunities for all persons with respect to hiring, compensation, promotion, training, and other terms, conditions, and privileges of employment. We comply with applicable laws and regulations governing non-discrimination in all locations.",
+      "job_is_remote": false,
+      "job_posted_at": "21 days ago",
+      "job_posted_at_timestamp": 1742860800,
+      "job_posted_at_datetime_utc": "2025-03-25T00:00:00.000Z",
+      "job_location": "Bengaluru, Karnataka",
+      "job_city": "Bengaluru",
+      "job_state": "Karnataka",
+      "job_country": "IN",
+      "job_latitude": 12.9715987,
+      "job_longitude": 77.5945627,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DZiiPA5hkzCk6hyc9AAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_salary": null,
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": null,
+      "job_highlights": {},
+      "job_onet_soc": "15113300",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081ab",
+      "job_id": "X549n51jAJPyirdtAAAAAA==",
+      "job_title": "Software Dev Engineer III, Amazon Common Software",
+      "employer_name": "Amazon",
+      "employer_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTifI4qApXZgV_Uz8tSiGZXIaES6fcOxT554DO&s=0",
+      "employer_website": "http://www.amazon.com/",
+      "job_publisher": "LinkedIn",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://in.linkedin.com/jobs/view/software-dev-engineer-iii-amazon-common-software-at-amazon-3985077816?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "LinkedIn",
+          "apply_link": "https://in.linkedin.com/jobs/view/software-dev-engineer-iii-amazon-common-software-at-amazon-3985077816?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Jobs",
+          "apply_link": "https://amazon.dejobs.org/mumbai-ind/software-dev-engineer-iii-amazon-common-software/D3D6C90108C3429AA80C433B68A6E06D/job/?vs=25&utm_source=RR+RSS+Feed-DE&utm_medium=Other&utm_campaign=RR+RSS+Feed&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Expertini",
+          "apply_link": "https://in.expertini.com/jobs/job/software-dev-engineer-iii-amazon-common-software-mumbai-amazon-amazon6-2711912inmhmumbai/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "WhatJobs",
+          "apply_link": "https://en-in.whatjobs.com/gfj/100491102?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "Description\n\nWant to help shape how connected devices get to market faster? Join the new initiative Amazon Common Software (ACS) for Devices which launched Feb \u20182020 (https://developer.amazon.com/acs-devices). ACS is software that makes it faster for to integrate Amazon Device SDKs into devices that are transforming the smart home and run Amazon services, like Alexa.\n\nAs a Software Development Engineer on the ACS team, you will be part of a team that owns critical ACS components, services, tools, and application development frameworks - working on projects that push the boundaries of customer-device interaction. You will engage with an experienced cross-disciplinary staff to conceive and design innovative consumer product experiences. You must be responsive, flexible and able to succeed within an open collaborative peer environment. You will participate in designing, prototyping, and building solutions to hard problems in the Amazon Devices ecosystem.\n\nAs part of your work, you will work closely with Amazon device software teams, product management teams, external partner developers, internal Amazon application developers, and Amazon service teams to drive development from the concept stage to the launch stage.\n\nKey job responsibilities\n\nAs a Software Development Engineer III, You Will\n\u2022 Write code: Write code primarily in C, C++ and Python and design scalable, fault tolerant and distributed applications. Produce code that is robust, efficient and maintainable.\n\u2022 Design is Crucial: Build flexible systems choosing simple, straightforward solutions over more complex ones. Lead architecture of large initiatives in scaling, security and availability. Continually challenge what exists and explore what should be changed to best meet evolving business and market needs.\n\u2022 Test, test, test: Our software engineers don't just write code, they also test . You will write unit tests, integration tests and regression tests and find ways to automate them.\n\u2022 Troubleshoot and fix operational problems: You will work with other engineers to troubleshoot operational problems and fix them. If you are so inclined, you will also automate troubleshooting procedures and write tools.\n\u2022 Influence product direction: You will propose your ideas for the future of the space to product management, and get to shape the roadmap.\n\u2022 Hire and mentor others: You will get to interview people for the team, and to mentor other engineers\n\u2022 Implement best practices in modern software engineering: design, implementation, testing, version control, documentation, deployment, monitoring and operations\n\u2022 Possess self-drive to dive deep and maintain progress even in the face of ambiguity and imperfect knowledge (avoid \u201canalysis paralysis\u201d)\n\nBasic Qualifications\n\u2022 8+ years of non-internship professional software development experience\n\u2022 8+ years of programming with at least one software programming language experience\n\u2022 5+ years of leading design or architecture (design patterns, reliability and scaling) of new and existing systems experience\n\u2022 Experience as a mentor, tech lead or leading an engineering team\n\u2022 Proficient in embedded software development using C, C++\n\u2022 Proficient in implementing embedded software ranging from high-level application to low-level hardware device drivers.\n\u2022 Solid understanding of Object-Oriented design and concepts\n\u2022 Strong analytical and problem solving skills\n\u2022 Excellent verbal and written communication skills\n\nPreferred Qualifications\n\u2022 8+ years of full software development life cycle, including coding standards, code reviews, source control management, build processes, testing, and operations experience\n\u2022 Bachelor's degree in computer science or equivalent\n\u2022 Familiarity with diverse 8/ 16/32 bit microcontroller families\n\u2022 Experience with all phases of development, including design, implementation, and operation of production systems\n\u2022 Strong, object-oriented design and coding skills\n\u2022 Deal well with ambiguous/undefined problems; ability to think abstractly.\n\u2022 Experience taking a lead role developing complex software systems that have successfully been delivered to customers.\n\nOur inclusive culture empowers Amazonians to deliver the best results for our customers. If you have a disability and need a workplace accommodation or adjustment during the application and hiring process, including support for the interview or onboarding process, please visit https://amazon.jobs/content/en/how-we-hire/accommodations for more information. If the country/region you\u2019re applying in isn\u2019t listed, please contact your Recruiting Partner.\n\nCompany - ADCI - Tamil Nadu\n\nJob ID: A2711912",
+      "job_is_remote": false,
+      "job_posted_at": "14 days ago",
+      "job_posted_at_timestamp": 1743465600,
+      "job_posted_at_datetime_utc": "2025-04-01T00:00:00.000Z",
+      "job_location": "Mumbai, Maharashtra",
+      "job_city": "Mumbai",
+      "job_state": "Maharashtra",
+      "job_country": "IN",
+      "job_latitude": 19.0759837,
+      "job_longitude": 72.8776559,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DX549n51jAJPyirdtAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_salary": null,
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": null,
+      "job_highlights": {},
+      "job_onet_soc": "15113200",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081ac",
+      "job_id": "TIwjWwRhkxq48xWAAAAAAA==",
+      "job_title": "WordPress developer",
+      "employer_name": "Adams Communication patterns llp",
+      "employer_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ5FssnZI9eHpBJU39Mxsswl0ID71_CMck2MWR&s=0",
+      "employer_website": null,
+      "job_publisher": "Cutshort",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://cutshort.io/job/WordPress-developer-Mohali-Ludhiana-Chandigarh-Amritsar-Patiala-Adams-Communication-patterns-llp-i2dW3kjX?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": true,
+      "apply_options": [
+        {
+          "publisher": "Cutshort",
+          "apply_link": "https://cutshort.io/job/WordPress-developer-Mohali-Ludhiana-Chandigarh-Amritsar-Patiala-Adams-Communication-patterns-llp-i2dW3kjX?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": true
+        },
+        {
+          "publisher": "Jobg8",
+          "apply_link": "https://jobs.jobg8.com/jobs/wordpress-developer-in-amritsar-punjab-india/5673-292867846440?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "JobLeads",
+          "apply_link": "https://www.jobleads.com/in/job/wordpress-developer--amritsar--e76221ddadee060edc7565e28e03522e3?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Trabajo.org",
+          "apply_link": "https://in.trabajo.org/job-1940-5fd8ece0e689cfeb1a4dd242463c1937?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Expertini",
+          "apply_link": "https://in.expertini.com/jobs/job/wordpress-developer-amritsar-confia-software-4150405db5/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Learn4Good",
+          "apply_link": "https://www.learn4good.com/jobs/amritsar/india/info_technology/4085852412/e/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "WhatJobs",
+          "apply_link": "https://en-in.whatjobs.com/gfj/111621484?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "MNCJobsIndia",
+          "apply_link": "https://www.mncjobsindia.com/jobs/wordpress-developer-amritsar-3334388?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "Requirement\n\u2022 Must know how to design the theme\n\u2022 Must know about the Plugin development\n\u2022 Good understanding of front-end technologies, including HTML5, CSS3, JavaScript, jQuery\n\u2022 Experience building user interfaces for websites and/or web applications\n\u2022 Experience designing and developing responsive design websites\n\u2022 Comfortable working with debugging tools like Firebug, Chrome inspector, etc.\n\u2022 Ability to understand CSS changes and their ramifications to ensure consistent style across platforms and browsers\n\u2022 Ability to convert comprehensive layout and wireframes into working HTML pages\n\u2022 Must know how to develop a website using Elementor.\n\u2022 Knowledge of how to interact with RESTful APIs and formats (JSON, XML)\n\u2022 Strong understanding of PHP back-end development\n\u2022 Good communication skills.\n\u2022 Generating WordPress themes and plugins.\n\u2022 Conducting website performance tests.\n\u2022 Must know how to design and develop an E-commerce Website in WordPress using Woocommerce Plugin.",
+      "job_is_remote": false,
+      "job_posted_at": null,
+      "job_posted_at_timestamp": null,
+      "job_posted_at_datetime_utc": null,
+      "job_location": "Amritsar, Punjab",
+      "job_city": "Amritsar",
+      "job_state": "Punjab",
+      "job_country": "IN",
+      "job_latitude": 31.6339793,
+      "job_longitude": 74.8722642,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DTIwjWwRhkxq48xWAAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": "YEAR",
+      "job_highlights": {},
+      "job_onet_soc": "15113400",
+      "job_onet_job_zone": "3"
+    },
+    {
+      "_id": "67fe442d20e619e889a081ad",
+      "job_id": "Y4G6sFnXKSFp0dJHAAAAAA==",
+      "job_title": "Team Lead, Software Engineering",
+      "employer_name": "Clarivate",
+      "employer_logo": null,
+      "employer_website": "https://clarivate.com",
+      "job_publisher": "Clarivate",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://careers.clarivate.com/job/JREQ131811/Team-Lead-Software-Engineering?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "Clarivate",
+          "apply_link": "https://careers.clarivate.com/job/JREQ131811/Team-Lead-Software-Engineering?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Built In",
+          "apply_link": "https://builtin.com/job/team-lead-software-engineering/4662087?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "SimplyHired",
+          "apply_link": "https://www.simplyhired.co.in/job/bGQzxhHRRdERY6Ihwh-fMh3Bbk7cTQbXuHgrb_u9TTAgiWgoJZT10Q?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "LinkedIn",
+          "apply_link": "https://in.linkedin.com/jobs/view/team-lead-software-engineering-at-clarivate-4205702210?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Glassdoor",
+          "apply_link": "https://www.glassdoor.co.in/job-listing/senior-facilities-coordinator-ex-libris-JV_KO0,29_KE30,39.htm?jl=1008259151574&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Glassdoor",
+          "apply_link": "https://www.glassdoor.com.ar/job-listing/quality-assurance-engineer-ex-libris-JV_KO0,26_KE27,36.htm?jl=1008259151574&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Glassdoor",
+          "apply_link": "https://www.glassdoor.com/job-listing/associate-trademark-search-analyst-ex-libris-JV_IC4477468_KO0,34_KE35,44.htm?jl=1008259151574&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Recruit.net",
+          "apply_link": "https://www.recruit.net/job/team-software-engineering-jobs/32588A9DC6606CF3?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "Job Overview: We are looking for a highly skilled and experienced Lead UI Developer to join our growing engineering team. This is an opportunity for a dynamic individual who is proficient in building scalable, high-performance UI systems using Vue 3 or React with TypeScript.\n\nIn this role, you will be responsible for leading the design and development of complex UI applications, integrating with APIs, managing legacy systems, and adopting Micro Frontend architectures. Alongside your technical contributions, you will also mentor junior developers and help establish best practices within the team.\n\nIf you thrive in a fast-paced, product-driven environment and are ready to take on challenging projects while shaping the future of our team, we would love to have you on board.\n\nResponsibilities:\n\u2022 Lead the design, development, and maintenance of UI applications using Vue 3, React, and TypeScript.\n\u2022 Architect and implement Micro Frontend solutions to break down large UI systems into smaller, manageable, and independently deployable parts.\n\u2022 Ensure smooth integration with backend services and APIs to provide seamless user experiences.\n\u2022 Lead the development of unit tests with code coverage to ensure high-quality and reliable software.\n\u2022 Maintain and enhance legacy systems built with jQuery and other JavaScript frameworks, ensuring smooth transitions to modern architectures.\n\u2022 Troubleshoot, debug, and optimize front-end performance to improve speed, reliability, and scalability.\n\u2022 Mentor and guide junior developers, providing technical leadership and fostering a collaborative team environment.\n\u2022 Review and enforce best practices in coding, design, and architecture to maintain code quality across the team.\n\u2022 Actively contribute to sprint planning, backlog grooming, and ensuring timely delivery in an Agile environment (familiarity with Jira is a must).\n\u2022 Work closely with cross-functional teams to ensure the UI meets business requirements and integrates seamlessly with backend systems.\n\u2022 Stay up to date with the latest industry trends and technologies to continuously improve development practices.\n\u2022 Be a technical leader who takes ownership of complex features, ensuring the highest standards of quality.\n\nRequired Skills and Qualifications:\n\u2022 7-9 years of experience in frontend development with strong expertise in Vue 3, React, and TypeScript.\n\u2022 Strong experience in coding and system design, with a solid understanding of architectural principles for building scalable, maintainable systems.\n\u2022 Expertise in Micro Frontend architecture and the ability to lead the adoption and implementation of such systems.\n\u2022 Experience with legacy systems, specifically with jQuery and other JavaScript frameworks, and the ability to modernize and refactor code.\n\u2022 Proficiency in consuming and integrating APIs effectively.\n\u2022 Expertise in unit testing frameworks and tools (e.g., Jest, Mocha), and ensuring code coverage for high-quality software.\n\u2022 Strong experience with Docker for containerization and deployment.\n\u2022 Proficiency in version control tools like GitHub or Bitbucket.\n\u2022 Excellent debugging skills and a methodical approach to problem-solving.\n\u2022 Strong experience with Agile/Scrum methodologies and familiarity with Jira for project management and issue tracking.\n\u2022 Ability to lead a team, mentor junior developers, and foster a collaborative environment.\n\u2022 Strong communication and problem-solving skills, with the ability to take on complex challenges and devise innovative solutions.\n\u2022 Self-driven with a passion for technology and a commitment to continuous learning.\n\nDesired Skills:\n\u2022 Familiarity with CI/CD pipelines and tools for automating deployment and testing.\n\u2022 Knowledge of backend technologies and willingness to collaborate with backend teams to optimize API integrations.\n\u2022 Experience with cloud services (AWS, Azure, GCP) and distributed systems.\n\u2022 Knowledge of performance optimization techniques and best practices for building highly performant web applications.\n\nAt Clarivate, we are committed to providing equal employment opportunities for all persons with respect to hiring, compensation, promotion, training, and other terms, conditions, and privileges of employment. We comply with applicable laws and regulations governing non-discrimination in all locations.",
+      "job_is_remote": false,
+      "job_posted_at": "6 days ago",
+      "job_posted_at_timestamp": 1744156800,
+      "job_posted_at_datetime_utc": "2025-04-09T00:00:00.000Z",
+      "job_location": "Noida, Uttar Pradesh",
+      "job_city": "Noida",
+      "job_state": "Uttar Pradesh",
+      "job_country": "IN",
+      "job_latitude": 28.5355161,
+      "job_longitude": 77.3910265,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DY4G6sFnXKSFp0dJHAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_salary": null,
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": null,
+      "job_highlights": {},
+      "job_onet_soc": "15113200",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081ae",
+      "job_id": "jAOeKrc5m1f9cB-PAAAAAA==",
+      "job_title": "PHP Developer",
+      "employer_name": "Aquarius Infotech",
+      "employer_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ5FssnZI9eHpBJU39Mxsswl0ID71_CMck2MWR&s=0",
+      "employer_website": "https://aquariusinfotech.com",
+      "job_publisher": "Cutshort",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://cutshort.io/job/PHP-Developer-Surat-Kim-Kosamba-Valsad-Vapi-Bharuch-Bilimora-Aquarius-Infotech-R3ddk32Z?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": true,
+      "apply_options": [
+        {
+          "publisher": "Cutshort",
+          "apply_link": "https://cutshort.io/job/PHP-Developer-Surat-Kim-Kosamba-Valsad-Vapi-Bharuch-Bilimora-Aquarius-Infotech-R3ddk32Z?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": true
+        },
+        {
+          "publisher": "BeBee",
+          "apply_link": "https://in.bebee.com/job/449e6d7204c057c76dfbeb00e7db320c?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Trabajo.org",
+          "apply_link": "https://in.trabajo.org/job-1406-b50d4004eb46912498caa0e18a0cb741?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Jobrapido.com",
+          "apply_link": "https://in.jobrapido.com/jobpreview/7683251194629718016?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "PHP Developer Responsibilities:\n\u2022 Conducting analysis of website and application requirements.\n\u2022 Writing back-end code and building efficient PHP modules.\n\u2022 Developing back-end portals with an optimized database.\n\u2022 Troubleshooting application and code issues.\n\u2022 Integrating data storage solutions.\n\u2022 Responding to integration requests from front-end developers.\n\u2022 Finalizing back-end features and testing web applications.\n\u2022 Updating and altering application features to enhance performance.\n\nPHP Developer Requirements:\n\u2022 Bachelor\u2019s degree in computer science or a similar field.\n\u2022 Knowledge of PHP web frameworks including Yii, Laravel, and CodeIgniter.\n\u2022 Knowledge of front-end technologies including CSS3, JavaScript, and HTML5.\n\u2022 Understanding of object-oriented PHP programming.\n\u2022 Previous experience creating scalable applications.\n\u2022 Proficient with code versioning tools including Git, Mercurial, CVS, and SVN.\n\u2022 Familiarity with SQL/NoSQL databases.\n\u2022 Ability to project manage.\n\u2022 Good problem-solving skills.",
+      "job_is_remote": false,
+      "job_posted_at": null,
+      "job_posted_at_timestamp": null,
+      "job_posted_at_datetime_utc": null,
+      "job_location": "Bharuch, Gujarat",
+      "job_city": "Bharuch",
+      "job_state": "Gujarat",
+      "job_country": "IN",
+      "job_latitude": 21.7051358,
+      "job_longitude": 72.9958748,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DjAOeKrc5m1f9cB-PAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": "YEAR",
+      "job_highlights": {},
+      "job_onet_soc": "15113200",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081af",
+      "job_id": "eQzk8D5LovTJTu-gAAAAAA==",
+      "job_title": "Associate Lead Software Engineer",
+      "employer_name": "Clarivate",
+      "employer_logo": null,
+      "employer_website": "https://clarivate.com",
+      "job_publisher": "Clarivate",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://careers.clarivate.com/job/JREQ131254/Associate-Lead-Software-Engineer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "Clarivate",
+          "apply_link": "https://careers.clarivate.com/job/JREQ131254/Associate-Lead-Software-Engineer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Foundit.in",
+          "apply_link": "https://www.foundit.in/job/associate-lead-software-engineer-thomson-reuters-bengaluru-bangalore-34199227?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Built In",
+          "apply_link": "https://builtin.com/job/associate-lead-software-engineer/4392810?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Antal Tech Jobs",
+          "apply_link": "https://www.antaltechjobs.in/job/associate-lead-software-engineer-1?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Talent500",
+          "apply_link": "https://talent500.com/jobs/thomson-reuters/associate-lead-software-engineer-bengaluru-T500_TS_JREQ188834?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "BeBee",
+          "apply_link": "https://in.bebee.com/job/cd085b82bdaa0b29c87932dac5af0749?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Indeed",
+          "apply_link": "https://in.indeed.com/viewjob?jk=63dfe52516b0d6af&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "JobzMall",
+          "apply_link": "https://www.jobzmall.com/proquest/job/associate-lead-software-engineer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": true
+        }
+      ],
+      "job_description": "We are currently looking for an experienced Full stack Developer with demonstrated technical experience within Angular and Java technologies to join the team in India, within our global Technology department. If this sounds interesting to you and you are skilled in Angular/JavaScript/JQuery/HTML/CSS/Bootstrap/SQL/AWS/Java/Kotlin, we would love to speak with you.\n\nAbout You \u2013 experience, education, skills, and accomplishments\n\u2022 Bachelor's degree in BE/Btech or similar field.\n\u2022 At least 5+ years of experience developing web-based applications using Angular, HTML, CSS, JavaScript, JQuery, Bootstrap, SQL Server and related technologies.\n\u2022 At least 5+ years of experience developing backend services using Java, Springboot, Kotlin, and related technologies.\n\u2022 Exposure to Cloud native technologies and integration patterns.\n\u2022 Experience in writing Unit test cases.\n\u2022 Good understanding of software development principles, including Distributed Systems, object-oriented programming, Design Patterns, and SOLID principles.\n\u2022 Working knowledge of version control e.g., GIT, etc\n\u2022 Experience with AWS services, such as EC2, S3, and RDS.\n\u2022 Experience with Agile development methodologies.\n\u2022 Exposure to Docker, and Linux is a plus.\n\nIt would be great if you also have:\n\u2022 Familiarity with Agile development methodologies.\n\u2022 Experience with continuous integration and deployment tools such as Jenkins\n\u2022 Ability to think through a problem at a conceptual level and propose solutions.\n\u2022 Excellent verbal and written communication skills.\n\u2022 Keen desire to learn, stretch, and a never-give-up attitude.\n\u2022 Very strong interpersonal skills and an easygoing personality.\n\u2022 Highly proactive, result-oriented, and a team player.\n\u2022 Ability to stay current with new technology.\n\u2022 Excellent attention to detail and follow-through; process-oriented\n\nWhat will you be doing in this role?\n\nYou will work closely with your agile team to create high-quality, innovative, and intuitive solutions to challenging and complex business problems. To be successful in this role, you will need strong technical and analytical skills to be applied to overcome challenges that arise when working across multiple technologies. You will harness your creativity to help develop solutions that consider our users and aim to significantly improve the productivity of their workday.\n\u2022 Participate in the full software development lifecycle, including requirements gathering, design, development, testing, and deployment.\n\u2022 Write clean, efficient, and well-documented code that adheres to industry best practices and coding standards.\n\u2022 Develop and maintain unit integration tests that are part of an automated continuous integration pipeline.\n\u2022 Work closely with other stakeholders (e.g., QA, Product, UX, DevOps) to release high-quality software.\nParticipate in group improvement activities and initiatives to improve process and product quality in pursuit of excellence.\n\u2022 Collaborate with on-and-off site teams.\n\u2022 Troubleshoot and debug issues that arise during development, testing, and production.\n\u2022 Stay up to date with new technologies and trends in software development.\n\nAbout the Team\n\nThe Disease Intelligence Authoring (Editorial) development team, which comprises 10 skilled members. Our team specializes in various technologies, including Angular, Java, Python, AWS, and SQL. We are committed to delivering high-quality solutions and continuously enhancing our expertise in these areas.\n\nHours of Work\u202f\u202f\n\n45 hours per week, full-time employment, Hybrid\n\nAt Clarivate, we are committed to providing equal employment opportunities for all persons with respect to hiring, compensation, promotion, training, and other terms, conditions, and privileges of employment. We comply with applicable laws and regulations governing non-discrimination in all locations.",
+      "job_is_remote": false,
+      "job_posted_at": "21 days ago",
+      "job_posted_at_timestamp": 1742860800,
+      "job_posted_at_datetime_utc": "2025-03-25T00:00:00.000Z",
+      "job_location": "Noida, Uttar Pradesh",
+      "job_city": "Noida",
+      "job_state": "Uttar Pradesh",
+      "job_country": "IN",
+      "job_latitude": 28.5355161,
+      "job_longitude": 77.3910265,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DeQzk8D5LovTJTu-gAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_salary": null,
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": null,
+      "job_highlights": {},
+      "job_onet_soc": "15113200",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081b0",
+      "job_id": "QPw7KLWEgNWeH0q7AAAAAA==",
+      "job_title": "Senior Analyst, Full Stack Development",
+      "employer_name": "Pratt & Whitney",
+      "employer_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3Zv89CdcrmoWOOIKC8f8bTpLwHZjzYt-mKt46&s=0",
+      "employer_website": "http://prattwhitney.com/",
+      "job_publisher": "Indeed",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://in.indeed.com/viewjob?jk=7cf1c354ac2ab744&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "Indeed",
+          "apply_link": "https://in.indeed.com/viewjob?jk=7cf1c354ac2ab744&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "Date Posted:\n2025-03-28\n\nCountry:\nIndia\n\nLocation:\nNorth Gate Business Park Sy.No 2/1, and Sy.No 2/2, KIAL Road, Venkatala Village, Chowdeshwari Layout, Yelahanka, Bangalore, Karnataka 560064\n\nPosition Role Type:\nUnspecified\n\nPratt & Whitney is working to once again transform the future of flight\u2014designing, building and servicing engines unlike any the world has ever seen. And because transformation begins from within, we\u2019re seeking the people to drive it. So, calling all curious.\n\nCome ready to explore and you\u2019ll find a place where your talent takes flight\u2014beyond the borders of title, a country or your comfort zone. Bring your passion and commitment and we\u2019ll welcome you into a tight-knit team that takes our mission personally. Channel your drive to make a difference into shaping an organization and an industry that\u2019s evolving fast to the future.\n\nPratt and Whitney (PW) has an opening for a Senior Analyst, Full Stack Development.\n\nInnovation through diversity of thought. At Pratt & Whitney, we believe diversity of thought enables creativity, innovation, and a foundation for inclusion. By fostering an inclusive culture, we accept a shared accountability and responsibility to recognize, sponsor, coach, hire and promote talent equally. We welcome our employees to be their whole - best - selves at work because trust, respect and integrity, are a part of our DNA.\n\nRequired Skills & Qualifications:\n\nBack-End:\n\u2022 Proficient in C# and .NET 3 \u2013 6 yrs of exp in backend development.\n\u2022 Strong experience with MS SQL Server, including writing stored procedures and functions.\n\u2022 Experience with Entity Framework Core and Micro ORMs like Dapper for data access.\n\u2022 Knowledge of microservices and micro front-end architectures.\n\u2022 Familiarity with Clean Architecture, CQRS, and MediatR library for building maintainable systems.\n\u2022 Experience with unit testing frameworks like XUnit, MSTest, and code coverage tools like Coverlet.\n\u2022 Familiarity with OAuth 2.0 and OpenID Connect for secure API authentication.\n\u2022 Experience with Event-driven architecture and Domain-driven design (DDD).\n\u2022 Proficiency with message brokers like RabbitMQ and AWS Kafka for managing communication in distributed systems.\n\u2022 Experience with gRPC for streaming and inter-service communication.\n\u2022 Familiarity with Docker and OpenShift for containerization and deployment of applications.\n\u2022 Familiarity with DevSecOps practices, including CI/CD pipelines and secure coding best practices (OWASP).\n\u2022 Familiarity with OData for API-based data querying.\n\nFront-End:\n\u2022 Proficiency in Angular 13+ for front-end development.\n\u2022 Strong experience with RxJS for handling asynchronous operations and managing state.\n\u2022 Familiarity with Nrwl/NX framework for modular Angular architecture.\n\u2022 Knowledge of design patterns like Smart-Dumb components for maintainable code.\n\u2022 Experience with ngRX for state management in large-scale Angular applications.\n\u2022 Familiarity with testing frameworks like Cypress, Storybook, and Jest/Karma.\n\u2022 Experience with Micro Front-End architecture for scalable and independent front-end components.\n\u2022 Familiarity with Angular Elements and Module Federation for component reuse across applications.\n\u2022 Experience with Backend for Frontend (BFF) or API Gateway patterns to manage API calls and handle back-end communication.\n\nPreferred Skills:\n\u2022 Experience in a DevOps or cloud-native environment.\n\u2022 Familiarity with AWS services, especially in the context of event-driven architectures (e.g., AWS Lambda, SNS, SQS).\n\u2022 Experience with container orchestration tools like Kubernetes.\n\u2022 Familiarity with Cloud platforms (AWS, Azure, GCP) for cloud-native development.\n\nQualifications:\n\u2022 Bachelor\u2019s degree in Computer Science, Software Engineering, or a related field, or equivalent practical experience.\n\u2022 3+ years of experience in a full stack or back-end development role.\n\u2022 Strong problem-solving skills and attention to detail.\n\u2022 Excellent communication skills and the ability to work in a collaborative team environment.\n\u2022 Experience working with Agile methodologies (Scrum, Kanban).\n\nRTX adheres to the principles of equal employment. All qualified applications will be given careful consideration without regard to ethnicity, color, religion, gender, sexual orientation or identity, national origin, age, disability, protected veteran status or any other characteristic protected by law.\n\nPrivacy Policy and Terms:\n\nClick on this link to read the Policy and Terms",
+      "job_is_remote": false,
+      "job_posted_at": "4 days ago",
+      "job_posted_at_timestamp": 1744329600,
+      "job_posted_at_datetime_utc": "2025-04-11T00:00:00.000Z",
+      "job_location": "Karnataka",
+      "job_city": null,
+      "job_state": "Karnataka",
+      "job_country": "IN",
+      "job_latitude": 15.3172775,
+      "job_longitude": 75.7138884,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DQPw7KLWEgNWeH0q7AAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_salary": null,
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": null,
+      "job_highlights": {},
+      "job_onet_soc": "15113300",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081b1",
+      "job_id": "QlJgNdoiJAWSG8dPAAAAAA==",
+      "job_title": "Asp.Net Developer for Web based applications",
+      "employer_name": "INNOVASPHERE INFOTECH",
+      "employer_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ5FssnZI9eHpBJU39Mxsswl0ID71_CMck2MWR&s=0",
+      "employer_website": null,
+      "job_publisher": "Cutshort",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://cutshort.io/job/Asp-Net-Developer-for-Web-based-applications-Chennai-INNOVASPHERE-INFOTECH-20hiHWTR?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": true,
+      "apply_options": [
+        {
+          "publisher": "Cutshort",
+          "apply_link": "https://cutshort.io/job/Asp-Net-Developer-for-Web-based-applications-Chennai-INNOVASPHERE-INFOTECH-20hiHWTR?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": true
+        },
+        {
+          "publisher": "LinkedIn",
+          "apply_link": "https://in.linkedin.com/jobs/view/asp-net-developer-for-web-based-applications-at-innovasphere-infotech-3656599018?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "We are looking for an Asp.Net developer to build software using languages and technologies of the .NET framework. You will create applications from scratch, configure existing systems and provide user support.\n\nIn this role, you should be able to write functional code using .NET linking SQL database elements to external application interface (desktop of mobile)\n\nYour goal will be to work with internal teams to design, develop and maintain existing application and working on new applications from time to time.\n\nResponsibilities\n\u2022 Producing code using .NET languages (C#)\n\u2022 Writing of Stored Procedures for SQL database for extracting data related to the application\n\u2022 Participate in requirement analysis.\n\u2022 Collaborate with internal teams to produce software design and architecture\n\u2022 Write clean, scalable code using .NET programming languages and SQL SPs\n\u2022 Test and deploy applications and systems\n\u2022 Revise, update, refactor and debug code\n\u2022 Improve existing software\n\u2022 Serve as an expert on existing applications and provide technical support\n\nSkill Requirements\n\u2022 Proven experience of 2-4 years as a .NET Developer or Application Developer\n\u2022 Familiarity with the ASP.NETframework, SQL Server and design/architectural patterns\n\u2022 Good working knowledge of .NET languages (C#) and HTML5/CSS3\n\u2022 Familiarity with architecture styles/APIs (REST, RPC)\n\u2022 Excellent troubleshooting and communication skills\n\u2022 Degree in Computer Science, Engineering or a related field",
+      "job_is_remote": false,
+      "job_posted_at": null,
+      "job_posted_at_timestamp": null,
+      "job_posted_at_datetime_utc": null,
+      "job_location": "Chennai, Tamil Nadu",
+      "job_city": "Chennai",
+      "job_state": "Tamil Nadu",
+      "job_country": "IN",
+      "job_latitude": 13.0843007,
+      "job_longitude": 80.2704622,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DQlJgNdoiJAWSG8dPAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": "YEAR",
+      "job_highlights": {},
+      "job_onet_soc": "15113400",
+      "job_onet_job_zone": "3"
+    },
+    {
+      "_id": "67fe442d20e619e889a081b2",
+      "job_id": "RsFU0JifkBRQhqfIAAAAAA==",
+      "job_title": "Frontend Developer- ReactJS",
+      "employer_name": "Lodestone Pvt. Ltd.",
+      "employer_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ5FssnZI9eHpBJU39Mxsswl0ID71_CMck2MWR&s=0",
+      "employer_website": null,
+      "job_publisher": "Cutshort",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://cutshort.io/job/Frontend-Developer-ReactJS-Ahmedabad-Lodestone-Pvt-Ltd--qe0flTFP?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": true,
+      "apply_options": [
+        {
+          "publisher": "Cutshort",
+          "apply_link": "https://cutshort.io/job/Frontend-Developer-ReactJS-Ahmedabad-Lodestone-Pvt-Ltd--qe0flTFP?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": true
+        },
+        {
+          "publisher": "CallCenterJob.co.in",
+          "apply_link": "https://callcenterjob.co.in/frontend-developer-reactjs-ahmedabad_496275?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "We are looking for strong Front end developers to join our growing Team and help build Software applications and Tools that help streamline enterprise processes and build efficiency.\n\nRoles & Responsibilities :\n\u2022 Write high quality code in ReactJS using TypeScript or JSX that is easy to maintain and test.\n\u2022 Participate in an Agile environment using Scrum software development practices, Automated unit testing, Continuous integration, Code reviews, Version control systems, Automated build processes. Raise issues proactively that might impact delivery commitments.\n\u2022 Fix production issues and maintain the code as needed .\n\nBasic Qualifications:\n\u2022 BS degree in CS or equivalent work experience 5+ years professional experience building single page applications in ReactJS using TypeScript or JSX with extensive experience working with HTML5 and CSS3.\n\u2022 Experience working with cross-browser behaviors and quirks.\n\nPreferred Qualifications:\n\u2022 Passion for new technologies. Product development experience building large scale web applications.\n\u2022 Experience designing and developing highly scalable consumer facing web application. Care deeply about writing high-performance, reusable code for components that will be used across our product.\n\u2022 GraphQL experience is preferred.",
+      "job_is_remote": false,
+      "job_posted_at": null,
+      "job_posted_at_timestamp": null,
+      "job_posted_at_datetime_utc": null,
+      "job_location": "Ahmedabad, Gujarat",
+      "job_city": "Ahmedabad",
+      "job_state": "Gujarat",
+      "job_country": "IN",
+      "job_latitude": 23.022505,
+      "job_longitude": 72.5713621,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DRsFU0JifkBRQhqfIAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": "YEAR",
+      "job_highlights": {},
+      "job_onet_soc": "15113400",
+      "job_onet_job_zone": "3"
+    },
+    {
+      "_id": "67fe442d20e619e889a081b3",
+      "job_id": "kfLQojt8z4WSjdbdAAAAAA==",
+      "job_title": "Senior Software Engineer (Java)",
+      "employer_name": "Clarivate",
+      "employer_logo": null,
+      "employer_website": "https://clarivate.com",
+      "job_publisher": "Clarivate",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://careers.clarivate.com/job/JREQ131482/Senior-Software-Engineer-Java?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "Clarivate",
+          "apply_link": "https://careers.clarivate.com/job/JREQ131482/Senior-Software-Engineer-Java?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "WalkingTree Technologies",
+          "apply_link": "https://walkingtree.tech/jobs/senior-software-engineer-java1/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Glassdoor",
+          "apply_link": "https://www.glassdoor.co.in/job-listing/senior-software-engineer-java-position2-JV_IC2940587_KO0,29_KE30,39.htm?jl=1009496300761&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Indeed",
+          "apply_link": "https://in.indeed.com/viewjob?jk=8ab772b762ebb030&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "SimplyHired",
+          "apply_link": "https://www.simplyhired.co.in/job/yG6-0WjoXq0y2j1FHKYEqqvx0_pLmS3FQD-_s5dsP_UoFpYq_qLxoA?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "LinkedIn",
+          "apply_link": "https://in.linkedin.com/jobs/view/senior-software-engineer-java-at-walkingtree-technologies-4160749237?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "GameJobs.co",
+          "apply_link": "https://gamejobs.co/Senior-Software-Engineer-Java-at-Scopely?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Iitjobs",
+          "apply_link": "https://www.iitjobs.com/job/senior-software-engineer-java-bangalore-karnataka-india-grizmo-labs-74959?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "We\u2019re currently looking for Senior Software Engineer who is excited about building internally-facing platforms and services that improve developer productivity, efficiency, and engineering excellence. You are a self-starter who can develop high-quality code as well as collaborate with other parts of the team, including product, QA, etc. to deliver solid products. You will help drive solutions for our customers by bringing together multiple, distributed, cross-functional teams.\n\nAbout You :\n\nBachelor's degree in Computer Science, Technology, or Engineering, (strongly preferred), or equivalent work experience.\n\n3-4 years of working experience in technologies stated below.\n\nMust have worked on:\n\u2022 Java8+ and Springboot\n\u2022 XML & JSON processing\n\u2022 Relational databases: Postgres/Oracle\n\u2022 Microservices\n\u2022 Linux and Shell scripting\n\u2022 Amazon Web Services (AWS) / Google Cloud / Azure\n\u2022 Knowledge of any UI framework\n\u2022 Experience in CI/CD\n\u2022 Deployment of applications to AWS/Google Cloud/ Azure\n\u2022 Experience in Logging and Monitoring using tools such as ELK stack, Graylog, Datadog, Signalfx etc.\n\nIt would be great if you also have\n\u2022 Netflix OSS components : Eureka, Zuul, Ribbon, Hystrix\n\u2022 Anyone API gateway frameworks like Kong, Appigee, etc\n\u2022 Serverless Programming\n\u2022 Experience in NoSQL database such as Cassandra etc\n\u2022 Experience in Apache Kafka or any Messaging Services\n\u2022 Basic knowledge of UI and UX frameworks\n\nWhat will you be doing in this role\n\u2022 Collaborate with other parts of the technology team, including product, QA, marketing, etc. to deliver a solid product.\n\u2022 Conduct code review of projects as presented by your manager, providing feedback.\n\u2022 Review technical requirements provided by the business for key projects, in order to take concepts from design to delivery.\n\u2022 Provide solid software/component-level designs supporting technical requirements.\n\u2022 Help drive projects through the full development life-cycle when required, liaising with team leads & external vendors across the business as appropriate.\n\u2022 Ensure that all tasks undertaken are completed to a quality standard. This includes delivery on time, within budget, and to specification.\n\u2022 Ensure yourself and others follow departmental workflow processes, work in a transparent manner, check-in code promptly, report development progress in workflow tracking tools.\n\nAt Clarivate, we are committed to providing equal employment opportunities for all persons with respect to hiring, compensation, promotion, training, and other terms, conditions, and privileges of employment. We comply with applicable laws and regulations governing non-discrimination in all locations.",
+      "job_is_remote": false,
+      "job_posted_at": "8 days ago",
+      "job_posted_at_timestamp": 1743984000,
+      "job_posted_at_datetime_utc": "2025-04-07T00:00:00.000Z",
+      "job_location": "Bengaluru, Karnataka",
+      "job_city": "Bengaluru",
+      "job_state": "Karnataka",
+      "job_country": "IN",
+      "job_latitude": 12.9715987,
+      "job_longitude": 77.5945627,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DkfLQojt8z4WSjdbdAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_salary": null,
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": null,
+      "job_highlights": {},
+      "job_onet_soc": "15113200",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081b4",
+      "job_id": "0nxIF3qZSOu1zCbHAAAAAA==",
+      "job_title": "Senior Software Engineer-Java",
+      "employer_name": "Clarivate",
+      "employer_logo": null,
+      "employer_website": "https://clarivate.com",
+      "job_publisher": "Clarivate",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://careers.clarivate.com/job/JREQ130427/Senior-Software-Engineer-Java?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "Clarivate",
+          "apply_link": "https://careers.clarivate.com/job/JREQ130427/Senior-Software-Engineer-Java?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Wellfound",
+          "apply_link": "https://wellfound.com/jobs/3149302-senior-software-engineer-java?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": true
+        },
+        {
+          "publisher": "Foundit.in",
+          "apply_link": "https://www.foundit.in/job/senior-software-engineer-java-skylark-hr-solutions-private-limited-bengaluru-bangalore-30952554?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": true
+        },
+        {
+          "publisher": "Greenhouse",
+          "apply_link": "https://boards.greenhouse.io/embed/job_app?token=7721671002&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Indeed",
+          "apply_link": "https://in.indeed.com/viewjob?jk=ea3fe2dba8386bbd&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Built In",
+          "apply_link": "https://builtin.com/job/senior-software-engineer-java/4161150?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "ClimateTechList",
+          "apply_link": "https://www.climatetechlist.com/job/fluence-senior-software-engineer-java-YDY4SOU649IZ8H?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Jooble",
+          "apply_link": "https://in.jooble.org/jdp/6145391931692088397?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "We are looking for Senior Software Engineer- Java Backend who should be passionate about software development and technology, have demonstrable technical and problem-solving skills. The candidate will show a clear understanding of development trends and a broad understanding of development paradigms. They will have excellent organizational skills, good knowledge of the full software development life cycle.\n\nAbout You \u2013 experience, education, skills, and accomplishments\n\u2022 Bachelor\u2019s Degree or equivalent in computer science, software engineering, or a related field\n\u2022 At least 3 Years of relevant experience technologies like Java 11+, File I/O, Multi-Threading, Collections, Spring Boot, micro service architecture, AWS cloud.\n\u2022 Good Understanding on Object-oriented software design patterns.\n\u2022 Experience in developing RESTful Microservices.\n\u2022 Experience with RDBMS and NoSQL databases, particularly MySQL or PostgreSQL\n\u2022 Experience using AWS serverless resources, including but not limited to Lambda, RDS, API Gateway, S3\n\u2022 Worked on Jira, Jenkins, Maven/Gradle, bitbucket\n\nIt would be great if you also had . . .\n\u2022 Exposure to Linux Shell scripting\n\u2022 Working with continuous integration and continuous development environments.\n\u2022 Client-side tools & frameworks: Angular, JavaScript, HTML, CSS.\n\nWhat will you be doing in this role?\n\u2022 Write clean, efficient, and maintainable code in accordance with coding standards and write technical documentation.\n\u2022 Review other code to ensure clean, efficient, and maintainable code.\n\u2022 Defines architecture of software solution. Suggests alternative methodologies or techniques to achieving desired results.\n\u2022 Maintains knowledge of technical advances and evaluates new hardware / software for development purpose.\n\u2022 Automate tests and unit tests for assigned applications.\n\nAbout the Team\n\nYou will be working as part of IP Content team wherein your focus would be to process and deliver high quality patent data from multiple input source formats. We have multiple squads each consists of Software Engineers, Testers, Lead and Release Manager.\n\nHours of Work\n\nThis is permanent position with Clarivate. You will be working in IST time zone. 9 hours of work per day including 1-hour lunch break. We have hybrid work model, flexible and employee friendly work environment.\n\nAt Clarivate, we are committed to providing equal employment opportunities for all persons with respect to hiring, compensation, promotion, training, and other terms, conditions, and privileges of employment. We comply with applicable laws and regulations governing non-discrimination in all locations.",
+      "job_is_remote": false,
+      "job_posted_at": "1 day ago",
+      "job_posted_at_timestamp": 1744588800,
+      "job_posted_at_datetime_utc": "2025-04-14T00:00:00.000Z",
+      "job_location": "Bengaluru, Karnataka",
+      "job_city": "Bengaluru",
+      "job_state": "Karnataka",
+      "job_country": "IN",
+      "job_latitude": 12.9715987,
+      "job_longitude": 77.5945627,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3D0nxIF3qZSOu1zCbHAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_salary": null,
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": null,
+      "job_highlights": {},
+      "job_onet_soc": "15113200",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081b5",
+      "job_id": "sL-g88XFdAZ1tWhfAAAAAA==",
+      "job_title": "Software Engineer- Data Engineer",
+      "employer_name": "Clarivate",
+      "employer_logo": null,
+      "employer_website": "https://clarivate.com",
+      "job_publisher": "Clarivate",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://careers.clarivate.com/job/JREQ131252/Software-Engineer-Data-Engineer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "Clarivate",
+          "apply_link": "https://careers.clarivate.com/job/JREQ131252/Software-Engineer-Data-Engineer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Luxoft",
+          "apply_link": "https://career.luxoft.com/jobs/data-visualization-software-engineer-9852?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": true
+        },
+        {
+          "publisher": "Built In",
+          "apply_link": "https://builtin.com/job/software-engineer-data-engineer/4509296?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Indeed",
+          "apply_link": "https://in.indeed.com/viewjob?jk=ea27644a1eac5bb0&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "LinkedIn",
+          "apply_link": "https://in.linkedin.com/jobs/view/data-visualization-software-engineer-at-luxoft-4180691572?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "BeBee",
+          "apply_link": "https://in.bebee.com/job/ed42c0dc99592d73ce90546630e13972?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Trabajo.org",
+          "apply_link": "https://in.trabajo.org/job-1940-ff00790912eabaeaa8969cb7543d471f?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Expertini",
+          "apply_link": "https://in.expertini.com/jobs/job/data-visualization-software-engineer-bangalore-luxoft-3391-65942/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "We are looking for a Software Engineer- Data Engineer to join our team in India. This is an amazing opportunity to work on different project with our Data engineering team having different competencies to compete and learn together. We have a great skill set in the team related to Pypark, AWS, Apahe, databrics. We would love to speak with you if you have skills in testing applications developed on latest tools and technologies.\n\nAbout You \u2013 experience, education, skills, and accomplishments:\n\u2022 Bachelor\u2019s degree in engineering or master\u2019s degree (BE, ME, B Tech, MTech, MCA, MS)\n\u2022 At least 2+ years of experience in working in software development\n\u2022 At least 2+ years\u2019 experience in building massively scalable distributed data processing solutions\n\u2022 At least 2+ years\u2019 experience of database design & development\n\u2022 Solid development experience in a commercial IT environment\n\u2022 Strong technical knowledge in Relation Database Management System including Oracle, PostGres etc\n\u2022 Proficient in Python3 and experience with Apache Spark, Databricks, Airflow.\n\u2022 Proficient in writing complex SQL queries, PL/SQL procedures\n\u2022 Good understanding of XML, JSON\n\u2022 Continuous Integration and Deployment Concepts and tools\n\nIt would be great if you also had:\n\u2022 Knowledge on any of these technologies\\tools: Cassandra, Hadoop, Apache Hive, Snowflake, Jupiter notebook, databricks stack\n\u2022 AWS services, EC2, ECS, RDS, EMR, S3, AWS Glue\n\u2022 Version control software : Git, Gitbucket\n\nWhat will you be doing in this role?\n\u2022 Write clean, efficient, and maintainable code in accordance with coding standards.\n\u2022 Works closely with higher-level engineers to increase functional knowledge.\n\u2022 Learn and apply best practices in software development.\n\u2022 Develops and applies understanding of software development lifecycle and delivery methodology.\n\u2022 Suggests alternative methodologies or techniques to achieving desired results.\n\u2022 Maintains awareness of technical advances.\n\u2022 Manually tests and unit tests all assigned applications.\n\u2022 Participates as a team member on various engineering projects.\n\u2022 Writes application technical documentation.\n\u2022 Follows team policies, procedures, and work instructions.\n\nAbout the Team\n\nWe are team located in India, US, and Europe.\n\nHours of Work\n\nRegular working timing in India.\n\nAt Clarivate, we are committed to providing equal employment opportunities for all persons with respect to hiring, compensation, promotion, training, and other terms, conditions, and privileges of employment. We comply with applicable laws and regulations governing non-discrimination in all locations.",
+      "job_is_remote": false,
+      "job_posted_at": "11 days ago",
+      "job_posted_at_timestamp": 1743724800,
+      "job_posted_at_datetime_utc": "2025-04-04T00:00:00.000Z",
+      "job_location": "Bengaluru, Karnataka",
+      "job_city": "Bengaluru",
+      "job_state": "Karnataka",
+      "job_country": "IN",
+      "job_latitude": 12.9715987,
+      "job_longitude": 77.5945627,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DsL-g88XFdAZ1tWhfAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_salary": null,
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": null,
+      "job_highlights": {},
+      "job_onet_soc": "15113200",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081b6",
+      "job_id": "livULNaEq7tu36TeAAAAAA==",
+      "job_title": "Senior Python Developer",
+      "employer_name": "Clarivate",
+      "employer_logo": null,
+      "employer_website": "https://clarivate.com",
+      "job_publisher": "Clarivate",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://careers.clarivate.com/job/JREQ131471/Senior-Python-Developer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "Clarivate",
+          "apply_link": "https://careers.clarivate.com/job/JREQ131471/Senior-Python-Developer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Sartorius",
+          "apply_link": "https://www.sartorius.com/en/company/careers/vacancies-job-opportunities/senior-developer-python-bangalore-1673168?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "SAP Careers",
+          "apply_link": "https://jobs.sap.com/job/Bangalore-Senior-Python-Developer-(6+-Years)-560103/1143976401/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": true
+        },
+        {
+          "publisher": "Merck Careers",
+          "apply_link": "https://careers.merckgroup.com/global/en/job/279492/Senior-Analyst-Python-Developer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Careers - Merck KGaA, Darmstadt, Germany",
+          "apply_link": "https://careers.emdgroup.com/us/en/job/279492/Senior-Analyst-Python-Developer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Aptiv",
+          "apply_link": "https://www.aptiv.com/fr/carrieres/recherche-doffres/postes-ouverts/J000666666?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "State Street Careers",
+          "apply_link": "https://careers.statestreet.com/global/en/job/STSTGLOBALR768857EXTERNALENGLOBAL/Senior-Python-Developer-Manager?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "EPAM",
+          "apply_link": "https://careers.epam.ua/vacancies/job-listings/job-detail.epamgdo_blt8203c732d3e6c75d_en-us_Bangalore_India.senior-python-developer_bangalore_india?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "We are seeking an experienced Senior Python Developer to join our dynamic LSH Data Platform Team. You will play a pivotal role in designing, developing, and maintaining Python-based data processing applications and services that support scalable big data solutions. If you're excited about combining deep Python skills with cutting-edge technologies like Apache Spark, PySpark, SQL, and relational databases, we want to hear from you.\n\nAbout You \u2013 experience, education, skills, and accomplishments\n\u2022 At least 5+ years of hands-on Python software development experience.\n\u2022 Advanced proficiency in SQL, database design, and relational database systems.\n\u2022 At least 2 years of strong expertise in Apache Spark and PySpark for building scalable data solutions\n\u2022 Experience developing and deploying solutions on cloud platforms, particularly AWS (S3, ECS, EMR, Glue, RDS).\n\u2022 Familiarity with orchestration tools like Apache Airflow.\n\u2022 Solid grasp of CI/CD principles and experience implementing automated pipelines\n\u2022 Bachelor\u2019s degree required; Master\u2019s degree preferred, preferably in a quantitative or technical field\n\nIt would be great if you also had\n\u2022 Practical experience with Databricks and Snowflake.\n\u2022 Exposure to Cassandra, Hadoop, Apache Hive.\n\u2022 Experience with Jupyter notebooks and BI tools like Tableau or PowerBI.\n\u2022 Familiarity with PL/SQL and Oracle GoldenGate\n\nWhat will you be doing in this role?\n\u2022 Application Development: Design, build, and maintain scalable Python applications for data processing, transformation, and analytics.\n\u2022 Big Data Integration: Leverage Apache Spark, PySpark, and related big data technologies to develop distributed data processing pipelines.\n\u2022 Database Expertise: Utilize strong proficiency in SQL and relational database concepts to design efficient data models, optimize queries, and manage data quality.\n\u2022 Best Practices Enforcement: Implement and uphold best practices in Python software development, testing, and CI/CD pipelines.\n\u2022 Continuous Improvement: Stay current with evolving Python, and big data ecosystem technologies, recommending improvements and new approaches to enhance our data platform.\n\nHours of Work\n\u2022 Fulltime\n\u2022 45 h/week\n\u2022 Hybrid working model (Location: Bangalore)\n\nAt Clarivate, we are committed to providing equal employment opportunities for all persons with respect to hiring, compensation, promotion, training, and other terms, conditions, and privileges of employment. We comply with applicable laws and regulations governing non-discrimination in all locations.",
+      "job_is_remote": false,
+      "job_posted_at": "11 days ago",
+      "job_posted_at_timestamp": 1743724800,
+      "job_posted_at_datetime_utc": "2025-04-04T00:00:00.000Z",
+      "job_location": "Bengaluru, Karnataka",
+      "job_city": "Bengaluru",
+      "job_state": "Karnataka",
+      "job_country": "IN",
+      "job_latitude": 12.9715987,
+      "job_longitude": 77.5945627,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DlivULNaEq7tu36TeAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_salary": null,
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": null,
+      "job_highlights": {},
+      "job_onet_soc": "15113200",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081b7",
+      "job_id": "GjIVLOSjCCHQXfslAAAAAA==",
+      "job_title": "UI Developer - Crimson Interactive",
+      "employer_name": "Crimson Interactive",
+      "employer_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQv-59U0ITtCnOJH1DbS4ccmRV-mtynLQgAFLy&s=0",
+      "employer_website": "https://www.crimsoni.com",
+      "job_publisher": "Glassdoor",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://www.glassdoor.co.in/job-listing/ui-developer-crimson-interactive-crimson-interactive-JV_IC2851180_KO0,32_KE33,52.htm?jl=1007897856727&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "Glassdoor",
+          "apply_link": "https://www.glassdoor.co.in/job-listing/ui-developer-crimson-interactive-crimson-interactive-JV_IC2851180_KO0,32_KE33,52.htm?jl=1007897856727&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "SimplyHired",
+          "apply_link": "https://www.simplyhired.co.in/job/zTgqD433Ji-runjzV7llVJDhKb0PXhxxpzbBY092evcMTABAscCawQ?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Jobs Trabajo.org",
+          "apply_link": "https://in.trabajo.org/job-1907-88afbc236ab24878f48bbab36faf8bec?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Jobaaj",
+          "apply_link": "https://www.jobaaj.com/job/jpmorgan-chase-funding-awm-ui-path-developer-mumbai-2-to-4-years-33159?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": true
+        },
+        {
+          "publisher": "Expertini",
+          "apply_link": "https://in.expertini.com/jobs/job/ui-developer-angular-js-mumbai-anicalls-pty-ltd-fca31a89ef/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Joblum India",
+          "apply_link": "https://in.joblum.com/job/ui-developer-react-js-node-js/6934375?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": true
+        }
+      ],
+      "job_description": "Job title: UI Developer\n\nDepartment: Version-X Product\n\nLocation: Mumbai\n\nShift timings: 10 am to 7 pm and Sat-Sun Weekly-off\n\nWe are looking for a creative, skilled UI Developer to design websites and applications with functionality and aesthetics in mind. The UI Developer will work with Front-End Developers, Marketing team and Product team to ensure the required design is well coded and optimized better performance. To be successful as a UI Developer you should have excellent knowledge of HTML, CSS, and Bootstrap. Working knowledge of AngularJS (2.0 and above version) and VueJs will be an advantage.\n\nResponsibilities:\n\u2022 Work with other UI and Front-End developers to ensure that the websites and applications are functional and visually appealing.\n\u2022 Ensure that the websites and applications are optimized for various devices.\n\u2022 Conduct thorough testing of user interfaces in multiple platforms to ensure all designs render correctly and systems function properly, incorporating feedback from actual potential users as well as members of the design team\n\u2022 Solve any design or usability issues that arise and anticipate potential future problems so they can be resolved before they impact users\n\u2022 Maintain and improve existing websites and applications\n\u2022 Optimize applications for maximum speed\n\u2022 Collaborate with front-end developers and web designers to improve usability\n\u2022 Stay up-to-date on emerging technologies\\\n\nSkills Required:\n\n.\n\nIn-depth knowledge of modern HTML/CSS & bootstrap\n\nIn-depth knowledge of jQuery, JavaScript & Ajax\n\nBasic understanding and working knowledge of AngularJS 2.0 and VueJs\n\nBasic understanding of development of SEO complaint webpages and content management systems (WordPress)\n\nGood working knowledge of Adobe Photoshop. Knowledge of Figma or similar tools will be added advantage\n\nFamiliarity with browser testing and debugging\n\nIn-depth understanding of the entire web development process (design, development and deployment.\n\nUnderstanding of layout aesthetics\n\nAn ability to perform well in a fast-paced environment\n\nAggressive problem diagnosis and creative problem solving skills\n\nStrong organizational skills to juggle multiple tasks within the constraints of timelines and budgets with business acumen\n\nGood verbal and written communication skills\n\nKnowledge of using MS Office and ability to acclimatize to different technical tools used in the organization\n\nTo know more about us, please visit www.crimsoni.ai, www.trinka.ai\n\nLiquid error: undefined method `public_fields' for nil:NilClass",
+      "job_is_remote": false,
+      "job_posted_at": "24 days ago",
+      "job_posted_at_timestamp": 1742601600,
+      "job_posted_at_datetime_utc": "2025-03-22T00:00:00.000Z",
+      "job_location": "Mumbai, Maharashtra",
+      "job_city": "Mumbai",
+      "job_state": "Maharashtra",
+      "job_country": "IN",
+      "job_latitude": 19.0759837,
+      "job_longitude": 72.8776559,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DGjIVLOSjCCHQXfslAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_salary": null,
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": null,
+      "job_highlights": {},
+      "job_onet_soc": "15113400",
+      "job_onet_job_zone": "3"
+    },
+    {
+      "_id": "67fe442d20e619e889a081b8",
+      "job_id": "FN49MRWTDnkcknG6AAAAAA==",
+      "job_title": "Senior Lead Software Engineer-Java",
+      "employer_name": "Clarivate",
+      "employer_logo": null,
+      "employer_website": "https://clarivate.com",
+      "job_publisher": "Clarivate",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://careers.clarivate.com/job/JREQ130950/Senior-Lead-Software-Engineer-Java?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "Clarivate",
+          "apply_link": "https://careers.clarivate.com/job/JREQ130950/Senior-Lead-Software-Engineer-Java?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Glassdoor",
+          "apply_link": "https://www.glassdoor.co.in/job-listing/senior-lead-software-engineer-java-clarivate-JV_IC4477468_KO0,34_KE35,44.htm?jl=1009655022927&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Built In",
+          "apply_link": "https://builtin.com/job/senior-lead-software-engineer-java/4316394?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "SimplyHired",
+          "apply_link": "https://www.simplyhired.co.in/job/dFHqtZ_huInUFitHF6Nm9yMF6i_WsyeyVAJLe5ZzLsinhjY_frnhyg?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "HighFive Partners Job Board",
+          "apply_link": "https://jobs.highfivepartners.com/companies/proquest/jobs/47169856-senior-lead-software-engineer-java?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Trabajo.org",
+          "apply_link": "https://in.trabajo.org/job-3150-7864c42619dea2bfc1e54d3f135a1ff4?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Talentify",
+          "apply_link": "https://www.talentify.io/job/senior-lead-software-engineer-java-noida-uttar-pradesh-in-clarivate-jreq130950?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "BeBee",
+          "apply_link": "https://in.bebee.com/job/4a1233cf54a2597859a31669390f6d51?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "We are looking for Senior Software Engineer- Java Backend who should be passionate about software development and technology, have demonstrable technical and problem-solving skills. The candidate will show a clear understanding of development trends and a broad understanding of development paradigms. They will have excellent organizational skills, good knowledge of the full software development life cycle.\n\nAbout You \u2013 experience, education, skills, and accomplishments\n\u2022 Bachelor\u2019s Degree or equivalent in computer science, software engineering, or a related field\n\u2022 At least 7 Years of relevant experience technologies like Java 11+, File I/O, Multi-Threading, Collections, Spring Boot, micro service architecture, AWS cloud.\n\u2022 Good understanding of software development principles, including object-oriented programming, Design Patterns, and SOLID principles.\n\u2022 Strong technical background and in-depth experience with server-side frameworks, event driven architecture, system integration patterns.\n\u2022 Experience with RDBMS and NoSQL databases, particularly MySQL or PostgreSQL\n\u2022 Experience using AWS serverless resources, including but not limited to Lambda, RDS, API Gateway, S3\n\u2022 Worked on Jira, Jenkins, Maven/Gradle, bitbucket\n\u2022 Experience with continuous integration and continuous development pipelines.\n\nIt would be great if you also had . . .\n\u2022 Exposure to Linux Shell scripting\n\u2022 Client-side tools & frameworks: Angular, JavaScript, HTML, CSS.\n\nWhat will you be doing in this role?\n\u2022 Participate in the full software development lifecycle, including requirements gathering, design, development, testing and deployment.\n\u2022 Write clean, efficient, and maintainable code in accordance with coding standards and write technical documentation.\n\u2022 Develop and maintain unit and integration tests that are part of an automated Continuous Integration pipeline.\n\u2022 Participate in group improvement activities and initiatives to improve process and product quality in pursuit of excellence.\n\u2022 Troubleshoot and debug issues that arise during development, testing, and production.\n\u2022 Stay up to date with new technologies and trends in software development.\n\nAbout the Team\n\nYou will be working as part of IP Content team wherein your focus would be to process and deliver high quality patent data from multiple input source formats. We have multiple squads each consists of Software Engineers, Testers, Lead and Release Manager.\n\nHours of Work\n\nThis is permanent position with Clarivate. You will be working in IST time zone. 9 hours of work per day including 1-hour lunch break. We have hybrid work model, flexible and employee friendly work environment.\n\nAt Clarivate, we are committed to providing equal employment opportunities for all persons with respect to hiring, compensation, promotion, training, and other terms, conditions, and privileges of employment. We comply with applicable laws and regulations governing non-discrimination in all locations.",
+      "job_is_remote": false,
+      "job_posted_at": "1 day ago",
+      "job_posted_at_timestamp": 1744588800,
+      "job_posted_at_datetime_utc": "2025-04-14T00:00:00.000Z",
+      "job_location": "Noida, Uttar Pradesh",
+      "job_city": "Noida",
+      "job_state": "Uttar Pradesh",
+      "job_country": "IN",
+      "job_latitude": 28.5355161,
+      "job_longitude": 77.3910265,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DFN49MRWTDnkcknG6AAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_salary": null,
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": null,
+      "job_highlights": {},
+      "job_onet_soc": "15113200",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081b9",
+      "job_id": "mfxQLkOMny079TMYAAAAAA==",
+      "job_title": "Openings for SDET",
+      "employer_name": "Encora Inc.",
+      "employer_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8igdzAst1vEqv20Iq5j03HNsPLW6JZOJMEieY&s=0",
+      "employer_website": "https://news.encora.com",
+      "job_publisher": "LinkedIn",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://in.linkedin.com/jobs/view/openings-for-sdet-at-encora-inc-4104158238?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "LinkedIn",
+          "apply_link": "https://in.linkedin.com/jobs/view/openings-for-sdet-at-encora-inc-4104158238?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Startup Jobs",
+          "apply_link": "https://startup.jobs/openings-for-sdet-encora-6296342?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Trabajo.org",
+          "apply_link": "https://in.trabajo.org/job-3396-23c5f517a1dc867fdf2bd10ed14bf46b?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Recruit.net",
+          "apply_link": "https://www.recruit.net/job/openings-for-sdet-jobs/6E234AC9B1F9490E?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "IndigoJobs",
+          "apply_link": "https://www.indigojobs.in/job/471963/openings-for-freshers-bangalore-at-cognizant?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": true
+        },
+        {
+          "publisher": "CallCenterJob.co.in",
+          "apply_link": "https://callcenterjob.co.in/immediate-openings-for-seo-or-digital-bengaluru_594959?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "SDET\n\nImportant Information\n\nLocation \u2013 Bangalore\n\nExperience \u2013 5+ Years\n\nJob Mode \u2013 Full time\n\nWork mode \u2013 Hybrid\n\nJob Summary\n\nResponsibilities and Duties:\n\u2022 5+ years of experience in Automation testing ( UI and API)\n\u2022 Strong in web application and backend services testing, system testing, Bug life cycle, Test plan, and reporting.\n\u2022 Well versed in web UI, API and Mobile testing and debugging\n\u2022 Hands-on experience with DB (SQL, NoSQL) and Linux/Unix commands\n\u2022 Hands on experience with API automation using rest-assured and UI automation tools like Selenium.\n\u2022 Ability to recognize risks and errors in an application.\n\u2022 Ability to deal with ambiguous and undefined problems\n\u2022 Experience in debugging and root cause analysis\n\u2022 Excellent verbal and written communication skills.\n\u2022 Self-motivated, ownership, Passionate for testing, and test automation\n\u2022 Ability to break system, finding difficult bugs.\n\u2022 Able to ask right questions and create more clarity in the requirements\n\nAbout Encora\n\nEncora is a global company that offers Software and Digital Engineering solutions, with more than 9000 Encorians around the world. Our technology practices include Cloud Services, Product Engineering & Development, Data Modernization & Engineering, Digital Experience, DevSecOps, Cybersecurity, Quality Engineering, Generative AI, among others. At Encora Inc. we hire professionals based solely on their skills and do not discriminate based on age, disability, religion, gender, sexual orientation, socioeconomic status, or nationality.",
+      "job_is_remote": false,
+      "job_posted_at": null,
+      "job_posted_at_timestamp": null,
+      "job_posted_at_datetime_utc": null,
+      "job_location": "Bengaluru, Karnataka",
+      "job_city": "Bengaluru",
+      "job_state": "Karnataka",
+      "job_country": "IN",
+      "job_latitude": 12.9715987,
+      "job_longitude": 77.5945627,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DmfxQLkOMny079TMYAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_salary": null,
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": null,
+      "job_highlights": {},
+      "job_onet_soc": "15119900",
+      "job_onet_job_zone": "4"
+    },
+    {
+      "_id": "67fe442d20e619e889a081ba",
+      "job_id": "YTweEkAj1xA8_ByLAAAAAA==",
+      "job_title": "Lead Software Engineer",
+      "employer_name": "Clarivate",
+      "employer_logo": null,
+      "employer_website": "https://clarivate.com",
+      "job_publisher": "Clarivate",
+      "job_employment_type": "Full\u2013time",
+      "job_employment_types": [
+        "FULLTIME"
+      ],
+      "job_apply_link": "https://careers.clarivate.com/job/JREQ130809/Lead-Software-Engineer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+      "job_apply_is_direct": false,
+      "apply_options": [
+        {
+          "publisher": "Clarivate",
+          "apply_link": "https://careers.clarivate.com/job/JREQ130809/Lead-Software-Engineer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Capgemini",
+          "apply_link": "https://www.capgemini.com/jobs/107134-en_GB+sap_btp/?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Lever",
+          "apply_link": "https://jobs.lever.co/shyftlabs/03281987-2155-4c15-b1ca-dd494188513c?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Careers At UKG",
+          "apply_link": "https://apply.ukg.com/careers/job/893380988011-lead-software-engineer-noida-up-ind?domain=ukg.com&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Zenon Careers",
+          "apply_link": "https://zenon.freshteam.com/jobs/LsfVBSc3Vk5q/lead-software-engineer?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Glassdoor",
+          "apply_link": "https://www.glassdoor.co.in/job-listing/lead-software-engineer-r1-rcm-inc-JV_IC4477468_KO0,22_KE23,33.htm?jl=1008838362194&utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Foundit.in",
+          "apply_link": "https://www.foundit.in/job/lead-software-engineer-capgemini-noida-34116541?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        },
+        {
+          "publisher": "Shine",
+          "apply_link": "https://www.shine.com/jobs/lead-software-engineer/capgemini-engineering/16739572?utm_campaign=google_jobs_apply&utm_source=google_jobs_apply&utm_medium=organic",
+          "is_direct": false
+        }
+      ],
+      "job_description": "Job Description:\n\nWe are looking for a Lead Software Engineer to join our Policy Automation team in India to help us build an end-to-end data automation solution. If you passionate about coding, AI, and have extensive experience on API, Rule Engine, and Frontend Frameworks development, we\u2019d love to hear from you! We are looking for someone who has experience with Python, Angular, and ideally has strong knowledge on DB.\n\nAbout You \u2013 experience, education, skills, and accomplishments:\n\u2022 Graduates in BE/BTech/MTech \u2013 Computer science\n\u2022 5+ years of experience with Coding skills in Python\n\u2022 2+ years of hands-on experience with Frontend development in Angular\n\u2022 Solid understanding of Database and SQL\n\nIt would be great if you also had . . .:\n\u2022 Extensive experience with software development best practices, including version control, documentation, testing and CI/CD\n\u2022 Preferably to have a history of implementing a system with a microservices design\n\u2022 Preferably to have experience with Rule Engine\n\u2022 Nice to be knowledgeable on AI/ML\n\u2022 Attention to detail in collaboration and documentation, actively communicating project priorities, handling risks, and understanding tradeoffs\n\u2022 Strong organizational, communication, analytical, troubleshooting, and problem-solving skills\n\nWhat will you be doing in this role?\n\u2022 Participate in all phases of the software development lifecycle, design, develop and implement a business rule engine to extract, ingest, and load data from various file formats into a standard data model.\n\u2022 Design, develop and implement various API end points to manage the automation processes, support frontend components, and communicate with external service components.\n\u2022 Implement automation processes utilizing both traditional AI and GenAI\n\u2022 Produce efficient, maintainable, and well-tested code, by practicing code review process, following code style guides, writing documentations, and ensuring test coverage.\n\u2022 Be a team player, participate in all the SCRUM ceremonies.\n\u2022 Integrate the data automation system with a greater content platform.\n\u2022 Collaborate with other members of the team to ensure release timelines are met within an Agile environment.\n\nAbout the Team\n\u2022 Welcome to our Policy Automation team! We are a dynamic and passionate group of 30+ professionals (80% situated in India), committed to craft innovative solutions that streamline data acquisition, ingestion, and management processes, using both rule-based and AI/ML technologies. We pride ourselves on developing systems that not only optimize efficiency but also ensure accuracy and reliability. From automated data pipelines to intelligent analytic platforms, our team works tirelessly to deliver solutions that meet the unique needs of our internal teams and external clients in healthcare industry.\n\nHours of Work\n\u2022 40 Hours per week, permanent full-time position\n\nAt Clarivate, we are committed to providing equal employment opportunities for all persons with respect to hiring, compensation, promotion, training, and other terms, conditions, and privileges of employment. We comply with applicable laws and regulations governing non-discrimination in all locations.",
+      "job_is_remote": false,
+      "job_posted_at": "1 day ago",
+      "job_posted_at_timestamp": 1744588800,
+      "job_posted_at_datetime_utc": "2025-04-14T00:00:00.000Z",
+      "job_location": "Noida, Uttar Pradesh",
+      "job_city": "Noida",
+      "job_state": "Uttar Pradesh",
+      "job_country": "IN",
+      "job_latitude": 28.5355161,
+      "job_longitude": 77.3910265,
+      "job_benefits": null,
+      "job_google_link": "https://www.google.com/search?q=jobs&gl=in&hl=en&udm=8#vhid=vt%3D20/docid%3DYTweEkAj1xA8_ByLAAAAAA%3D%3D&vssid=jobs-detail-viewer",
+      "job_salary": null,
+      "job_min_salary": null,
+      "job_max_salary": null,
+      "job_salary_period": null,
+      "job_highlights": {},
+      "job_onet_soc": "15113200",
+      "job_onet_job_zone": "4"
+    }
+  ]
+}
